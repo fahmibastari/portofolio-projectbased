@@ -5,9 +5,6 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["puppeteer-core", "@sparticuz/chromium"]
-  included_files = []
-
-  # Naikkan limit untuk render PDF
   timeout = 26
   memory = 1024
 

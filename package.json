@@ -1,7 +1,12 @@
 {
+    "name": "portfolio-pdf",
+    "type": "module",
     "dependencies": {
       "@sparticuz/chromium": "^123.0.0",
       "puppeteer-core": "^23.6.0"
+    },
+    "scripts": {
+      "build": "echo 'no build step'"
     }
   }
   
