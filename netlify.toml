@@ -11,7 +11,8 @@
 
 [functions."*"]
   timeout = 26
-  memory = 1024
+  memory = 1536
+
 
 [[headers]]
   for = "/.netlify/functions/snapshot-pdf*"
