@@ -983,7 +983,22 @@ Thanks!`
       a.remove();
     }
 
-    btn.addEventListener('click', downloadPortfolioPdf);
+    btn.addEventListener('click', async () => {
+  const fn = 'Fahmi_Bastari_Portfolio.pdf';
+  const endpoint = `/.netlify/functions/snapshot-pdf?url=${encodeURIComponent(location.href)}&filename=${encodeURIComponent(fn)}&format=A4`;
+  const res = await fetch(endpoint);
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    alert(`Failed to render PDF.\n${text || res.statusText}`);
+    return;
+  }
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: fn });
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+
   })();
   </script>
 </body>

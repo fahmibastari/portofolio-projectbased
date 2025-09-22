@@ -7,7 +7,6 @@
   node_bundler = "esbuild"
   external_node_modules = ["puppeteer-core", "@sparticuz/chromium"]
 
-# apply ke semua functions
 [functions."*"]
   timeout = 26
   memory = 1024
