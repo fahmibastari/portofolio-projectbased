@@ -5,7 +5,7 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  external_node_modules = ["puppeteer-core", "@sparticuz/chromium"]
+  external_node_modules = ["playwright-core", "playwright-aws-lambda"]
 
 [functions."*"]
   timeout = 26

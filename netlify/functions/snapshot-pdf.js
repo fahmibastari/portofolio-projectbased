@@ -1,142 +1,127 @@
 // netlify/functions/snapshot-pdf.js
-import chromium from '@sparticuz/chromium';
-import puppeteer from 'puppeteer-core';
+import { launchChromium } from "playwright-aws-lambda";
+import { devices } from "playwright-core";
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export const handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 204, headers: cors(), body: '' };
+  if (event.httpMethod === "OPTIONS") {
+    return { statusCode: 204, headers: cors(), body: "" };
   }
 
+  let browser;
   try {
-    // --- CONFIG NETLIFY/LAMBDA QUIRKS ---
-    // (Direkomendasikan oleh @sparticuz untuk platform serverless)
-    chromium.setHeadlessMode = true;
-    chromium.setGraphicsMode = false;
-
-    // --- PARSE PARAMS ---
     const qs =
-      typeof event.rawQuery === 'string'
+      typeof event.rawQuery === "string"
         ? new URLSearchParams(event.rawQuery)
         : new URLSearchParams(event.queryStringParameters || {});
-
-    // Jika user tidak mengirim 'url', pakai origin dari request
     const origin = getOrigin(event);
-    const url = qs.get('url') || process.env.PORTFOLIO_URL || `${origin}/`;
-    const format = qs.get('format') || 'A4';
-    const filename = qs.get('filename') || 'Fahmi_Bastari_Portfolio.pdf';
+    const url = qs.get("url") || `${origin}/`;
+    const format = qs.get("format") || "A4";
+    const filename = qs.get("filename") || "Fahmi_Bastari_Portfolio.pdf";
 
-    // (opsional) batasi domain agar aman
-    const { host } = new URL(url);
-    const allowedHosts = [hostFromOrigin(origin)];
-    if (!allowedHosts.includes(host)) {
-      return json(400, { error: `URL not allowed: ${host}` });
+    // optional safety: hanya izinkan domain sendiri
+    const allowed = [new URL(origin).host];
+    if (!allowed.includes(new URL(url).host)) {
+      return json(400, { error: `URL not allowed` });
     }
 
-    // --- LAUNCH CHROMIUM ---
-    const executablePath = await chromium.executablePath();
-    const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath,
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true
+    // --- Launch Playwright Chromium (AWS Lambda build) ---
+    browser = await launchChromium({ headless: true });
+    const context = await browser.newContext({
+      ...devices["Desktop Chrome"],
+      javaScriptEnabled: true,
+      bypassCSP: true,
     });
+    const page = await context.newPage();
 
-    const page = await browser.newPage();
+    // Emulate print
+    await page.emulateMedia({ media: "print" });
 
-    // Emulate print CSS
-    await page.emulateMediaType('print');
+    // Go
+    await page.goto(url, { waitUntil: "networkidle", timeout: 90_000 });
 
-    // --- NAVIGATE ---
-    await page.goto(url, { waitUntil: ['load', 'networkidle2'], timeout: 90_000 });
-
-    // --- PATCH PRINT DOM ---
+    // Patch DOM untuk mode cetak
     await page.addStyleTag({ content: printPatchCss() });
     await page.evaluate(() => {
-      // Paksa tema terang
-      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.setAttribute("data-theme", "light");
 
-      // Ubah carousel jadi galeri bertumpuk
-      document.querySelectorAll('.carousel, .carousel-inner').forEach((el) => (el.style.display = 'block'));
-      document.querySelectorAll('.carousel-item').forEach((el) => {
-        el.style.display = 'block';
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+      // Tumpuk semua slide
+      document.querySelectorAll(".carousel, .carousel-inner").forEach((el) => (el.style.display = "block"));
+      document.querySelectorAll(".carousel-item").forEach((el) => {
+        el.style.display = "block";
+        el.style.opacity = "1";
+        el.style.transform = "none";
       });
-      document.querySelectorAll('.carousel-item img').forEach((img) => {
-        img.style.height = 'auto';
-        img.style.maxHeight = 'none';
-        img.style.margin = '0 0 8px 0';
+      document.querySelectorAll(".carousel-item img").forEach((img) => {
+        img.style.height = "auto";
+        img.style.maxHeight = "none";
+        img.style.margin = "0 0 8px 0";
       });
 
       // Sembunyikan kontrol interaktif
       [
-        '.navbar .navbar-toggler',
-        '.thumbs',
-        '.open-lightbox',
-        '.carousel-control-prev',
-        '.carousel-control-next',
-        '#toTop',
-        '#lightbox'
-      ].forEach((sel) => document.querySelectorAll(sel).forEach((n) => (n.style.display = 'none')));
+        ".navbar .navbar-toggler",
+        ".thumbs",
+        ".open-lightbox",
+        ".carousel-control-prev",
+        ".carousel-control-next",
+        "#toTop",
+        "#lightbox",
+      ].forEach((sel) => document.querySelectorAll(sel).forEach((n) => (n.style.display = "none")));
 
-      // Paksa lazy images jadi eager
-      document.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = 'eager'));
+      // Paksa lazy img jadi eager
+      document.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = "eager"));
 
-      document.body.classList.add('printing-pdf');
+      document.body.classList.add("printing-pdf");
     });
 
-    // Beri waktu gambar selesai load
     await wait(700);
 
-    // --- GENERATE PDF ---
+    // PDF
     const pdf = await page.pdf({
+      path: undefined,               // stream balik, bukan simpan file
       printBackground: true,
       preferCSSPageSize: true,
-      format,
-      margin: { top: '14mm', right: '14mm', bottom: '14mm', left: '14mm' }
+      format,                        // A4/Letter
+      margin: { top: "14mm", right: "14mm", bottom: "14mm", left: "14mm" },
     });
 
+    await context.close();
     await browser.close();
 
     return {
       statusCode: 200,
       headers: {
         ...cors(),
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="${filename}"`
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `attachment; filename="${filename}"`,
       },
-      body: pdf.toString('base64'),
-      isBase64Encoded: true
+      body: pdf.toString("base64"),
+      isBase64Encoded: true,
     };
   } catch (err) {
-    // LOG DETAIL ke Function logs (Netlify dashboard)
-    console.error('[snapshot-pdf] ERROR:', err);
-    return json(500, { error: 'Failed to render PDF', details: String(err) });
+    console.error("[snapshot-pdf] ERROR:", err);
+    try { if (browser) await browser.close(); } catch {}
+    return json(500, { error: "Failed to render PDF", details: String(err) });
   }
 };
 
-// ---------- helpers ----------
+// helpers
 function cors() {
   return {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS'
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
   };
 }
 function json(code, obj) {
   return { statusCode: code, headers: cors(), body: JSON.stringify(obj) };
 }
 function getOrigin(event) {
-  // Netlify selalu kirim header 'x-forwarded-proto' & 'host'
-  const proto = (event.headers['x-forwarded-proto'] || 'https').split(',')[0].trim();
+  const proto = (event.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
   const host = event.headers.host;
   return `${proto}://${host}`;
-}
-function hostFromOrigin(origin) {
-  try { return new URL(origin).host; } catch { return origin; }
 }
 function printPatchCss() {
   return `
