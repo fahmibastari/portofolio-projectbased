@@ -4,8 +4,9 @@ import puppeteer from "puppeteer-core";
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export const handler = async (event) => {
-  if (event.httpMethod === "OPTIONS")
+  if (event.httpMethod === "OPTIONS") {
     return { statusCode: 204, headers: cors(), body: "" };
+  }
 
   let browser, page;
   try {
@@ -22,24 +23,45 @@ export const handler = async (event) => {
     const format = qs.get("format") || "A4";
     const filename = qs.get("filename") || "Fahmi_Bastari_Portfolio.pdf";
 
-    // SSRF guard: hanya host yg sama
+    // Batasi ke host yang sama (hindari SSRF)
     const allowedHost = new URL(origin).host;
     if (new URL(url).host !== allowedHost) {
       return json(400, { error: "URL not allowed" });
     }
 
-    // --- launch ---
+    // --- launch dengan args "hemat drama" ---
     const executablePath = await chromium.executablePath();
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      // viewport eksplisit bantu stabil di Lambda
-      defaultViewport: { width: 1280, height: 800, deviceScaleFactor: 1 },
+    const launchCommon = () => puppeteer.launch({
+      args: [
+        ...chromium.args,
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--single-process",
+        "--no-zygote",
+        "--disable-gpu",
+        "--hide-scrollbars",
+        "--mute-audio",
+        "--font-render-hinting=none",
+      ],
+      defaultViewport: { width: 1024, height: 768, deviceScaleFactor: 1 },
       executablePath,
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
 
-    // === NAVIGASI TAHAN ERROR (retry sekali) ===
+    // Kadang crash saat newPage(); relaunch sekali kalau perlu
+    async function launchWithRelaunch() {
+      try { return await launchCommon(); }
+      catch (e) {
+        // coba sekali lagi
+        return await launchCommon();
+      }
+    }
+
+    browser = await launchWithRelaunch();
+
+    // === NAVIGASI ANTI-RACE + ANTI "MAIN FRAME TOO EARLY" ===
     page = await gotoWithRetry(browser, url);
 
     // --- patch print ---
@@ -75,7 +97,7 @@ export const handler = async (event) => {
       document.body.classList.add("printing-pdf");
     });
 
-    await wait(500);
+    await wait(400);
 
     // --- pdf ---
     const pdf = await page.pdf({
@@ -106,16 +128,16 @@ export const handler = async (event) => {
   }
 };
 
-// ===== helper: gotoWithRetry =====
+// ====== Helper: nav with retry ======
 async function gotoWithRetry(browser, targetUrl) {
   let lastErr;
   for (let attempt = 1; attempt <= 2; attempt++) {
-    const p = await browser.newPage();
+    const p = await newPageHardened(browser);
     try {
-      // siapkan main frame
-      await p._client().send("Page.enable").catch(() => {});
-      await p.goto("about:blank", { waitUntil: "load" }).catch(() => {});
+      // micro-delay kecil supaya main frame siap
       await wait(80);
+      await p.goto("about:blank", { waitUntil: "load" }).catch(() => {});
+      await wait(50);
 
       await p.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 90_000 });
 
@@ -124,19 +146,47 @@ async function gotoWithRetry(browser, targetUrl) {
       } else {
         await wait(600);
       }
-      return p; // sukses
+      return p;
     } catch (e) {
       lastErr = e;
       await p.close().catch(() => {});
-      // retry hanya untuk kasus 'main frame too early'
-      if (!String(e?.message || e).includes("main frame too early")) break;
-      // loop coba lagi
+      const msg = String(e?.message || e);
+      // retry kalau "main frame too early" atau koneksi tertutup
+      if (!(msg.includes("main frame too early") || msg.includes("Connection closed"))) break;
     }
   }
   throw lastErr;
 }
 
-// ===== helpers lainnya =====
+// Bikin page dengan proteksi: kalau Connection closed, relaunch browser sekali
+async function newPageHardened(browser) {
+  try {
+    return await browser.newPage();
+  } catch (e) {
+    const msg = String(e?.message || e);
+    if (msg.includes("Connection closed")) {
+      try { await browser.close(); } catch {}
+      // perlu executablePath lagi
+      const executablePath = await chromium.executablePath();
+      const relaunched = await puppeteer.launch({
+        args: [
+          ...chromium.args,
+          "--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage",
+          "--single-process","--no-zygote","--disable-gpu","--hide-scrollbars","--mute-audio",
+          "--font-render-hinting=none",
+        ],
+        defaultViewport: { width: 1024, height: 768, deviceScaleFactor: 1 },
+        executablePath,
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true,
+      });
+      return await relaunched.newPage();
+    }
+    throw e;
+  }
+}
+
+// ===== helpers =====
 function cors(){ return {
   "Access-Control-Allow-Origin":"*",
   "Access-Control-Allow-Headers":"Content-Type",

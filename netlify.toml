@@ -10,8 +10,8 @@
   included_files = ["node_modules/@sparticuz/chromium/**/*"]
 
 [functions."*"]
+  memory = 2048
   timeout = 26
-  memory = 1536
 
 
 [[headers]]
