@@ -7,11 +7,12 @@ export const handler = async (event) => {
   if (event.httpMethod === "OPTIONS")
     return { statusCode: 204, headers: cors(), body: "" };
 
-  let browser, page; // <-- HAPUS 'context'
+  let browser, page;
   try {
     chromium.setHeadlessMode = true;
     chromium.setGraphicsMode = false;
 
+    // --- params ---
     const qs =
       typeof event.rawQuery === "string"
         ? new URLSearchParams(event.rawQuery)
@@ -21,34 +22,27 @@ export const handler = async (event) => {
     const format = qs.get("format") || "A4";
     const filename = qs.get("filename") || "Fahmi_Bastari_Portfolio.pdf";
 
+    // SSRF guard: hanya host yg sama
     const allowedHost = new URL(origin).host;
     if (new URL(url).host !== allowedHost) {
       return json(400, { error: "URL not allowed" });
     }
 
+    // --- launch ---
     const executablePath = await chromium.executablePath();
     browser = await puppeteer.launch({
       args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
+      // viewport eksplisit bantu stabil di Lambda
+      defaultViewport: { width: 1280, height: 800, deviceScaleFactor: 1 },
       executablePath,
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
 
-    // 🔧 TANPA incognito: langsung newPage()
-    page = await browser.newPage();
+    // === NAVIGASI TAHAN ERROR (retry sekali) ===
+    page = await gotoWithRetry(browser, url);
 
-    // Hindari race condition “main frame too early”
-    await wait(100);
-
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 90_000 });
-
-    if (page.waitForNetworkIdle) {
-      await page.waitForNetworkIdle({ idleTime: 800, timeout: 60_000 }).catch(() => {});
-    } else {
-      await wait(800);
-    }
-
+    // --- patch print ---
     try { await page.emulateMediaType("print"); } catch {}
     await page.addStyleTag({ content: printPatchCss() });
 
@@ -83,6 +77,7 @@ export const handler = async (event) => {
 
     await wait(500);
 
+    // --- pdf ---
     const pdf = await page.pdf({
       printBackground: true,
       preferCSSPageSize: true,
@@ -111,7 +106,37 @@ export const handler = async (event) => {
   }
 };
 
-// helpers (biarkan sama punyamu)
+// ===== helper: gotoWithRetry =====
+async function gotoWithRetry(browser, targetUrl) {
+  let lastErr;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const p = await browser.newPage();
+    try {
+      // siapkan main frame
+      await p._client().send("Page.enable").catch(() => {});
+      await p.goto("about:blank", { waitUntil: "load" }).catch(() => {});
+      await wait(80);
+
+      await p.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 90_000 });
+
+      if (p.waitForNetworkIdle) {
+        await p.waitForNetworkIdle({ idleTime: 800, timeout: 60_000 }).catch(() => {});
+      } else {
+        await wait(600);
+      }
+      return p; // sukses
+    } catch (e) {
+      lastErr = e;
+      await p.close().catch(() => {});
+      // retry hanya untuk kasus 'main frame too early'
+      if (!String(e?.message || e).includes("main frame too early")) break;
+      // loop coba lagi
+    }
+  }
+  throw lastErr;
+}
+
+// ===== helpers lainnya =====
 function cors(){ return {
   "Access-Control-Allow-Origin":"*",
   "Access-Control-Allow-Headers":"Content-Type",
