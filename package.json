@@ -1,8 +1,9 @@
 {
+    "name": "portfolio-pdf",
     "type": "module",
     "dependencies": {
-      "playwright-core": "^1.47.2",
-      "playwright-aws-lambda": "^0.10.0"
+      "@sparticuz/chromium": "^123.0.0",
+      "puppeteer-core": "^23.6.0"
     },
     "scripts": {
       "build": "echo 'no build step'"
