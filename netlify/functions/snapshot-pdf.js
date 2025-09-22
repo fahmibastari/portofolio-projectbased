@@ -70,6 +70,16 @@ export const handler = async (event) => {
 
     await page.evaluate(() => {
       document.documentElement.setAttribute("data-theme", "light");
+        // 🔥 Pastikan semua project tampil (abaikan filter/IO)
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.display = '';          // hapus display:none dari filter
+    card.hidden = false;              // jaga-jaga kalau ada hidden attribute
+  });
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.classList.add('show');         // lewati IntersectionObserver
+    el.style.opacity = '1';           // jaga-jaga
+    el.style.transform = 'none';
+  });
 
       document.querySelectorAll(".carousel, .carousel-inner").forEach((el) => (el.style.display = "block"));
       document.querySelectorAll(".carousel-item").forEach((el) => {
