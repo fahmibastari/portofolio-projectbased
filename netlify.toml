@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build || echo 'no build step'"
+  publish = "."
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["puppeteer-core", "@sparticuz/chromium"]
+  included_files = []
+
+  # Naikkan limit untuk render PDF
+  timeout = 26
+  memory = 1024
+
+[[headers]]
+  for = "/.netlify/functions/snapshot-pdf*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
