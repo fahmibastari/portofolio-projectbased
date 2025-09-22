@@ -6,10 +6,15 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
   external_node_modules = ["playwright-core", "playwright-aws-lambda"]
+  included_files = ["node_modules/playwright-aws-lambda/**/*"]
 
 [functions."*"]
   timeout = 26
   memory = 1024
+  node_bundler = "esbuild"
+
+[template.environment]
+  PLAYWRIGHT_BROWSERS_PATH = "0"   # penting untuk bundling browser
 
 [[headers]]
   for = "/.netlify/functions/snapshot-pdf*"

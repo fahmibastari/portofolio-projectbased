@@ -1,5 +1,4 @@
 {
-    "name": "portfolio-pdf",
     "type": "module",
     "dependencies": {
       "playwright-core": "^1.47.2",
