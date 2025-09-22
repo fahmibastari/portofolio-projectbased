@@ -37,8 +37,7 @@ export const handler = async (event) => {
       });
   
       // ✅ Pakai incognito context (lebih stabil di serverless)
-      context = await browser.createIncognitoBrowserContext();
-      page = await context.newPage();
+      const page = await browser.newPage();
   
       // ✅ Beri micro-delay supaya main frame siap
       await wait(120);
@@ -55,7 +54,6 @@ export const handler = async (event) => {
   
       // (opsional) emulasi print — kalau gagal, lanjut saja
       try { await page.emulateMediaType("print"); } catch {}
-  
       await page.addStyleTag({ content: printPatchCss() });
   
       await page.evaluate(() => {
