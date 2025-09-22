@@ -29,7 +29,7 @@ export const handler = async (event) => {
       return json(400, { error: "URL not allowed" });
     }
 
-    // --- launch dengan args "hemat drama" ---
+    // --- launch (args stabil) ---
     const executablePath = await chromium.executablePath();
     const launchCommon = () => puppeteer.launch({
       args: [
@@ -37,8 +37,8 @@ export const handler = async (event) => {
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-dev-shm-usage",
-        "--single-process",
-        "--no-zygote",
+        // "--single-process",   // ❌ buang, bikin rapuh
+        // "--no-zygote",        // ❌ buang
         "--disable-gpu",
         "--hide-scrollbars",
         "--mute-audio",
@@ -50,13 +50,9 @@ export const handler = async (event) => {
       ignoreHTTPSErrors: true,
     });
 
-    // Kadang crash saat newPage(); relaunch sekali kalau perlu
     async function launchWithRelaunch() {
       try { return await launchCommon(); }
-      catch (e) {
-        // coba sekali lagi
-        return await launchCommon();
-      }
+      catch { return await launchCommon(); }
     }
 
     browser = await launchWithRelaunch();
@@ -64,61 +60,12 @@ export const handler = async (event) => {
     // === NAVIGASI ANTI-RACE + ANTI "MAIN FRAME TOO EARLY" ===
     page = await gotoWithRetry(browser, url);
 
-    // --- patch print ---
-    try { await page.emulateMediaType("print"); } catch {}
-    await page.addStyleTag({ content: printPatchCss() });
+    // --- Siapkan DOM untuk print & preload aset ---
+    await prepareForPrint(page);
+    await preloadAssets(page);
 
-    await page.evaluate(() => {
-      document.documentElement.setAttribute("data-theme", "light");
-        // 🔥 Pastikan semua project tampil (abaikan filter/IO)
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.style.display = '';          // hapus display:none dari filter
-    card.hidden = false;              // jaga-jaga kalau ada hidden attribute
-  });
-  document.querySelectorAll('.fade-in').forEach(el => {
-    el.classList.add('show');         // lewati IntersectionObserver
-    el.style.opacity = '1';           // jaga-jaga
-    el.style.transform = 'none';
-  });
-
-      document.querySelectorAll(".carousel, .carousel-inner").forEach((el) => (el.style.display = "block"));
-      document.querySelectorAll(".carousel-item").forEach((el) => {
-        el.style.display = "block";
-        el.style.opacity = "1";
-        el.style.transform = "none";
-      });
-      document.querySelectorAll(".carousel-item img").forEach((img) => {
-        img.style.height = "auto";
-        img.style.maxHeight = "none";
-        img.style.margin = "0 0 8px 0";
-      });
-
-      [
-        ".navbar .navbar-toggler",
-        ".thumbs",
-        ".open-lightbox",
-        ".carousel-control-prev",
-        ".carousel-control-next",
-        "#toTop",
-        "#lightbox",
-      ].forEach((sel) => document.querySelectorAll(sel).forEach((n) => (n.style.display = "none")));
-
-      document.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = "eager"));
-      document.body.classList.add("printing-pdf");
-    });
-
-    await wait(400);
-
-    // ⬇️ tambahkan blok preload ini DI SINI
-try { await page.evaluateHandle('document.fonts.ready'); } catch {}
-await page.waitForFunction(() => {
-  const imgs = Array.from(document.images || []);
-  return imgs.every(img => img.complete && img.naturalWidth > 0);
-}, { timeout: 30000 }).catch(() => {});
-await wait(200);
-
-    // --- pdf ---
-    const pdf = await page.pdf({
+    // --- PDF dengan retry kalau frame/detached ---
+    const pdf = await pdfWithRetry(page, {
       printBackground: true,
       preferCSSPageSize: true,
       format,
@@ -152,7 +99,6 @@ async function gotoWithRetry(browser, targetUrl) {
   for (let attempt = 1; attempt <= 2; attempt++) {
     const p = await newPageHardened(browser);
     try {
-      // micro-delay kecil supaya main frame siap
       await wait(80);
       await p.goto("about:blank", { waitUntil: "load" }).catch(() => {});
       await wait(50);
@@ -169,7 +115,6 @@ async function gotoWithRetry(browser, targetUrl) {
       lastErr = e;
       await p.close().catch(() => {});
       const msg = String(e?.message || e);
-      // retry kalau "main frame too early" atau koneksi tertutup
       if (!(msg.includes("main frame too early") || msg.includes("Connection closed"))) break;
     }
   }
@@ -184,14 +129,12 @@ async function newPageHardened(browser) {
     const msg = String(e?.message || e);
     if (msg.includes("Connection closed")) {
       try { await browser.close(); } catch {}
-      // perlu executablePath lagi
       const executablePath = await chromium.executablePath();
       const relaunched = await puppeteer.launch({
         args: [
           ...chromium.args,
           "--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage",
-          "--single-process","--no-zygote","--disable-gpu","--hide-scrollbars","--mute-audio",
-          "--font-render-hinting=none",
+          "--disable-gpu","--hide-scrollbars","--mute-audio","--font-render-hinting=none",
         ],
         defaultViewport: { width: 1024, height: 768, deviceScaleFactor: 1 },
         executablePath,
@@ -204,7 +147,65 @@ async function newPageHardened(browser) {
   }
 }
 
-// ===== helpers =====
+/* ====== PRINT HELPERS ====== */
+async function prepareForPrint(page){
+  try { await page.emulateMediaType("print"); } catch {}
+  await page.addStyleTag({ content: printPatchCss() });
+
+  await page.evaluate(() => {
+    document.documentElement.setAttribute("data-theme", "light");
+
+    // tampilkan semua kartu & lewati IO
+    document.querySelectorAll('.project-card').forEach(card => { card.style.display = ''; card.hidden = false; });
+    document.querySelectorAll('.fade-in').forEach(el => { el.classList.add('show'); el.style.opacity = '1'; el.style.transform = 'none'; });
+
+    // jadikan carousel -> galeri
+    document.querySelectorAll(".carousel, .carousel-inner").forEach(el => el.style.display = "block");
+    document.querySelectorAll(".carousel-item").forEach(el => { el.style.display = "block"; el.style.opacity = "1"; el.style.transform = "none"; });
+    document.querySelectorAll(".carousel-item img").forEach(img => {
+      img.style.height = "auto"; img.style.maxHeight = "none"; img.style.margin = "0 0 8px 0";
+    });
+
+    // sembunyikan kontrol interaktif
+    [".navbar .navbar-toggler",".thumbs",".open-lightbox",".carousel-control-prev",".carousel-control-next","#toTop","#lightbox"]
+      .forEach(sel => document.querySelectorAll(sel).forEach(n => n.style.display = "none"));
+
+    // eager images & flag body
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => (img.loading = "eager"));
+    document.body.classList.add("printing-pdf");
+  });
+}
+
+async function preloadAssets(page){
+  try { await page.evaluateHandle('document.fonts.ready'); } catch {}
+  await page.waitForFunction(() => {
+    const imgs = Array.from(document.images || []);
+    return imgs.every(img => img.complete && img.naturalWidth > 0);
+  }, { timeout: 30000 }).catch(() => {});
+  await wait(200);
+}
+
+async function pdfWithRetry(page, opts){
+  try {
+    return await page.pdf(opts);
+  } catch (e) {
+    const msg = String(e?.message || e);
+    if (msg.includes("Execution context is not available")) {
+      await page.reload({ waitUntil: "domcontentloaded" });
+      if (page.waitForNetworkIdle) {
+        await page.waitForNetworkIdle({ idleTime: 600, timeout: 30000 }).catch(() => {});
+      } else {
+        await wait(600);
+      }
+      await prepareForPrint(page);
+      await preloadAssets(page);
+      return await page.pdf(opts);
+    }
+    throw e;
+  }
+}
+
+/* ===== helpers ===== */
 function cors(){ return {
   "Access-Control-Allow-Origin":"*",
   "Access-Control-Allow-Headers":"Content-Type",
@@ -213,53 +214,52 @@ function cors(){ return {
 function json(code, obj){ return { statusCode: code, headers: cors(), body: JSON.stringify(obj) }; }
 function getOrigin(e){ const proto=(e.headers["x-forwarded-proto"]||"https").split(",")[0].trim(); return `${proto}://${e.headers.host}`; }
 function printPatchCss(){ return `
-    @page { size: A4; margin: 14mm; }
-  
-    html, body { background:#fff !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    * { animation:none !important; transition:none !important; }
-  
-    /* Hero polos + kartu rapi */
-    .hero { background:#fff !important; padding-top:0 !important; }
-    .card { box-shadow:none !important; border:1px solid #ddd !important; }
-  
-    /* Pastikan semua project tampil & anti-pecah halaman */
-    .project-card { display:block !important; break-inside: avoid; page-break-inside: avoid; margin-bottom:14mm; }
-    .fade-in { opacity:1 !important; transform:none !important; }
-  
-    /* === Carousel -> Galeri (kunci!) === */
-    .carousel { overflow: visible !important; }
-    .carousel-inner {
-      overflow: visible !important;          /* supaya tidak nge-clip */
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;        /* ganti ke 1fr 1fr 1fr kalau mau 3 kolom */
-      gap: 8px;
-      height: auto !important;
-    }
-    .carousel-item {
-      display: block !important;
-      position: static !important;
-      float: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-      margin: 0 !important;
-    }
-    .carousel-item img {
-      width: 100% !important;
-      height: auto !important;
-      max-height: none !important;
-      margin: 0 0 8px 0 !important;
-    }
-  
-    /* Tipografi & link */
-    a { color:#000 !important; text-decoration: underline; }
-    .badge-tech { border-color:#ccc !important; }
-  
-    /* Sembunyikan elemen interaktif */
-    .navbar, #toTop, .thumbs, .open-lightbox, .carousel-control-prev, .carousel-control-next,
-    #lightbox, .btn, .input-group, .btn-filter, .slide-counter { display:none !important; }
-  
-    /* Section breaks */
-    #about { page-break-before: always; }
-    #contact { page-break-before: always; }
-  `; }
-  
+  @page { size: A4; margin: 14mm; }
+
+  html, body { background:#fff !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation:none !important; transition:none !important; }
+
+  /* Hero polos + kartu rapi */
+  .hero { background:#fff !important; padding-top:0 !important; }
+  .card { box-shadow:none !important; border:1px solid #ddd !important; }
+
+  /* Pastikan semua project tampil & anti-pecah halaman */
+  .project-card { display:block !important; break-inside: avoid; page-break-inside: avoid; margin-bottom:14mm; }
+  .fade-in { opacity:1 !important; transform:none !important; }
+
+  /* === Carousel -> Galeri (kunci!) === */
+  .carousel { overflow: visible !important; }
+  .carousel-inner {
+    overflow: visible !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr; /* ubah ke 1fr 1fr 1fr untuk 3 kolom */
+    gap: 8px;
+    height: auto !important;
+  }
+  .carousel-item {
+    display: block !important;
+    position: static !important;
+    float: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  .carousel-item img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  /* Tipografi & link */
+  a { color:#000 !important; text-decoration: underline; }
+  .badge-tech { border-color:#ccc !important; }
+
+  /* Sembunyikan elemen interaktif */
+  .navbar, #toTop, .thumbs, .open-lightbox, .carousel-control-prev, .carousel-control-next,
+  #lightbox, .btn, .input-group, .btn-filter, .slide-counter { display:none !important; }
+
+  /* Section breaks */
+  #about { page-break-before: always; }
+  #contact { page-break-before: always; }
+`; }
