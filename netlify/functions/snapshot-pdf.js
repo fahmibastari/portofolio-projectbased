@@ -108,7 +108,7 @@ async function gotoWithRetry(browser, targetUrl) {
       await p.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: 90_000 });
 
       if (p.waitForNetworkIdle) {
-        await p.waitForNetworkIdle({ idleTime: 800, timeout: 60_000 }).catch(() => {});
+        await p.waitForNetworkIdle({ idleTime: 200, timeout: 5_000 }).catch(() => {});
       } else {
         await wait(600);
       }
@@ -155,6 +155,7 @@ async function prepareForPrint(page){
   await page.addStyleTag({ content: printPatchCss() });
 
   await page.evaluate(() => {
+    const MAX_PER_CAROUSEL = 6; // ubah sesuai kebutuhan
     document.documentElement.setAttribute("data-theme", "light");
 
     // tampilkan semua kartu & lewati IO
@@ -168,6 +169,14 @@ async function prepareForPrint(page){
       img.style.height = "auto"; img.style.maxHeight = "none"; img.style.margin = "0 0 8px 0";
     });
 
+    // batasi jumlah gambar per carousel biar tidak kebanyakan
+  document.querySelectorAll('.carousel-inner').forEach(inner => {
+    const items = Array.from(inner.querySelectorAll('.carousel-item'));
+    if (items.length > MAX_PER_CAROUSEL) {
+      items.slice(MAX_PER_CAROUSEL).forEach(it => it.remove());
+    }
+  });
+
     // sembunyikan kontrol interaktif
     [".navbar .navbar-toggler",".thumbs",".open-lightbox",".carousel-control-prev",".carousel-control-next","#toTop","#lightbox"]
       .forEach(sel => document.querySelectorAll(sel).forEach(n => n.style.display = "none"));
@@ -179,13 +188,22 @@ async function prepareForPrint(page){
 }
 
 async function preloadAssets(page){
-  try { await page.evaluateHandle('document.fonts.ready'); } catch {}
-  await page.waitForFunction(() => {
-    const imgs = Array.from(document.images || []);
-    return imgs.every(img => img.complete && img.naturalWidth > 0);
-  }, { timeout: 30000 }).catch(() => {});
-  await wait(200);
-}
+    // fonts bisa lama; kasih batas 1000 ms saja
+    await Promise.race([
+      page.evaluateHandle('document.fonts.ready').catch(() => {}),
+      wait(1000)
+    ]);
+  
+    // gambar: tunggu maksimum 2000 ms
+    await Promise.race([
+      page.waitForFunction(() => {
+        const imgs = Array.from(document.images || []);
+        return imgs.every(img => img.complete && img.naturalWidth > 0);
+      }, { timeout: 2000 }),
+      wait(2000)
+    ]).catch(() => {});
+  }
+  
 
 async function pdfWithRetry(browser, page, targetUrl, opts){
     // attempt 1: langsung cetak
