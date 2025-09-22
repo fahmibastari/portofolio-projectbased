@@ -65,15 +65,17 @@ export const handler = async (event) => {
     await preloadAssets(page);
 
     // --- PDF dengan retry kalau frame/detached ---
-    const pdf = await pdfWithRetry(page, {
-      printBackground: true,
-      preferCSSPageSize: true,
-      format,
-      margin: { top: "14mm", right: "14mm", bottom: "14mm", left: "14mm" },
-    });
-
-    await page.close();
-    await browser.close();
+// --- PDF dengan retry (recreate page kalau detached) ---
+const { pdf, page: activePage } = await pdfWithRetry(browser, page, url, {
+    printBackground: true,
+    preferCSSPageSize: true,
+    format,
+    margin: { top: "14mm", right: "14mm", bottom: "14mm", left: "14mm" },
+  });
+  
+  // pakai 'activePage' buat cleanup (bisa page lama atau baru)
+  await activePage.close();
+  await browser.close();
 
     return {
       statusCode: 200,
@@ -185,25 +187,34 @@ async function preloadAssets(page){
   await wait(200);
 }
 
-async function pdfWithRetry(page, opts){
-  try {
-    return await page.pdf(opts);
-  } catch (e) {
-    const msg = String(e?.message || e);
-    if (msg.includes("Execution context is not available")) {
-      await page.reload({ waitUntil: "domcontentloaded" });
-      if (page.waitForNetworkIdle) {
-        await page.waitForNetworkIdle({ idleTime: 600, timeout: 30000 }).catch(() => {});
-      } else {
-        await wait(600);
-      }
-      await prepareForPrint(page);
-      await preloadAssets(page);
-      return await page.pdf(opts);
+async function pdfWithRetry(browser, page, targetUrl, opts){
+    // attempt 1: langsung cetak
+    try {
+      const pdf = await page.pdf(opts);
+      return { pdf, page };
+    } catch (e) {
+      const msg = String(e?.message || e);
+      const isDetached =
+        msg.includes("Execution context is not available") ||
+        msg.includes("detached Frame") ||
+        msg.includes("Cannot find context with specified id") ||
+        msg.includes("Target closed") ||
+        msg.includes("Connection closed");
+  
+      if (!isDetached) throw e;
+  
+      // attempt 2: TUTUP page lama, buat page baru, ulangi semua langkah
+      try { await page.close(); } catch {}
+  
+      const freshPage = await gotoWithRetry(browser, targetUrl);
+      await prepareForPrint(freshPage);
+      await preloadAssets(freshPage);
+  
+      const pdf = await freshPage.pdf(opts);
+      return { pdf, page: freshPage };
     }
-    throw e;
   }
-}
+  
 
 /* ===== helpers ===== */
 function cors(){ return {
