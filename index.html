@@ -275,33 +275,57 @@ html[data-theme="light"] .navbar .navbar-toggler-icon{
   transform: scale(1.01);
 }
 /* ===== PRINT ===== */
-@page { size: A4; margin: 14mm; } /* ganti ke Letter kalau perlu */
+@page { size: A4; margin: 14mm; } /* ganti 'Letter' kalau perlu */
+
 @media print{
-  /* Pakai palet terang biar kontras */
+  /* Palet terang */
   :root{
-    --bg:#ffffff; --card:#ffffff; --text:#000000; --muted:#333333; --border:#dddddd;
+    --bg:#fff; --card:#fff; --text:#000; --muted:#333; --border:#ddd;
   }
   html, body{ background:#fff !important; color:#000 !important; }
   *{ animation:none !important; transition:none !important; }
-
-  /* Warna & latar cetak apa adanya */
   body{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-  /* Sembunyikan hal interaktif */
+  /* Sembunyikan elemen interaktif */
   .navbar, #toTop, .thumbs, .open-lightbox, .carousel-control-prev, .carousel-control-next,
-  #lightbox, .btn, .input-group, .btn-filter{ display:none !important; }
+  #lightbox, .btn, .input-group, .btn-filter, .slide-counter{ display:none !important; }
 
-  /* Hero background diganti polos */
+  /* Hero polos */
   .hero{ background:#fff !important; padding-top:0 !important; }
 
-  /* Kartu: maksimal lebar halaman, hindari pecah di tengah */
+  /* Kartu rapi & anti-pecah */
   .card{ box-shadow:none !important; border:1px solid #ddd !important; }
-  .fade-in{ opacity: 1 !important; transform: none !important; }
-  .project-card{ display: block !important; }
-  /* Carousel jadi galeri bertumpuk */
-  .carousel, .carousel-inner{ display:block !important; }
-  .carousel-item{ display:block !important; opacity:1 !important; transform:none !important; }
-  .carousel-item img{ height:auto !important; max-height:none !important; margin:0 0 8px 0; }
+  .project-card{ 
+    display:block !important; 
+    break-inside: avoid; 
+    page-break-inside: avoid; 
+    margin-bottom: 14mm; 
+  }
+  .fade-in{ opacity:1 !important; transform:none !important; }
+
+  /* === Carousel -> Galeri === */
+  .carousel{ overflow: visible !important; }
+  .carousel-inner{
+    overflow: visible !important;         /* biang utama clip */
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;       /* 2 kolom; ubah ke 1fr 1fr 1fr untuk 3 kolom */
+    gap: 8px;
+    height: auto !important;
+  }
+  .carousel-item{
+    display: block !important;
+    position: static !important;          /* jangan biarkan positioning khusus */
+    float: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  .carousel-item img{
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+  }
 
   /* Tipografi & link */
   a{ color:#000 !important; text-decoration:underline; }
@@ -311,6 +335,7 @@ html[data-theme="light"] .navbar .navbar-toggler-icon{
   #about{ page-break-before: always; }
   #contact{ page-break-before: always; }
 }
+
 
 
   </style>

@@ -109,6 +109,14 @@ export const handler = async (event) => {
 
     await wait(400);
 
+    // ⬇️ tambahkan blok preload ini DI SINI
+try { await page.evaluateHandle('document.fonts.ready'); } catch {}
+await page.waitForFunction(() => {
+  const imgs = Array.from(document.images || []);
+  return imgs.every(img => img.complete && img.naturalWidth > 0);
+}, { timeout: 30000 }).catch(() => {});
+await wait(200);
+
     // --- pdf ---
     const pdf = await page.pdf({
       printBackground: true,
@@ -205,13 +213,53 @@ function cors(){ return {
 function json(code, obj){ return { statusCode: code, headers: cors(), body: JSON.stringify(obj) }; }
 function getOrigin(e){ const proto=(e.headers["x-forwarded-proto"]||"https").split(",")[0].trim(); return `${proto}://${e.headers.host}`; }
 function printPatchCss(){ return `
-  @page { size: A4; margin: 14mm; }
-  html, body { background:#fff !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  * { animation:none !important; transition:none !important; }
-  .hero { background:#fff !important; padding-top:0 !important; }
-  .card { box-shadow:none !important; border:1px solid #ddd !important; }
-  .project-card { break-inside: avoid; page-break-inside: avoid; margin-bottom:14mm; }
-  a { color:#000 !important; text-decoration: underline; }
-  .badge-tech { border-color:#ccc !important; }
-  #about, #contact { page-break-before: always; }
-`; }
+    @page { size: A4; margin: 14mm; }
+  
+    html, body { background:#fff !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { animation:none !important; transition:none !important; }
+  
+    /* Hero polos + kartu rapi */
+    .hero { background:#fff !important; padding-top:0 !important; }
+    .card { box-shadow:none !important; border:1px solid #ddd !important; }
+  
+    /* Pastikan semua project tampil & anti-pecah halaman */
+    .project-card { display:block !important; break-inside: avoid; page-break-inside: avoid; margin-bottom:14mm; }
+    .fade-in { opacity:1 !important; transform:none !important; }
+  
+    /* === Carousel -> Galeri (kunci!) === */
+    .carousel { overflow: visible !important; }
+    .carousel-inner {
+      overflow: visible !important;          /* supaya tidak nge-clip */
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;        /* ganti ke 1fr 1fr 1fr kalau mau 3 kolom */
+      gap: 8px;
+      height: auto !important;
+    }
+    .carousel-item {
+      display: block !important;
+      position: static !important;
+      float: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      margin: 0 !important;
+    }
+    .carousel-item img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      margin: 0 0 8px 0 !important;
+    }
+  
+    /* Tipografi & link */
+    a { color:#000 !important; text-decoration: underline; }
+    .badge-tech { border-color:#ccc !important; }
+  
+    /* Sembunyikan elemen interaktif */
+    .navbar, #toTop, .thumbs, .open-lightbox, .carousel-control-prev, .carousel-control-next,
+    #lightbox, .btn, .input-group, .btn-filter, .slide-counter { display:none !important; }
+  
+    /* Section breaks */
+    #about { page-break-before: always; }
+    #contact { page-break-before: always; }
+  `; }
+  
