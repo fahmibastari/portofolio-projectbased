@@ -12,7 +12,8 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   <style>
     /* =========================
        ARCHITECTURAL THEME REFINED (MOBILE FIX)
@@ -634,6 +635,182 @@
 
       .filter-bar { padding-left: 1.25rem; }
     }
+
+    /* =========================
+       TECH STACK SECTION (FULL)
+       ========================= */
+       .tech-section {
+      padding: 5rem 0;
+      background-color: #fff;
+    }
+
+    /* Judul Kategori dengan Garis Teal */
+    .tech-category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--arch-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .tech-category-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--arch-teal);
+      border-radius: 2px;
+    }
+
+    /* Grid Layout untuk Icon */
+    .tech-grid {
+      display: grid;
+      /* Responsif: Minimal 100px, Maksimal ngisi ruang */
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+      gap: 1rem;
+    }
+
+    .tech-card {
+      background: #ffffff;
+      border: 1px solid var(--arch-border);
+      border-radius: 12px;
+      padding: 1.25rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: default;
+      height: 100%; /* Agar tinggi kartu rata */
+    }
+
+    /* Efek Hover */
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--arch-teal);
+      box-shadow: 0 10px 30px -10px rgba(74, 156, 166, 0.25);
+    }
+
+    .tech-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .tech-card:hover .tech-icon {
+      transform: scale(1.15);
+    }
+
+    .tech-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--arch-gray);
+      text-align: center;
+      transition: color 0.3s;
+    }
+
+    .tech-card:hover .tech-name {
+      color: var(--arch-dark);
+    }
+    
+    /* Spacing antar grup */
+    .tech-group {
+        margin-bottom: 3rem;
+    }
+
+    /* =========================
+       BENTO GRID FIXED (SCROLLABLE)
+       ========================= */
+       .bento-section {
+      background-color: var(--arch-teal);
+      padding: 4rem 0;
+      color: #ffffff;
+      overflow: hidden; /* Mencegah scrollbar halaman utama */
+      margin-top: 2rem;
+    }
+
+    .bento-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* Wrapper agar bisa di-scroll di HP */
+    .bento-scroll-wrapper {
+      overflow-x: auto; /* Wajib scroll horizontal */
+      padding-bottom: 20px; /* Ruang untuk scrollbar */
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+      -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+      /* Agar scroll tidak mentok pinggir */
+      margin-right: -1.5rem; 
+      padding-right: 1.5rem; 
+    }
+    .bento-scroll-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+
+    /* Grid Utama (Ukuran Tetap) */
+    .bento-grid {
+      display: grid;
+      /* KUNCI: Paksa 3 Kolom dengan lebar minimal 900px total */
+      grid-template-columns: repeat(3, 1fr); 
+      grid-template-rows: repeat(3, 220px); /* Tinggi baris konsisten */
+      gap: 1rem;
+      min-width: 900px; /* Agar layout tidak hancur di HP */
+    }
+
+    /* Helper Class untuk Ukuran Kotak */
+    .col-span-1 { grid-column: span 1; }
+    .col-span-2 { grid-column: span 2; }
+    
+    /* Style Kartu */
+    .bento-card {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      background: transparent;
+      height: 100%;
+    }
+
+    /* Hover Effect */
+    .bento-card:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .bento-card:hover .bento-text, 
+    .bento-card:hover .bento-icon {
+      color: var(--arch-teal);
+    }
+
+    .bento-text {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .bento-icon {
+      font-size: 2rem;
+      align-self: flex-start;
+      margin-top: auto;
+      padding-top: 1rem;
+      transition: color 0.3s;
+    }
   </style>
 </head>
 
@@ -843,6 +1020,209 @@
     </article>
 
   </main>
+
+  <section class="bento-section">
+    <div class="container px-4 px-lg-5">
+      
+      <h2 class="bento-title" data-aos="fade-up">
+        COMPREHENSIVE <br>PROJECT DELIVERABLES
+      </h2>
+      
+      <div class="bento-scroll-wrapper">
+        <div class="bento-grid">
+  
+          <div class="bento-card col-span-1">
+            <h4 class="bento-text">High-Fidelity<br>UI/UX Design</h4>
+            <i class="bi bi-bezier2 bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-1">
+            <h4 class="bento-text">Multi-Device<br>Responsiveness</h4>
+            <i class="bi bi-laptop bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-1">
+            <h4 class="bento-text">System Architecture<br>Blueprints</h4>
+            <i class="bi bi-diagram-3 bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-2">
+            <h4 class="bento-text">Full IP Ownership<br>& Clean Source Code</h4>
+            <i class="bi bi-file-earmark-lock2 bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-1">
+            <h4 class="bento-text">Transparent<br>Project Proposal</h4>
+            <i class="bi bi-receipt bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-1">
+            <h4 class="bento-text">Complete Asset<br>& Database Handoff</h4>
+            <i class="bi bi-database-check bento-icon"></i>
+          </div>
+  
+          <div class="bento-card col-span-2">
+            <h4 class="bento-text">Interactive Live Demo<br>& User Manuals</h4>
+            <i class="bi bi-play-circle bento-icon"></i>
+          </div>
+  
+        </div>
+      </div>
+      
+      <div class="d-block d-lg-none text-center mt-3 opacity-50 text-white small">
+        <i class="bi bi-arrow-left-right"></i> Swipe to explore more
+      </div>
+  
+    </div>
+  </section>
+
+  <section class="tech-section">
+    <div class="container px-4 px-lg-5">
+      
+      <div class="row gx-5">
+        
+        <div class="col-lg-6">
+          
+          <div class="tech-group">
+            <h3 class="tech-category-title">Languages & Frameworks</h3>
+            <div class="tech-grid">
+              
+              <div class="tech-card">
+                <i class="devicon-html5-plain tech-icon" style="color: #E34F26;"></i>
+                <span class="tech-name">HTML</span>
+              </div>
+              
+              <div class="tech-card">
+                <i class="devicon-css3-plain tech-icon" style="color: #1572B6;"></i>
+                <span class="tech-name">CSS</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-javascript-plain tech-icon" style="color: #F7DF1E;"></i>
+                <span class="tech-name">JavaScript</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-typescript-plain tech-icon" style="color: #3178C6;"></i>
+                <span class="tech-name">TypeScript</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-php-plain tech-icon" style="color: #777BB4;"></i>
+                <span class="tech-name">PHP</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-laravel-plain tech-icon" style="color: #FF2D20;"></i>
+                <span class="tech-name">Laravel</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-codeigniter-plain tech-icon" style="color: #EF4223;"></i>
+                <span class="tech-name">CodeIgniter</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-react-original tech-icon" style="color: #61DAFB;"></i>
+                <span class="tech-name">React</span>
+              </div>
+  
+              <div class="tech-card">
+                <span class="iconify tech-icon" data-icon="skill-icons:nextjs-light"></span>
+                <span class="tech-name">Next.js</span>
+              </div>
+  
+              <div class="tech-card">
+                <i class="devicon-nodejs-plain tech-icon" style="color: #339933;"></i>
+                <span class="tech-name">Node.js</span>
+              </div>
+  
+            </div>
+          </div>
+  
+          <div class="tech-group">
+              <h3 class="tech-category-title">UI/UX & Tools</h3>
+              <div class="tech-grid">
+                
+                <div class="tech-card">
+                  <i class="devicon-tailwindcss-plain tech-icon" style="color: #38B2AC;"></i>
+                  <span class="tech-name">Tailwind</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-figma-plain tech-icon" style="color: #F24E1E;"></i>
+                  <span class="tech-name">Figma</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-git-plain tech-icon" style="color: #F05032;"></i>
+                  <span class="tech-name">Git</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-docker-plain tech-icon" style="color: #2496ED;"></i>
+                  <span class="tech-name">Docker</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-vercel-original tech-icon" style="color: #000;"></i>
+                  <span class="tech-name">Vercel</span>
+                </div>
+  
+                <div class="tech-card">
+                  <i class="devicon-netlify-plain tech-icon" style="color: #00C7B7;"></i>
+                  <span class="tech-name">Netlify</span>
+                </div>
+  
+              </div>
+          </div>
+  
+        </div>
+  
+        <div class="col-lg-6">
+          
+          <div class="tech-group">
+              <h3 class="tech-category-title">Database & APIs</h3>
+              <div class="tech-grid">
+                
+                <div class="tech-card">
+                  <i class="devicon-postgresql-plain tech-icon" style="color: #336791;"></i>
+                  <span class="tech-name">PostgreSQL</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-mysql-plain tech-icon" style="color: #4479A1;"></i>
+                  <span class="tech-name">MySQL</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-prisma-original tech-icon" style="color: #0C344B;"></i>
+                  <span class="tech-name">Prisma</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-supabase-plain tech-icon" style="color: #3ECF8E;"></i>
+                  <span class="tech-name">Supabase</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-graphql-plain tech-icon" style="color: #E10098;"></i>
+                  <span class="tech-name">GraphQL</span>
+                </div>
+    
+                <div class="tech-card">
+                  <i class="devicon-postman-plain tech-icon" style="color: #FF6C37;"></i>
+                  <span class="tech-name">REST API</span>
+                </div>
+  
+              </div>
+          </div>
+          
+          </div>
+  
+      </div>
+    </div>
+  </section>
 
   
   <section class="cta-section">
