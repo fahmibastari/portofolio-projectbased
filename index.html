@@ -868,6 +868,21 @@
   </div>
 
   <main class="catalog-grid">
+
+    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('ubmstorage')">
+      <div class="catalog-img-wrapper">
+        <img src="image/ubmstorage/LP - 3D PSP.png" class="catalog-img" alt="UBM Storage 3D">
+        <div class="catalog-overlay"><span class="overlay-text">UBM Storage 3D</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Immersive WebGL</span>
+          <h3 class="catalog-title">UBM Storage 3D</h3>
+          <p class="catalog-desc">A fully interactive 3D virtual store simulating a retro handheld console experience directly in the browser using React Three Fiber.</p>
+        </div>
+        <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
+      </div>
+  </article>
     
     <article class="catalog-item fade-in" data-cat="featured mobile" onclick="openModal('digivass')">
       <div class="catalog-img-wrapper">
@@ -1353,6 +1368,20 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      ubmstorage: {
+        title: "UBM Storage 3D Experience",
+        desc: "A boundary-pushing immersive e-commerce experience. I engineered a fully functional 3D PSP simulator running entirely in the browser using React Three Fiber. The system features a custom GLTF model integration with raycasting for interactive buttons, a complex Zustand state machine managing the synchronization between 3D animations and the 2D DOM interface (XMB), and a spatial audio system. It solves the challenge of showcasing retro gaming hardware in a way that resonates with the target audience's nostalgia.",
+        tech: ["React Three Fiber", "Three.js", "Zustand", "Vite"],
+        link: "https://console-rafyragah.netlify.app/",
+        images: [
+          "image/ubmstorage/PSP - Product Catalog.png",
+          "image/ubmstorage/LP - 3D PSP.png",
+          "image/ubmstorage/PSP - Boot Logo UBM.png",
+          "image/ubmstorage/PSP - Menu Custom UI.png",
+          "image/ubmstorage/PSP - Catalog with Music Player.png",
+          "image/ubmstorage/PSP - Music Player.png"
+        ]
+      },
       digivass: {
         title: "DIGIVASS Field Ecosystem",
         desc: "An integrated 'Command Center & Field Agent' system solving the disconnect between office management and field surveyors. Features offline-first mobile data collection using React Native (Expo), geolocation validation to prevent fraud, and real-time analytics on a Next.js admin dashboard.",
