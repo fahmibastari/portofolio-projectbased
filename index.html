@@ -868,6 +868,20 @@
   </div>
 
   <main class="catalog-grid">
+    <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('flamboys')">
+      <div class="catalog-img-wrapper">
+        <img src="image/flamboys/Mobile - HomeMenu.png" class="catalog-img" alt="Flamboys Ecosystem">
+        <div class="catalog-overlay"><span class="overlay-text">Flamboys Ecosystem</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Fullstack IoT System</span>
+          <h3 class="catalog-title">Flamboys Roaster Ecosystem</h3>
+          <p class="catalog-desc">End-to-end digital transformation for coffee production, bridging precision roasting logs with real-time inventory intelligence.</p>
+        </div>
+        <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
 
     <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('ubmstorage')">
       <div class="catalog-img-wrapper">
@@ -1368,6 +1382,20 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      flamboys: {
+        title: "Flamboys Roaster Ecosystem",
+        desc: "A comprehensive monorepo solution designed to modernize coffee roastery operations. The system replaces manual paper logs with a precision Mobile App (Expo) for real-time telemetry and thermal logging. It integrates seamlessly with a Web Dashboard (Next.js) for executive oversight, featuring automated Green Bean to Roast Bean yield calculations, digital Quality Control (QC) scoring, and strict Role-Based Access Control (RBAC).",
+        tech: ["Next.js", "React Native", "NestJS", "Supabase", "TypeScript"],
+        link: "https://drive.google.com/file/d/1aQOnqPLuiHevr6noDFuJ0I9fySmNS4ZF/view?usp=sharing",
+        images: [
+          "image/flamboys/Mobile - HomeMenu.png",
+          "image/flamboys/Mobile - RoastingSession.png",
+          "image/flamboys/Admin - DashboardAnalytics.png",
+          "image/flamboys/Admin - LogRORDetails.png",
+          "image/flamboys/Admin - InventoryList.png",
+          "image/flamboys/Admin - RoasterManagement.png"
+        ]
+      },
       ubmstorage: {
         title: "UBM Storage 3D Experience",
         desc: "A boundary-pushing immersive e-commerce experience. I engineered a fully functional 3D PSP simulator running entirely in the browser using React Three Fiber. The system features a custom GLTF model integration with raycasting for interactive buttons, a complex Zustand state machine managing the synchronization between 3D animations and the 2D DOM interface (XMB), and a spatial audio system. It solves the challenge of showcasing retro gaming hardware in a way that resonates with the target audience's nostalgia.",
