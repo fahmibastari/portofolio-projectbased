@@ -868,6 +868,20 @@
   </div>
 
   <main class="catalog-grid">
+    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('perpahmian')">
+      <div class="catalog-img-wrapper">
+        <img src="image/perpahmian-gamestation/Dashboard.png" class="catalog-img" alt="PERPAHMIAN Game Station">
+        <div class="catalog-overlay"><span class="overlay-text">PERPAHMIAN Game Station</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Gaming Platform</span>
+          <h3 class="catalog-title">PERPAHMIAN Game Station</h3>
+          <p class="catalog-desc">A futuristic collection of 10 playable browser games built with pure Vanilla JS, featuring glassmorphism UI and procedural music generation via Tone.js.</p>
+        </div>
+        <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('flamboys')">
       <div class="catalog-img-wrapper">
         <img src="image/flamboys/Mobile - HomeMenu.png" class="catalog-img" alt="Flamboys Ecosystem">
@@ -1422,6 +1436,22 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      perpahmian: {
+        title: "PERPAHMIAN Game Station",
+        desc: "A high-performance browser gaming platform built entirely with Vanilla JavaScript to demonstrate core web development mastery. Features 10 fully playable games (including Tetris, Space Shooter, and Rhythm games) without any game engine dependencies. The architecture utilizes the Web Audio API and Tone.js for procedural music generation, while the UI employs glassmorphism and GPU-accelerated canvas rendering for a futuristic, 60 FPS experience.",
+        tech: ["Vanilla JS", "HTML5 Canvas", "Tone.js", "Web Audio API", "CSS3"],
+        link: "https://fahmibastari.github.io/perpahmian-gamestation",
+        images: [
+          "image/perpahmian-gamestation/Dashboard.png",
+          "image/perpahmian-gamestation/DashboardListGame.png",
+          "image/perpahmian-gamestation/Game1.png",
+          "image/perpahmian-gamestation/Game2.png",
+          "image/perpahmian-gamestation/Game3.png",
+          "image/perpahmian-gamestation/Game4.png",
+          "image/perpahmian-gamestation/Game5.png",
+          "image/perpahmian-gamestation/Game6.png"
+        ]
+      },
       flamboys: {
         title: "Flamboys Roaster Ecosystem",
         desc: "A comprehensive monorepo solution designed to modernize coffee roastery operations. The system replaces manual paper logs with a precision Mobile App (Expo) for real-time telemetry and thermal logging. It integrates seamlessly with a Web Dashboard (Next.js) for executive oversight, featuring automated Green Bean to Roast Bean yield calculations, digital Quality Control (QC) scoring, and strict Role-Based Access Control (RBAC).",
