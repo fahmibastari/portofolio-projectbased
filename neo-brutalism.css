@@ -1,0 +1,500 @@
+/* =========================
+   NEO-BRUTALISM THEME OVERRIDES
+   ========================= */
+
+.neo-mode {
+    /* --- NEW COLOR TOKENS (MORE VIBRANT) --- */
+    --neo-yellow: #FEF001;
+    /* Brighter Yellow */
+    --neo-pink: #FF66C4;
+    /* Hot Pink */
+    --neo-blue: #33CCFF;
+    /* Cyan Blue */
+    --neo-green: #00FF99;
+    /* Neon Green */
+    --neo-purple: #9D4EDD;
+    /* Deep Purple */
+    --neo-orange: #FF9100;
+    /* Safety Orange */
+
+    --neo-black: #050505;
+    --neo-white: #FFFFFF;
+
+    /* --- OVERRIDE EXISTING TOKENS --- */
+    --theme-primary: var(--neo-yellow);
+    --theme-dark: var(--neo-black);
+    --theme-gray: var(--neo-black);
+    --theme-bg: var(--neo-white);
+    --theme-light: #fffcf0;
+    --theme-border-color: var(--neo-black);
+    --theme-shadow: 6px 6px 0px 0px var(--neo-black);
+    --theme-border-width: 3px;
+    --theme-border-radius: 0px;
+    --theme-card-bg: var(--neo-white);
+    --theme-font: 'Manrope', sans-serif;
+    --theme-body-bg: var(--neo-white);
+    --theme-primary-transparent: rgba(247, 223, 30, 0.9);
+}
+
+/* Background Pattern for Neo-Mode */
+.neo-mode body {
+    background-image: radial-gradient(var(--neo-black) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* --- OVERRIDE ELEMENTS FOR BRUTALISM --- */
+
+/* Navbar */
+.neo-mode .navbar {
+    background: var(--neo-yellow);
+    border-bottom: 4px solid var(--neo-black);
+}
+
+.neo-mode .navbar-brand {
+    background: #fff;
+    color: #000;
+    box-shadow: 4px 4px 0 #000;
+    border: 3px solid #000;
+    transform: rotate(-2deg);
+}
+
+.neo-mode .navbar-brand:hover {
+    transform: rotate(0deg) scale(1.05);
+    background: #000;
+    color: #fff;
+}
+
+/* Hero */
+.neo-mode .hero {
+    background: transparent;
+    text-align: left;
+    padding-top: 8rem;
+}
+
+.neo-mode .hero-title {
+    font-weight: 900;
+    text-shadow: 4px 4px 0 #fff, 8px 8px 0 rgba(0, 0, 0, 0.1);
+    background: var(--neo-white);
+    border: 3px solid var(--neo-black);
+    display: inline-block;
+    padding: 1rem 2rem;
+    box-shadow: 10px 10px 0 var(--neo-black);
+    transform: rotate(-1deg);
+}
+
+.neo-mode .hero-title span.text-teal {
+    color: var(--neo-black);
+    background: var(--neo-yellow);
+    padding: 0 0.5rem;
+}
+
+/* Filter Buttons */
+.neo-mode .btn-filter {
+    background: #fff;
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 0;
+    box-shadow: 4px 4px 0 #000;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+}
+
+.neo-mode .btn-filter.active {
+    background: var(--neo-black);
+    color: var(--neo-yellow);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+/* --- MULTI-COLOR CATALOG ITEMS --- */
+/* Default Card Style */
+.neo-mode .catalog-item {
+    border: 3px solid var(--neo-black);
+    box-shadow: 6px 6px 0 var(--neo-black);
+    border-radius: 0;
+    transform: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #fff;
+    /* Default white */
+}
+
+/* Cycle Colors for Cards (Nth-Child Magic) */
+.neo-mode .catalog-item:nth-child(5n+1):hover {
+    background: var(--neo-yellow);
+    box-shadow: 10px 10px 0 var(--neo-black);
+}
+
+.neo-mode .catalog-item:nth-child(5n+2):hover {
+    background: var(--neo-pink);
+    box-shadow: 10px 10px 0 var(--neo-black);
+}
+
+.neo-mode .catalog-item:nth-child(5n+3):hover {
+    background: var(--neo-blue);
+    box-shadow: 10px 10px 0 var(--neo-black);
+}
+
+.neo-mode .catalog-item:nth-child(5n+4):hover {
+    background: var(--neo-green);
+    box-shadow: 10px 10px 0 var(--neo-black);
+}
+
+.neo-mode .catalog-item:nth-child(5n+5):hover {
+    background: var(--neo-purple);
+    box-shadow: 10px 10px 0 var(--neo-black);
+    color: #fff;
+    /* Purple needs light text sometimes, or keep black for contrast */
+}
+
+/* Keep text black for readability on valid colors */
+.neo-mode .catalog-item:hover .catalog-title,
+.neo-mode .catalog-item:hover .catalog-desc,
+.neo-mode .catalog-item:hover .catalog-category {
+    color: var(--neo-black);
+}
+
+/* Button needs to pop against the colored background */
+.neo-mode .catalog-item:hover .catalog-btn {
+    background: var(--neo-black);
+    color: #fff;
+    border-color: var(--neo-black);
+}
+
+.neo-mode .catalog-img-wrapper {
+    border-bottom: 4px solid var(--neo-black);
+}
+
+.neo-mode .catalog-category {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+/* Static Color accents for non-hover state (Borders/Tags) */
+.neo-mode .catalog-item:nth-child(odd) .catalog-category {
+    background: var(--neo-black);
+    color: var(--neo-white);
+}
+
+.neo-mode .catalog-item:nth-child(even) .catalog-category {
+    background: var(--neo-white);
+    color: var(--neo-black);
+    border: 2px solid var(--neo-black);
+}
+
+.neo-mode .catalog-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.neo-mode .catalog-btn {
+    background: var(--neo-yellow);
+    color: #000;
+    border-top: 4px solid #000;
+    padding: 1rem;
+    font-weight: 900;
+}
+
+/* Bento Grid */
+.neo-mode .bento-section {
+    background: #fff;
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    padding: 5rem 0;
+}
+
+.neo-mode .bento-card {
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0 #000;
+    border-radius: 0;
+}
+
+.neo-mode .bento-card:hover {
+    background: var(--neo-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 #000;
+}
+
+.neo-mode .bento-text,
+.neo-mode .bento-icon,
+.neo-mode .bento-card:hover .bento-text,
+.neo-mode .bento-card:hover .bento-icon {
+    color: #000;
+}
+
+.neo-mode .bento-title {
+    color: #000;
+    text-shadow: 3px 3px 0 var(--neo-yellow);
+    background: #fff;
+    border: 3px solid #000;
+    display: inline-block;
+    padding: 1rem;
+    box-shadow: 6px 6px 0 #000;
+}
+
+/* Tech Stack */
+.neo-mode .tech-card {
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    border-radius: 0;
+}
+
+.neo-mode .tech-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #000;
+    background: var(--neo-yellow);
+}
+
+/* CTA Section */
+.neo-mode .cta-section {
+    background: var(--neo-black);
+    border-top: 4px solid #000;
+}
+
+.neo-mode .cta-title {
+    color: var(--neo-yellow);
+    text-shadow: 4px 4px 0 #fff;
+}
+
+.neo-mode .cta-title span.text-white {
+    color: #fff;
+    -webkit-text-stroke: 2px var(--neo-yellow);
+}
+
+.neo-mode .btn-collab {
+    background: var(--neo-yellow);
+    color: #000;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #fff;
+}
+
+.neo-mode .btn-collab-wrapper:hover .btn-collab {
+    background: #fff;
+    border-color: var(--neo-yellow);
+    color: #000;
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* Footer */
+.neo-mode footer {
+    background: var(--neo-white);
+    border-top: 4px solid #000 !important;
+}
+
+.neo-mode .footer-heading {
+    background: #000;
+    color: var(--neo-yellow);
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Revamp Toggle Button */
+#revampBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    font-family: 'Manrope', sans-serif;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#revampBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: var(--arch-teal);
+}
+
+.neo-mode #revampBtn {
+    background: var(--neo-yellow);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 0;
+    box-shadow: 6px 6px 0 #000;
+}
+
+.neo-mode #revampBtn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 #000;
+    background: #fff;
+}
+
+/* REVAMP OVERLAY ANIMATION */
+#revampOverlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    overflow: hidden;
+    /* Fix for mobile overflow */
+}
+
+#revampOverlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.revamp-scanner {
+    width: 100%;
+    height: 4px;
+    background: var(--neo-yellow);
+    box-shadow: 0 0 20px var(--neo-yellow);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: scan ease-in-out 1.5s infinite;
+    display: none;
+}
+
+#revampOverlay.active .revamp-scanner {
+    display: block;
+}
+
+.revamp-text {
+    color: var(--neo-yellow);
+    font-family: monospace;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    /* Responsive font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0;
+    text-align: center;
+    padding: 1rem;
+}
+
+#revampOverlay.active .revamp-text {
+    animation: textFlash 0.5s steps(2) infinite;
+    opacity: 1;
+}
+
+/* --- NEO MODAL OVERRIDES --- */
+.neo-mode .modal-content {
+    border: 4px solid #000;
+    border-radius: 0;
+    box-shadow: 10px 10px 0 #000;
+}
+
+.neo-mode .modal-header {
+    background: var(--neo-yellow);
+    border-bottom: 4px solid #000;
+}
+
+.neo-mode .modal-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.neo-mode .btn-close {
+    opacity: 1;
+    border: 2px solid #000;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: 4px 4px 0 #000;
+    transition: all 0.2s;
+}
+
+.neo-mode .btn-close:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 #000;
+}
+
+.neo-mode .modal-body {
+    background: #fff;
+}
+
+.neo-mode .carousel-item {
+    background: var(--neo-white);
+    border-bottom: 4px solid #000;
+}
+
+.neo-mode .modal-thumbs-container {
+    border-bottom: 4px solid #000;
+    background: var(--neo-yellow);
+}
+
+.neo-mode .modal-thumb {
+    border: 2px solid #000;
+    border-radius: 0;
+    opacity: 0.6;
+}
+
+.neo-mode .modal-thumb.active,
+.neo-mode .modal-thumb:hover {
+    opacity: 1;
+    border-color: #000;
+    box-shadow: 3px 3px 0 #000;
+    transform: translateY(-2px);
+}
+
+.neo-mode #mLink {
+    background: var(--neo-yellow);
+    color: #000;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    font-weight: 900;
+}
+
+.neo-mode #mLink:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+@keyframes scan {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes textFlash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
