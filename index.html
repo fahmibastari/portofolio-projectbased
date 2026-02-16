@@ -8,7 +8,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -16,6 +17,7 @@
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="neo-brutalism.css">
+  <link rel="stylesheet" href="high-tech.css">
 </head>
 
 <body>
@@ -521,7 +523,7 @@
             <div class="col-lg-7">
                 <h2 class="cta-title">
                     READY TO <br> 
-                    <span class="text-white">COLLABORATE?</span>
+                    <span class="">COLLABORATE?</span>
                 </h2>
             </div>
             
@@ -637,19 +639,30 @@
   </div>
 
   <!-- REVAMP UI -->
-  <button id="revampBtn">
-    <i class="bi bi-lightning-fill"></i> REVAMP
-  </button>
+  <div id="revamp-container">
+      <div id="revampMenu">
+          <button class="theme-btn" data-theme="default">ARCHITECTURAL</button>
+          <button class="theme-btn" data-theme="neo">NEO-BRUTALISM</button>
+          <button class="theme-btn" data-theme="hitech">HIGH-TECH</button>
+      </div>
+
+      <button id="revampBtn">
+        <i class="bi bi-layers-fill"></i> THEME
+      </button>
+  </div>
 
   <div id="revampOverlay">
       <div class="revamp-scanner"></div>
-      <div class="revamp-text">INITIALIZING...</div>
+      <div class="revamp-text">SYSTEM INITIALIZING...</div>
   </div>
 
   <script>
     // Prevent Flash of Wrong Theme
-    if (localStorage.getItem('theme') === 'neo') {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'neo') {
         document.body.classList.add('neo-mode');
+    } else if (savedTheme === 'hitech') {
+        document.body.classList.add('high-tech-mode');
     }
   </script>
   <script src="revamp.js"></script>

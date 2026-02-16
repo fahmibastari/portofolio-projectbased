@@ -1,0 +1,503 @@
+/* =========================
+   HIGH-TECH / CYBERPUNK THEME OVERRIDES (FINAL OVERHAUL)
+   ========================= */
+
+/* Force overrides only when body has .high-tech-mode */
+.high-tech-mode {
+    /* --- CORE PALETTE --- */
+    --ht-bg: #020408;
+    /* Void Black */
+    --ht-panel: #0a0f18;
+    /* Dark Blue-Grey Panel */
+    --ht-primary: #00f3ff;
+    /* Cyber Cyan */
+    --ht-secondary: #bc13fe;
+    /* Neon Purple */
+    --ht-alert: #ff0055;
+    /* Error Red */
+    --ht-text-main: #e0faff;
+    /* Ice White */
+    --ht-text-dim: #5c7a99;
+    /* HUD Grey */
+
+    /* Variable Remapping */
+    --theme-bg: var(--ht-bg);
+    --theme-body-bg: var(--ht-bg);
+    --theme-primary: var(--ht-primary);
+    --theme-dark: #fff;
+    --theme-gray: var(--ht-text-dim);
+    --theme-light: var(--ht-panel);
+    --theme-card-bg: rgba(10, 15, 24, 0.85);
+
+    --theme-font: 'Rajdhani', sans-serif;
+    --theme-font-head: 'Orbitron', sans-serif;
+}
+
+/* --- GLOBAL RESETS --- */
+.high-tech-mode body {
+    background-color: var(--ht-bg);
+    background-image:
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
+    color: var(--ht-text-main);
+    font-family: var(--theme-font);
+}
+
+.high-tech-mode h1,
+.high-tech-mode h2,
+.high-tech-mode h3,
+.high-tech-mode h4,
+.high-tech-mode h5,
+.high-tech-mode .navbar-brand {
+    font-family: var(--theme-font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* --- NAVBAR (HUD STYLE) --- */
+.high-tech-mode .navbar {
+    background: rgba(2, 4, 8, 0.95);
+    border-bottom: 2px solid var(--ht-primary);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    padding: 1rem 0;
+}
+
+.high-tech-mode .navbar-brand {
+    color: var(--ht-primary) !important;
+    text-shadow: 0 0 10px var(--ht-primary);
+    border: 1px solid var(--ht-primary);
+    padding: 5px 15px;
+    background: rgba(0, 243, 255, 0.05);
+}
+
+.high-tech-mode .nav-link {
+    color: var(--ht-text-dim) !important;
+    font-family: var(--theme-font-head);
+    font-size: 0.8rem;
+}
+
+.high-tech-mode .nav-link:hover {
+    color: var(--ht-primary) !important;
+    text-shadow: 0 0 8px var(--ht-primary);
+}
+
+/* --- HERO SECTION --- */
+.high-tech-mode .hero {
+    background: transparent;
+    padding-top: 10rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scanning Line Animation */
+.high-tech-mode .hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 95%, rgba(0, 243, 255, 0.2) 100%);
+    animation: scanline 4s linear infinite;
+    pointer-events: none;
+}
+
+.high-tech-mode .hero-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.high-tech-mode .hero-title span.text-teal {
+    color: var(--ht-primary);
+    text-shadow: 0 0 20px var(--ht-primary);
+}
+
+/* --- FILTER BAR (FUTURISTIC TABS) --- */
+.high-tech-mode .filter-sticky-container {
+    background: rgba(2, 4, 8, 0.95);
+    border-bottom: 1px solid var(--ht-text-dim);
+}
+
+.high-tech-mode .btn-filter {
+    background: transparent;
+    border: 1px solid var(--ht-text-dim);
+    color: var(--ht-text-dim);
+    font-family: var(--theme-font-head);
+    border-radius: 0;
+    /* Cut corners */
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    padding: 0.5rem 1.5rem;
+}
+
+.high-tech-mode .btn-filter:hover,
+.high-tech-mode .btn-filter.active {
+    background: rgba(0, 243, 255, 0.1);
+    border-color: var(--ht-primary);
+    color: var(--ht-primary);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* --- CATALOG GRID (HOLOGRAPHIC CARDS) --- */
+.high-tech-mode .catalog-item {
+    background: linear-gradient(135deg, rgba(10, 15, 24, 0.9) 0%, rgba(5, 8, 12, 0.95) 100%);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+/* Corner Decorations */
+.high-tech-mode .catalog-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--ht-primary);
+    border-left: 2px solid var(--ht-primary);
+    z-index: 10;
+}
+
+.high-tech-mode .catalog-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--ht-primary);
+    border-right: 2px solid var(--ht-primary);
+    z-index: 10;
+}
+
+.high-tech-mode .catalog-item:hover {
+    border-color: var(--ht-primary);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.high-tech-mode .catalog-img-wrapper {
+    position: relative;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+/* Tech Overlay on Image */
+.high-tech-mode .catalog-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h40v40H0z" fill="none"/><path d="M0 40h40V0H0v40zM1 39h38V1H1v38z" fill="rgba(0, 243, 255, 0.05)"/></svg>');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.high-tech-mode .catalog-body {
+    background: transparent;
+    padding: 1.5rem;
+}
+
+.high-tech-mode .catalog-category {
+    color: var(--ht-secondary);
+    font-family: var(--theme-font-head);
+    font-size: 0.7rem;
+    border: 1px solid var(--ht-secondary);
+    padding: 2px 8px;
+    background: rgba(188, 19, 254, 0.05);
+}
+
+.high-tech-mode .catalog-title {
+    color: var(--ht-primary);
+    font-family: var(--theme-font-head);
+    margin-top: 0.5rem;
+}
+
+.high-tech-mode .catalog-desc {
+    color: var(--ht-text-dim);
+    font-size: 0.9rem;
+}
+
+.high-tech-mode .catalog-btn {
+    border-top: 1px solid rgba(0, 243, 255, 0.2);
+    color: var(--ht-text-dim);
+    font-family: var(--theme-font-head);
+}
+
+.high-tech-mode .catalog-item:hover .catalog-btn {
+    color: var(--ht-primary);
+    background: rgba(0, 243, 255, 0.05);
+}
+
+/* --- BENTO GRID --- */
+.high-tech-mode .bento-section {
+    background: #010204;
+    /* Darker void */
+    border-top: 1px solid var(--ht-text-dim);
+    border-bottom: 1px solid var(--ht-text-dim);
+    position: relative;
+}
+
+.high-tech-mode .bento-section::before {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #010204;
+    color: var(--ht-text-dim);
+    font-family: var(--theme-font-head);
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+}
+
+.high-tech-mode .bento-card {
+    background: var(--theme-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+}
+
+.high-tech-mode .bento-card:hover {
+    border-color: var(--ht-primary);
+    box-shadow: inset 0 0 30px rgba(0, 243, 255, 0.15);
+}
+
+.high-tech-mode .bento-text {
+    color: var(--ht-text-main) !important;
+}
+
+.high-tech-mode .bento-icon {
+    color: var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .bento-card:hover .bento-icon {
+    color: var(--ht-primary) !important;
+    text-shadow: 0 0 10px var(--ht-primary);
+}
+
+/* --- TECH STACK --- */
+.high-tech-mode .tech-section {
+    background: transparent;
+}
+
+.high-tech-mode .tech-category-title {
+    color: var(--ht-primary);
+    font-family: var(--theme-font-head);
+}
+
+.high-tech-mode .tech-category-title::after {
+    background-color: var(--ht-primary);
+    box-shadow: 0 0 10px var(--ht-primary);
+}
+
+.high-tech-mode .tech-card {
+    background: rgba(10, 15, 24, 0.5);
+    border: 1px solid var(--ht-text-dim);
+}
+
+.high-tech-mode .tech-card:hover {
+    border-color: var(--ht-primary);
+    background: rgba(0, 243, 255, 0.05);
+    transform: scale(1.05);
+}
+
+.high-tech-mode .tech-name,
+.high-tech-mode .tech-icon {
+    color: var(--ht-text-dim);
+}
+
+.high-tech-mode .tech-card:hover .tech-name,
+.high-tech-mode .tech-card:hover .tech-icon {
+    color: var(--ht-primary);
+}
+
+/* --- CTA SECTION --- */
+.high-tech-mode .cta-section {
+    background: #000;
+    border-top: 2px solid var(--ht-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.high-tech-mode .cta-section .bubble {
+    display: none;
+}
+
+/* Cyber Grid in CTA */
+.high-tech-mode .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--ht-primary) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+}
+
+.high-tech-mode .cta-title {
+    color: #fff;
+    font-family: var(--theme-font-head);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+.high-tech-mode .cta-title span.text-white {
+    color: var(--ht-primary);
+    -webkit-text-stroke: 0px;
+    text-shadow: 0 0 20px var(--ht-primary);
+}
+
+.high-tech-mode .btn-collab {
+    background: transparent;
+    border: 2px solid var(--ht-primary);
+    color: var(--ht-primary);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+.high-tech-mode .btn-collab-wrapper:hover .btn-collab {
+    background: var(--ht-primary);
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px var(--ht-primary);
+}
+
+/* --- FOOTER --- */
+.high-tech-mode footer {
+    background: #010203 !important;
+    border-top: 1px solid var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .footer-heading {
+    color: var(--ht-primary);
+    font-family: var(--theme-font-head);
+}
+
+.high-tech-mode .footer-text,
+.high-tech-mode .social-link,
+.high-tech-mode .contact-link {
+    color: var(--ht-text-dim);
+}
+
+.high-tech-mode .social-link:hover,
+.high-tech-mode .contact-link:hover {
+    color: var(--ht-primary);
+}
+
+/* --- MODALS (The Critical Part) --- */
+.high-tech-mode .modal-content {
+    background: rgba(5, 8, 12, 0.95);
+    border: 1px solid var(--ht-primary);
+    border-radius: 0;
+    box-shadow: 0 0 100px rgba(0, 243, 255, 0.15);
+    backdrop-filter: blur(20px);
+}
+
+.high-tech-mode .modal-header {
+    border-bottom: 1px solid var(--ht-text-dim);
+    background: rgba(0, 243, 255, 0.05);
+}
+
+.high-tech-mode .modal-title {
+    color: var(--ht-primary);
+    font-family: var(--theme-font-head);
+    letter-spacing: 0.1em;
+}
+
+.high-tech-mode .btn-close {
+    background: transparent;
+    opacity: 1;
+    filter: invert(1) grayscale(100%) brightness(200%);
+    /* Force White */
+    border: 1px solid var(--ht-primary);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.high-tech-mode .btn-close:hover {
+    box-shadow: 0 0 20px var(--ht-primary);
+    transform: rotate(90deg);
+}
+
+/* Fix for Dark Paragraphs */
+.high-tech-mode .modal-body,
+.high-tech-mode .modal-desc-area,
+.high-tech-mode p,
+.high-tech-mode li {
+    background: transparent !important;
+    color: var(--ht-text-main) !important;
+}
+
+.high-tech-mode .modal-desc-area {
+    border-top: 1px solid var(--ht-text-dim);
+}
+
+.high-tech-mode .carousel-item {
+    background: transparent;
+}
+
+.high-tech-mode .modal-thumbs-container {
+    background: transparent;
+    border-bottom: 1px solid var(--ht-text-dim);
+}
+
+.high-tech-mode .modal-thumb {
+    border: 1px solid var(--ht-text-dim);
+    opacity: 0.5;
+}
+
+.high-tech-mode .modal-thumb.active,
+.high-tech-mode .modal-thumb:hover {
+    opacity: 1;
+    border-color: var(--ht-primary);
+    box-shadow: 0 0 10px var(--ht-primary);
+}
+
+/* --- THEME MENU FIX --- */
+.high-tech-mode .theme-btn {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--ht-primary);
+    color: var(--ht-primary);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    font-family: var(--theme-font-head);
+    border-radius: 0;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.high-tech-mode .theme-btn:hover {
+    background: var(--ht-primary);
+    color: #000;
+}
+
+/* Ensure Z-Index is high enough */
+.high-tech-mode #revampBtn {
+    background: #000;
+    color: var(--ht-primary);
+    border: 1px solid var(--ht-primary);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    font-family: var(--theme-font-head);
+    border-radius: 0;
+    z-index: 10000;
+    /* Force on top */
+}
+
+.high-tech-mode #revampBtn:hover {
+    box-shadow: 0 0 30px var(--ht-primary);
+    background: rgba(0, 243, 255, 0.1);
+}
+
+/* Ensure Menu is also on top */
+#revampMenu {
+    z-index: 9999 !important;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes scanline {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}

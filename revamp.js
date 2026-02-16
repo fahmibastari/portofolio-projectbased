@@ -1,40 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
     const revampBtn = document.getElementById('revampBtn');
+    const revampMenu = document.getElementById('revampMenu');
     const overlay = document.getElementById('revampOverlay');
     const body = document.body;
     const revampText = document.querySelector('.revamp-text');
+    const themeBtns = document.querySelectorAll('.theme-btn');
 
-    // Check localStorage
-    if (localStorage.getItem('theme') === 'neo') {
-        body.classList.add('neo-mode');
-        revampText.innerText = "SYSTEM REBOOT...";
-    }
+    // 1. Check Initial State
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'neo') body.classList.add('neo-mode');
+    if (savedTheme === 'hitech') body.classList.add('high-tech-mode');
 
+    // 2. Toggle Menu
     revampBtn.addEventListener('click', () => {
-        // 1. Activate Overlay
-        overlay.classList.add('active');
+        revampMenu.classList.toggle('open');
+    });
 
-        // 2. Decide next state
-        const isNeo = body.classList.contains('neo-mode');
-        revampText.innerText = isNeo ? "RESTORING ARCHITECTURE..." : "INITIALIZING NEO-PROTOCOL...";
+    // 3. Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!revampBtn.contains(e.target) && !revampMenu.contains(e.target)) {
+            revampMenu.classList.remove('open');
+        }
+    });
 
-        // 3. Wait for animation effect
-        setTimeout(() => {
-            if (isNeo) {
-                body.classList.remove('neo-mode');
-                localStorage.setItem('theme', 'default');
+    // 4. Handle Theme Switch
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTheme = btn.getAttribute('data-theme');
+
+            // Close menu
+            revampMenu.classList.remove('open');
+
+            // Start Overlay Animation
+            overlay.classList.add('active');
+
+            // Set text based on target
+            if (targetTheme === 'hitech') {
+                revampText.innerText = "ESTABLISHING UPLINK...";
+                revampText.style.color = "#00F0FF";
+                revampText.style.fontFamily = "monospace";
+            } else if (targetTheme === 'neo') {
+                revampText.innerText = "LOADING BRUTALISM...";
+                revampText.style.color = "#FEF001";
+                revampText.style.fontFamily = "Manrope";
             } else {
-                body.classList.add('neo-mode');
-                localStorage.setItem('theme', 'neo');
-
-                // Play a sound effect if you want? (Optional)
+                revampText.innerText = "RESTORING DEFAULT...";
+                revampText.style.color = "#fff";
+                revampText.style.fontFamily = "Manrope";
             }
-        }, 1000); // Change theme halfway through animation
 
-        // 4. Remove Overlay
-        setTimeout(() => {
-            overlay.classList.remove('active');
-        }, 2000);
+            setTimeout(() => {
+                // Remove all theme classes first
+                body.classList.remove('neo-mode', 'high-tech-mode');
+
+                // Add specific class
+                if (targetTheme === 'neo') body.classList.add('neo-mode');
+                if (targetTheme === 'hitech') body.classList.add('high-tech-mode');
+
+                // Save to local storage
+                localStorage.setItem('theme', targetTheme);
+            }, 1000);
+
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 2000);
+        });
     });
 
     // FAQ Accordion
@@ -42,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     faqFolders.forEach(folder => {
         folder.addEventListener('click', () => {
             folder.classList.toggle('open');
-            // Close others? Optional
             faqFolders.forEach(other => {
                 if (other !== folder) other.classList.remove('open');
             });
