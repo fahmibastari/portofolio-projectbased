@@ -117,7 +117,11 @@
 /* --- FILTER BAR (FUTURISTIC TABS) --- */
 .high-tech-mode .filter-sticky-container {
     background: rgba(2, 4, 8, 0.95);
-    border-bottom: 1px solid var(--ht-text-dim);
+    border-bottom: 1px solid var(--ht-primary);
+    border-top: 1px solid var(--ht-primary);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
 }
 
 .high-tech-mode .btn-filter {
@@ -128,7 +132,9 @@
     border-radius: 0;
     /* Cut corners */
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.5rem;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
 }
 
 .high-tech-mode .btn-filter:hover,
@@ -137,6 +143,7 @@
     border-color: var(--ht-primary);
     color: var(--ht-primary);
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    transform: translateY(-2px);
 }
 
 /* --- CATALOG GRID (HOLOGRAPHIC CARDS) --- */
