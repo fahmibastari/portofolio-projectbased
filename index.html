@@ -74,20 +74,6 @@
   </div>
 
   <main class="catalog-grid">
-    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('perpahmian')">
-      <div class="catalog-img-wrapper">
-        <img src="image/perpahmian-gamestation/Dashboard.png" class="catalog-img" alt="PERPAHMIAN Game Station">
-        <div class="catalog-overlay"><span class="overlay-text">PERPAHMIAN Game Station</span></div>
-      </div>
-      <div class="catalog-body">
-        <div>
-          <span class="catalog-category">Gaming Platform</span>
-          <h3 class="catalog-title">PERPAHMIAN Game Station</h3>
-          <p class="catalog-desc">A futuristic collection of 10 playable browser games built with pure Vanilla JS, featuring glassmorphism UI and procedural music generation via Tone.js.</p>
-        </div>
-        <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
-      </div>
-    </article>
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('flamboys')">
       <div class="catalog-img-wrapper">
         <img src="image/flamboys/Mobile - HomeMenu.png" class="catalog-img" alt="Flamboys Ecosystem">
@@ -116,7 +102,7 @@
         </div>
         <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
       </div>
-  </article>
+    </article>
     
     <article class="catalog-item fade-in" data-cat="featured mobile" onclick="openModal('digivass')">
       <div class="catalog-img-wrapper">
@@ -132,7 +118,7 @@
         <div class="catalog-btn">View Case Study <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-
+    
     <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('justspeak')">
       <div class="catalog-img-wrapper">
         <img src="image/justspeak/Dashboard.png" class="catalog-img" alt="JustSpeak">
@@ -147,7 +133,7 @@
         <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-
+    
     <article class="catalog-item fade-in" data-cat="web" onclick="openModal('mental')">
       <div class="catalog-img-wrapper">
         <img src="image/mentalhealing/Dashboard.png" class="catalog-img" alt="Mental Healing">
@@ -162,7 +148,7 @@
         <div class="catalog-btn">View Dashboard <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-
+    
     <article class="catalog-item fade-in" data-cat="web featured" onclick="openModal('2watuju')">
       <div class="catalog-img-wrapper">
         <img src="image/2watuju/DashboardCatalog.png" class="catalog-img" alt="2Watuju">
@@ -177,7 +163,20 @@
         <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-
+    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('perpahmian')">
+      <div class="catalog-img-wrapper">
+        <img src="image/perpahmian-gamestation/Dashboard.png" class="catalog-img" alt="PERPAHMIAN Game Station">
+        <div class="catalog-overlay"><span class="overlay-text">PERPAHMIAN Game Station</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Gaming Platform</span>
+          <h3 class="catalog-title">PERPAHMIAN Game Station</h3>
+          <p class="catalog-desc">A futuristic collection of 10 playable browser games built with pure Vanilla JS, featuring glassmorphism UI and procedural music generation via Tone.js.</p>
+        </div>
+        <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
     <article class="catalog-item fade-in" data-cat="web" onclick="openModal('navaraprofile')">
       <div class="catalog-img-wrapper">
         <img src="image/navaraprofile/1.png" class="catalog-img" alt="Navara Profile">
@@ -638,34 +637,7 @@
     </div>
   </div>
 
-  <!-- REVAMP UI -->
-  <div id="revamp-container">
-      <div id="revampMenu">
-          <button class="theme-btn" data-theme="default">ARCHITECTURAL</button>
-          <button class="theme-btn" data-theme="neo">NEO-BRUTALISM</button>
-          <button class="theme-btn" data-theme="hitech">HIGH-TECH</button>
-      </div>
 
-      <button id="revampBtn">
-        <i class="bi bi-layers-fill"></i> THEME
-      </button>
-  </div>
-
-  <div id="revampOverlay">
-      <div class="revamp-scanner"></div>
-      <div class="revamp-text">SYSTEM INITIALIZING...</div>
-  </div>
-
-  <script>
-    // Prevent Flash of Wrong Theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'neo') {
-        document.body.classList.add('neo-mode');
-    } else if (savedTheme === 'hitech') {
-        document.body.classList.add('high-tech-mode');
-    }
-  </script>
-  <script src="revamp.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
