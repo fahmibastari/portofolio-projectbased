@@ -382,14 +382,12 @@
         top: 65px;
         z-index: 10;
         width: 100%;
-        padding-bottom: 1rem;
-        /* Added spacing inside container */
-        margin-bottom: 3rem;
-        /* Added spacing below container */
+        /* padding-bottom: 1rem; */
+        margin-bottom: 1rem;
     }
 
     .filter-bar {
-        padding: 0.8rem 0;
+        padding: 0.8rem 0.8rem;
         display: flex;
         gap: 0.5rem;
         overflow-x: auto;
@@ -797,92 +795,6 @@
         transition: var(--theme-transition);
         cursor: default;
         height: 100%;
-    }
-
-    /* =========================
-   REVAMP MENU (BASE STYLES)
-   ========================= */
-    #revampMenu {
-        position: fixed;
-        bottom: 8rem;
-        right: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 9998;
-    }
-
-    #revampMenu.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .theme-btn {
-        background: #fff;
-        border: 1px solid var(--arch-dark);
-        padding: 0.8rem 1.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.2s;
-        text-align: right;
-        font-size: 0.75rem;
-        border-radius: 8px;
-        letter-spacing: 0.05em;
-        font-family: var(--theme-font);
-    }
-
-    .theme-btn:hover {
-        transform: translateX(-5px);
-        background: var(--arch-light);
-    }
-
-    /* Specific button colors for identification */
-    .theme-btn[data-theme="default"] {
-        border-left: 4px solid var(--arch-teal);
-    }
-
-    .theme-btn[data-theme="neo"] {
-        border-left: 4px solid #FEF001;
-    }
-
-    .theme-btn[data-theme="hitech"] {
-        border-left: 4px solid #00F0FF;
-    }
-
-    /* Revamp Toggle Button (Base) */
-    #revampBtn {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        z-index: 10000;
-        padding: 1rem 1.5rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        cursor: pointer;
-        background: var(--arch-dark);
-        color: #fff;
-        border: none;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        border-radius: 50px;
-        font-family: var(--theme-font);
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    #revampBtn:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        background: var(--arch-teal);
     }
 
     /* Efek Hover */
