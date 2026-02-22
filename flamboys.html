@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flamboys Roaster — Portfolio Canvas</title>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --h:41px; --icon:40px; --lpanel:200px; --rpanel:240px;
+  --ui:#2c2c2c; --base:#1e1e1e; --hover:#383838; --active:#404040;
+  --bd:#3a3a3a; --tx:#e0e0e0; --dim:#8b8b8b; --muted:#555;
+  --accent:#7c5cbf; --canvas-bg:#f0f0f0;
+}
+html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;font-size:12px;background:var(--base);color:var(--tx);}
+
+/* ── LOADING SCREEN ── */
+#loader{
+  position:fixed;inset:0;background:#1e1e1e;z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  transition:opacity .4s;
+}
+#loader.done{opacity:0;pointer-events:none;}
+.loader-bar-wrap{width:220px;height:3px;background:#333;border-radius:2px;overflow:hidden;}
+.loader-bar{height:100%;width:0;background:var(--accent);border-radius:2px;transition:width .05s linear;}
+.loader-name{font-size:13px;color:var(--dim);}
+.loader-file{font-size:11px;color:var(--muted);}
+
+/* ── SHELL ── */
+.shell{
+  display:grid;
+  grid-template-rows:var(--h) 1fr;
+  grid-template-columns:var(--icon) var(--lpanel) 1fr var(--rpanel);
+  height:100vh;
+  overflow:hidden;
+}
+
+/* ── TITLEBAR ── */
+.titlebar{
+  grid-column:1/-1;
+  background:var(--ui);border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;padding:0 10px;gap:8px;
+  user-select:none;flex-shrink:0;
+}
+.t-logo{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:5px;cursor:pointer;text-decoration:none;color:inherit;}
+.t-logo:hover{background:var(--hover);}
+.t-logo img{width:20px;height:20px;border-radius:50%;object-fit:cover;}
+.t-logo span{font-size:12px;font-weight:600;}
+.t-sep{width:1px;height:18px;background:var(--bd);margin:0 4px;}
+.t-bread{font-size:11px;color:var(--dim);display:flex;align-items:center;gap:5px;}
+.t-bread .arrow{color:var(--muted);}
+.t-space{flex:1;}
+.t-tabs{display:flex;gap:1px;}
+.t-tab{padding:5px 13px;border-radius:5px;font-size:11px;font-weight:500;color:var(--dim);cursor:pointer;transition:all .15s;}
+.t-tab.on{background:var(--active);color:var(--tx);}
+.t-zoom{padding:4px 9px;background:transparent;border:none;font-family:inherit;font-size:11px;color:var(--dim);cursor:pointer;border-radius:4px;display:flex;align-items:center;gap:3px;}
+.t-zoom:hover{background:var(--hover);color:var(--tx);}
+.t-share{padding:5px 14px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;border:none;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:inherit;}
+.t-share:hover{opacity:.88;}
+.t-back{padding:5px 10px;background:transparent;border:1px solid var(--bd);color:var(--dim);font-size:11px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:inherit;}
+.t-back:hover{background:var(--hover);color:var(--tx);}
+
+/* ── ICON BAR ── */
+.iconbar{
+  background:var(--ui);border-right:1px solid var(--bd);
+  display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:2px;
+  overflow:hidden;
+}
+.ib{
+  width:32px;height:32px;border:none;background:transparent;border-radius:5px;
+  color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;font-family:inherit;position:relative;
+}
+.ib:hover{background:var(--hover);color:var(--tx);}
+.ib.on{background:var(--accent);color:#fff;}
+.ib-sep{width:22px;height:1px;background:var(--bd);margin:3px 0;}
+
+/* ── LEFT PANEL ── */
+.lpanel{
+  background:var(--ui);border-right:1px solid var(--bd);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.lp-tabs{display:flex;border-bottom:1px solid var(--bd);flex-shrink:0;}
+.lp-tab{flex:1;padding:6px 0;text-align:center;font-size:11px;font-weight:500;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.lp-tab.on{color:var(--tx);border-bottom-color:var(--tx);}
+.lp-body{flex:1;overflow-y:auto;padding:4px 0;scrollbar-width:thin;scrollbar-color:var(--bd) transparent;}
+.lp-sec{padding:6px 10px 3px;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:flex;justify-content:space-between;align-items:center;}
+.lp-sec button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;line-height:1;padding:0;}
+.lp-sec button:hover{color:var(--tx);}
+.lp-item{
+  display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:4px;margin:1px 4px;
+  cursor:pointer;color:var(--dim);font-size:11px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  transition:all .15s;
+}
+.lp-item:hover{background:var(--hover);color:var(--tx);}
+.lp-item.on{background:rgba(124,92,191,.2);color:#c4a8ff;}
+.lp-item.sub{padding-left:20px;font-size:10.5px;}
+.lp-item.page{padding-left:10px;}
+
+/* ── CANVAS ── */
+.canvas-wrap{
+  overflow:hidden;background:var(--canvas-bg);
+  background-image:radial-gradient(circle,#c0c0c0 1px,transparent 1px);
+  background-size:20px 20px;
+  position:relative;cursor:default;
+}
+.canvas-viewport{
+  width:100%;height:100%;overflow:hidden;position:relative;
+}
+.canvas-world{
+  position:absolute;top:0;left:0;
+  width:3000px;height:2400px;
+  transform-origin:0 0;
+}
+
+/* ── FRAMES (artboards) ── */
+.cframe{
+  position:absolute;background:#fff;
+  box-shadow:0 2px 20px rgba(0,0,0,.15);
+  cursor:default;
+}
+.cframe.sel{outline:2px solid #7c5cbf;outline-offset:0;}
+.cframe.sel>.frame-lbl{color:#7c5cbf;}
+.frame-lbl{
+  position:absolute;top:-20px;left:0;
+  font-size:11px;font-weight:500;color:#666;
+  white-space:nowrap;pointer-events:none;
+  font-family:'Inter',sans-serif;
+}
+
+/* frame inner styles */
+.cover-img-wrap{position:relative;width:100%;height:100%;overflow:hidden;background:#0d1117;}
+.cover-img-wrap img{width:100%;height:100%;object-fit:cover;opacity:.7;}
+.cover-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,17,23,.9) 30%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;}
+.ctag{font-size:9px;font-weight:700;color:#4a9ca6;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;}
+.ctitle{font-size:20px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:5px;font-family:'Inter',sans-serif;}
+.csub{font-size:10px;color:rgba(255,255,255,.5);}
+
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px;}
+.sc-card{border-radius:5px;overflow:hidden;border:1px solid #e5e5e5;}
+.sc-card img{width:100%;height:90px;object-fit:cover;object-position:top;display:block;}
+.sc-label{font-size:9px;color:#777;font-weight:500;padding:4px 6px;}
+
+.about-pad{padding:22px;display:flex;flex-direction:column;gap:10px;}
+.a-tag{font-size:9px;font-weight:700;color:#4a9ca6;text-transform:uppercase;letter-spacing:.1em;}
+.a-title{font-size:13px;font-weight:700;color:#111;line-height:1.35;}
+.a-body{font-size:10.5px;color:#555;line-height:1.7;}
+.a-hr{height:1px;background:#eee;}
+.a-meta{display:flex;gap:18px;}
+.a-mi label{font-size:8px;color:#aaa;text-transform:uppercase;display:block;margin-bottom:2px;}
+.a-mi span{font-size:10px;font-weight:600;color:#222;}
+
+.tech-pad{padding:18px;}
+.tech-sec{font-size:9px;font-weight:700;color:#aaa;text-transform:uppercase;margin-bottom:10px;}
+.tech-g{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.t-chip{display:flex;align-items:center;gap:6px;padding:7px 9px;background:#f7f7f7;border:1px solid #eee;border-radius:5px;font-size:10.5px;font-weight:500;color:#333;}
+.t-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* canvas elements (shapes, text) */
+.canvas-elem{
+  position:absolute;cursor:move;
+  user-select:none;
+}
+.canvas-elem.sel{outline:2px solid #7c5cbf;}
+.shape-rect{background:rgba(124,92,191,.2);border:2px solid #7c5cbf;}
+.shape-ellipse{background:rgba(74,156,166,.2);border:2px solid #4a9ca6;border-radius:50%;}
+.text-elem{font-family:'Inter';font-size:16px;color:#111;border:none;background:transparent;outline:none;white-space:nowrap;cursor:text;min-width:80px;}
+.text-elem:focus{outline:2px solid #7c5cbf;}
+
+/* Zoom controls */
+.zoom-ctrl{
+  position:absolute;bottom:16px;right:12px;
+  display:flex;align-items:center;gap:4px;
+  background:var(--ui);border:1px solid var(--bd);border-radius:6px;padding:3px 6px;
+  z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.zb{width:24px;height:24px;border:none;background:transparent;color:var(--dim);cursor:pointer;border-radius:4px;font-family:inherit;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.zb:hover{background:var(--hover);color:var(--tx);}
+#zoomLabel{font-size:10px;color:var(--dim);min-width:36px;text-align:center;}
+
+/* ── RIGHT PANEL ── */
+.rpanel{
+  background:var(--ui);border-left:1px solid var(--bd);
+  display:flex;flex-direction:column;
+  width:var(--rpanel);flex-shrink:0;overflow:hidden;
+}
+.rp-tabs{display:flex;border-bottom:1px solid var(--bd);flex-shrink:0;}
+.rp-tab{flex:1;padding:6px 0;text-align:center;font-size:11px;font-weight:500;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.rp-tab.on{color:var(--tx);border-bottom-color:var(--tx);}
+.rp-sel{padding:6px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.rp-sel-icon{width:14px;height:14px;background:var(--accent);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rp-sel-name{font-size:11px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rp-body{flex:1;overflow-y:auto;padding:10px;scrollbar-width:thin;scrollbar-color:var(--bd) transparent;}
+.rp-sec{margin-bottom:12px;}
+.rp-sec-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;display:flex;justify-content:space-between;}
+.rp-sec-title .ico{cursor:pointer;color:var(--muted);}
+.rp-sec-title .ico:hover{color:var(--tx);}
+.rp-row2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}
+.rp-field label{font-size:9px;color:var(--muted);display:block;margin-bottom:2px;}
+.rp-input{width:100%;background:var(--base);border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:11px;font-family:inherit;padding:4px 7px;outline:none;}
+.rp-input:focus{border-color:var(--accent);}
+.rp-hr{height:1px;background:var(--bd);margin:8px 0;}
+.rp-actions{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:4px;}
+.align-btn{width:24px;height:24px;border:none;background:transparent;border-radius:4px;color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;}
+.align-btn:hover{background:var(--hover);color:var(--tx);}
+.fill-swatch{display:flex;align-items:center;gap:6px;padding:5px 7px;background:var(--base);border:1px solid var(--bd);border-radius:4px;cursor:pointer;}
+.fill-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0;}
+.fill-hex{font-size:10px;color:var(--dim);}
+.fill-op{margin-left:auto;font-size:10px;color:var(--muted);}
+.font-select{width:100%;background:var(--base);border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-size:11px;font-family:inherit;padding:5px 7px;margin-bottom:6px;cursor:pointer;outline:none;}
+.font-select:focus{border-color:var(--accent);}
+.rp-no-sel{padding:20px 10px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6;}
+
+/* ── BOTTOM TOOLBAR ── */
+.btoolbar{
+  position:fixed;bottom:20px;
+  left:50%;transform:translateX(-50%);
+  margin-left:calc((var(--icon) + var(--lpanel) - var(--rpanel)) / 2);
+  display:flex;align-items:center;gap:3px;
+  background:var(--ui);border:1px solid var(--bd);border-radius:10px;padding:4px;
+  box-shadow:0 6px 24px rgba(0,0,0,.4);z-index:200;
+}
+.bt{
+  width:32px;height:32px;border:none;background:transparent;border-radius:7px;
+  color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;font-family:inherit;position:relative;
+}
+.bt:hover{background:var(--hover);color:var(--tx);}
+.bt.on{background:var(--accent);color:#fff;}
+.bt-sep{width:1px;height:20px;background:var(--bd);margin:0 2px;}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <img src="image/flamboys/Mobile - HomeMenu.png" style="width:60px;height:60px;object-fit:cover;border-radius:8px;border:2px solid #333;" alt="">
+  <div style="text-align:center;">
+    <div class="loader-name">Flamboys Roaster Ecosystem</div>
+    <div class="loader-file" id="loaderFile">Opening canvas...</div>
+  </div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+</div>
+
+<div class="shell">
+<!-- ── TITLEBAR ── -->
+<header class="titlebar">
+  <a class="t-logo" href="desktop.html" title="Back">
+    <img src="image/profile/profile.jpg" alt="">
+    <span>Fahmi Bastari</span>
+  </a>
+  <div class="t-sep"></div>
+  <div class="t-bread">
+    <span style="color:var(--dim)">Portfolio</span>
+    <span class="arrow">/</span>
+    <span>Flamboys Roaster</span>
+    <i class="ph ph-caret-down" style="font-size:10px;color:var(--muted);"></i>
+  </div>
+  <div class="t-space"></div>
+  <div class="t-tabs">
+    <div class="t-tab on" onclick="switchMode(this,'design')">Design</div>
+    <div class="t-tab" onclick="switchMode(this,'prototype')">Prototype</div>
+  </div>
+  <div class="t-sep"></div>
+  <button class="t-zoom" id="zoomTitleBtn">
+    <i class="ph ph-magnifying-glass" style="font-size:11px;"></i>
+    <span id="zoomPct">100%</span>
+    <i class="ph ph-caret-down" style="font-size:10px;"></i>
+  </button>
+  <button class="t-back" onclick="window.location='desktop.html'">
+    <i class="ph ph-arrow-left" style="font-size:12px;"></i> Portfolio
+  </button>
+  <button class="t-share">
+    <i class="ph ph-arrow-up-right" style="font-size:12px;"></i> Share
+  </button>
+</header>
+
+<!-- ── ICON BAR ── -->
+<div class="iconbar">
+  <button class="ib on" id="ib-layers" title="Layers (toggle)" onclick="togglePanel()">
+    <i class="ph ph-stack" style="font-size:17px;"></i>
+  </button>
+  <button class="ib" title="Assets"><i class="ph ph-dots-nine" style="font-size:17px;"></i></button>
+  <div class="ib-sep"></div>
+  <button class="ib" title="Find files" onclick="void 0"><i class="ph ph-magnifying-glass" style="font-size:17px;"></i></button>
+</div>
+
+<!-- ── LEFT PANEL ── -->
+<div class="lpanel" id="lpanel">
+  <div class="lp-tabs">
+    <div class="lp-tab on">Layers</div>
+    <div class="lp-tab">Assets</div>
+  </div>
+  <div class="lp-body">
+    <div class="lp-sec">Pages <button onclick="void 0"><i class="ph ph-plus"></i></button></div>
+    <div class="lp-item page on" id="pg-flamboys"><i class="ph ph-file" style="opacity:.6;font-size:11px;"></i> Flamboys Roaster</div>
+    <div class="lp-item page" id="pg-notes"><i class="ph ph-file" style="opacity:.6;font-size:11px;"></i> Case Study Notes</div>
+
+    <div class="lp-sec" style="margin-top:8px;">Layers</div>
+    <div id="layersList"></div>
+  </div>
+</div>
+
+<!-- ── CANVAS ── -->
+<div class="canvas-wrap" id="canvasWrap">
+  <div class="canvas-viewport" id="viewport">
+    <div class="canvas-world" id="world"></div>
+  </div>
+  <!-- Zoom HUD -->
+  <div class="zoom-ctrl">
+    <button class="zb" onclick="changeZoom(-0.1)" title="Zoom out">−</button>
+    <span id="zoomLabel">100%</span>
+    <button class="zb" onclick="changeZoom(0.1)" title="Zoom in">+</button>
+    <button class="zb" onclick="fitToScreen()" title="Fit" style="font-size:10px;width:auto;padding:0 6px;">Fit</button>
+  </div>
+</div>
+
+<!-- ── RIGHT PANEL ── -->
+<div class="rpanel" id="rpanel">
+  <div class="rp-tabs">
+    <div class="rp-tab on">Design</div>
+    <div class="rp-tab">Prototype</div>
+    <div class="rp-tab">Inspect</div>
+  </div>
+  <div class="rp-sel" id="rp-sel-row">
+    <div class="rp-sel-icon"><i class="ph ph-frame-corners" style="font-size:9px;color:#fff;"></i></div>
+    <div class="rp-sel-name" id="rpSelName">Nothing selected</div>
+  </div>
+  <div class="rp-body" id="rpBody">
+    <div class="rp-no-sel">Click a frame or element on the canvas to see its properties.</div>
+  </div>
+</div>
+</div><!-- /shell -->
+
+<!-- ── BOTTOM TOOLBAR ── -->
+<div class="btoolbar" id="btoolbar">
+  <button class="bt on" data-tool="select" title="Move (V)"><i class="ph-fill ph-cursor" style="font-size:15px;"></i></button>
+  <button class="bt" data-tool="frame" title="Frame (F)"><i class="ph ph-frame-corners" style="font-size:15px;"></i></button>
+  <div class="bt-sep"></div>
+  <button class="bt" data-tool="rect" title="Rectangle (R)"><i class="ph ph-square" style="font-size:15px;"></i></button>
+  <button class="bt" data-tool="ellipse" title="Ellipse (O)"><i class="ph ph-circle" style="font-size:15px;"></i></button>
+  <div class="bt-sep"></div>
+  <button class="bt" data-tool="text" title="Text (T)"><i class="ph ph-text-t" style="font-size:15px;"></i></button>
+  <div class="bt-sep"></div>
+  <button class="bt" data-tool="hand" title="Hand (H)"><i class="ph ph-hand" style="font-size:15px;"></i></button>
+  <div class="bt-sep"></div>
+  <button class="bt" title="Comment"><i class="ph ph-chat-circle" style="font-size:15px;"></i></button>
+</div>
+
+<script>
+// ─── PROJECT DATA ───────────────────────────────────────────────────────
+const PROJECT = {
+  name: 'Flamboys Roaster Ecosystem',
+  category: 'Fullstack IoT · Mobile',
+  desc: 'End-to-end digital transformation for coffee production, bridging precision roasting logs with real-time inventory intelligence across web and mobile.',
+  role: 'Lead Dev', timeline: '3 months', type: 'Client Work',
+  tech: [
+    {name:'React Native', color:'#61dafb'},
+    {name:'Supabase',     color:'#3ecf8e'},
+    {name:'Laravel',      color:'#f55247'},
+    {name:'Vue.js',       color:'#4fc08d'},
+    {name:'PostgreSQL',   color:'#336791'},
+    {name:'Firebase',     color:'#f89820'},
+    {name:'REST API',     color:'#ff6c37'},
+    {name:'Redux',        color:'#764abc'},
+  ],
+  images: [
+    {file:'image/flamboys/Mobile - HomeMenu.png',      label:'Mobile · Home Menu'},
+    {file:'image/flamboys/Mobile - RoastingSession.png', label:'Mobile · Roasting Session'},
+    {file:'image/flamboys/Admin - DashboardAnalytics.png', label:'Admin · Dashboard Analytics'},
+    {file:'image/flamboys/Admin - InventoryList.png',    label:'Admin · Inventory List'},
+    {file:'image/flamboys/Admin - LogRORDetails.png',    label:'Admin · Log ROR Details'},
+    {file:'image/flamboys/Admin - RoasterManagement.png',label:'Admin · Roaster Management'},
+  ]
+};
+
+// ─── STATE ────────────────────────────────────────────────────────────────
+let zoom = 1;
+let panX = 60, panY = 60;
+let tool = 'select';
+let selectedEl = null;
+let isPanning = false, panStart = {x:0,y:0};
+let isDragging = false, dragStart = {x:0,y:0}, dragElStart = {x:0,y:0};
+let isDrawing = false, drawStart = {x:0,y:0};
+const world = document.getElementById('world');
+const viewport = document.getElementById('viewport');
+const frames = [];
+let elemCounter = 0;
+
+// ─── LOADING ──────────────────────────────────────────────────────────────
+const loader = document.getElementById('loader');
+const loaderBar = document.getElementById('loaderBar');
+const loaderFile = document.getElementById('loaderFile');
+const loadSteps = [
+  'Loading project assets...',
+  'Building canvas layers...',
+  'Rendering frames...',
+  'Finalizing...'
+];
+let loadPct = 0;
+function tickLoader(){
+  loadPct += (Math.random()*8+4);
+  if(loadPct>100) loadPct=100;
+  loaderBar.style.width = loadPct+'%';
+  const si = Math.min(Math.floor(loadPct/25), loadSteps.length-1);
+  loaderFile.textContent = loadSteps[si];
+  if(loadPct<100){ setTimeout(tickLoader, 80); }
+  else {
+    setTimeout(()=>{
+      loader.classList.add('done');
+      setTimeout(()=>loader.remove(), 420);
+      initCanvas();
+    }, 200);
+  }
+}
+window.addEventListener('DOMContentLoaded', ()=> setTimeout(tickLoader, 300));
+
+// ─── CANVAS TRANSFORM ────────────────────────────────────────────────────
+function applyTransform(){
+  world.style.transform = `translate(${panX}px,${panY}px) scale(${zoom})`;
+  world.style.transformOrigin = '0 0';
+  const pct = Math.round(zoom*100)+'%';
+  document.getElementById('zoomLabel').textContent = pct;
+  document.getElementById('zoomPct').textContent = pct;
+}
+
+function changeZoom(delta, ox, oy){
+  const wrap = document.getElementById('canvasWrap');
+  const cx = ox ?? wrap.clientWidth/2;
+  const cy = oy ?? wrap.clientHeight/2;
+  const wPre = zoom;
+  zoom = Math.min(8, Math.max(0.1, zoom + delta));
+  panX = cx - (cx - panX)*(zoom/wPre);
+  panY = cy - (cy - panY)*(zoom/wPre);
+  applyTransform();
+}
+
+function fitToScreen(){
+  const wrap = document.getElementById('canvasWrap');
+  zoom = Math.min(wrap.clientWidth/2400, wrap.clientHeight/1800) * 0.85;
+  panX = (wrap.clientWidth - 2400*zoom)/2;
+  panY = (wrap.clientHeight - 1800*zoom)/2;
+  applyTransform();
+}
+
+// Wheel zoom
+document.getElementById('canvasWrap').addEventListener('wheel', e=>{
+  e.preventDefault();
+  const r = e.currentTarget.getBoundingClientRect();
+  changeZoom(e.deltaY<0 ? 0.08 : -0.08, e.clientX-r.left, e.clientY-r.top);
+}, {passive:false});
+
+// ─── INIT CANVAS ─────────────────────────────────────────────────────────
+function initCanvas(){
+  // Frame layout positions
+  const layout = [
+    {id:'cover',   x:50,  y:50,  w:360, h:240},
+    {id:'about',   x:450, y:50,  w:320, h:240},
+    {id:'tech',    x:810, y:50,  w:280, h:240},
+    {id:'screens', x:50,  y:330, w:660, h:340},
+    {id:'more',    x:750, y:330, w:340, h:340},
+  ];
+
+  // Cover frame
+  addPredefinedFrame(layout[0], 'Thumbnail', buildCover());
+  // About
+  addPredefinedFrame(layout[1], 'About this project', buildAbout());
+  // Tech
+  addPredefinedFrame(layout[2], 'Tech Stack', buildTech());
+  // Screenshots
+  addPredefinedFrame(layout[3], 'Screenshots', buildScreens());
+  // More screens
+  addPredefinedFrame(layout[4], 'More Images', buildMore());
+
+  buildLayersList();
+  applyTransform();
+
+  // Select first
+  const first = document.querySelector('.cframe');
+  if(first) selectElement(first);
+}
+
+function buildCover(){
+  const d = document.createElement('div');
+  d.className = 'cover-img-wrap';
+  d.innerHTML = `<img src="${PROJECT.images[0].file}" alt="">
+    <div class="cover-ov">
+      <div class="ctag">${PROJECT.category}</div>
+      <div class="ctitle">${PROJECT.name}</div>
+      <div class="csub">${PROJECT.desc.slice(0,60)}...</div>
+    </div>`;
+  return d;
+}
+
+function buildAbout(){
+  const d = document.createElement('div');
+  d.className = 'about-pad';
+  d.innerHTML = `<div class="a-tag">About this project</div>
+    <div class="a-title">${PROJECT.name}</div>
+    <div class="a-body">${PROJECT.desc}</div>
+    <div class="a-hr"></div>
+    <div class="a-meta">
+      <div class="a-mi"><label>Timeline</label><span>${PROJECT.timeline}</span></div>
+      <div class="a-mi"><label>Role</label><span>${PROJECT.role}</span></div>
+      <div class="a-mi"><label>Type</label><span>${PROJECT.type}</span></div>
+    </div>`;
+  return d;
+}
+
+function buildTech(){
+  const d = document.createElement('div');
+  d.className = 'tech-pad';
+  const chips = PROJECT.tech.map(t=>`<div class="t-chip"><div class="t-dot" style="background:${t.color};"></div>${t.name}</div>`).join('');
+  d.innerHTML = `<div class="tech-sec">Tech Stack</div><div class="tech-g">${chips}</div>`;
+  return d;
+}
+
+function buildScreens(){
+  const d = document.createElement('div');
+  d.className = 'sc-grid';
+  // Show first 4 images
+  const imgs = PROJECT.images.slice(0,4);
+  d.style.gridTemplateColumns = 'repeat(4,1fr)';
+  d.innerHTML = imgs.map(im=>`
+    <div class="sc-card">
+      <img src="${im.file}" alt="${im.label}">
+      <div class="sc-label">${im.label}</div>
+    </div>`).join('');
+  return d;
+}
+
+function buildMore(){
+  const d = document.createElement('div');
+  d.className = 'sc-grid';
+  d.style.gridTemplateColumns = 'repeat(2,1fr)';
+  const imgs = PROJECT.images.slice(4);
+  d.innerHTML = imgs.map(im=>`
+    <div class="sc-card">
+      <img src="${im.file}" alt="${im.label}" style="height:120px;">
+      <div class="sc-label">${im.label}</div>
+    </div>`).join('');
+  return d;
+}
+
+function addPredefinedFrame(pos, label, innerEl){
+  const el = document.createElement('div');
+  el.className = 'cframe';
+  el.dataset.frameId = pos.id;
+  el.dataset.label = label;
+  el.dataset.kind = 'frame';
+  el.dataset.x = pos.x; el.dataset.y = pos.y;
+  el.dataset.w = pos.w; el.dataset.h = pos.h;
+  el.style.cssText = `left:${pos.x}px;top:${pos.y}px;width:${pos.w}px;height:${pos.h}px;overflow:hidden;`;
+  const lbl = document.createElement('div');
+  lbl.className = 'frame-lbl';
+  lbl.textContent = label;
+  el.appendChild(lbl);
+  el.appendChild(innerEl);
+  el.addEventListener('mousedown', e=>{ if(tool==='select') startDragEl(e,el); });
+  el.addEventListener('click', e=>{ e.stopPropagation(); selectElement(el); });
+  world.appendChild(el);
+  frames.push({el, label, pos});
+  return el;
+}
+
+// ─── LAYERS LIST ─────────────────────────────────────────────────────────
+function buildLayersList(){
+  const list = document.getElementById('layersList');
+  list.innerHTML = '';
+  world.querySelectorAll('.cframe,.canvas-elem').forEach(el=>{
+    const item = document.createElement('div');
+    item.className = 'lp-item';
+    const isFrame = el.classList.contains('cframe');
+    const lbl = el.dataset.label || el.dataset.kind || 'Element';
+    item.innerHTML = `<i class="ph ${isFrame?'ph-frame-corners':'ph-square'}" style="font-size:11px;opacity:.6;"></i> ${lbl}`;
+    item.addEventListener('click', ()=> selectElement(el));
+    el._layerItem = item;
+    list.appendChild(item);
+  });
+}
+
+// ─── SELECTION ───────────────────────────────────────────────────────────
+function selectElement(el){
+  if(selectedEl){
+    selectedEl.classList.remove('sel');
+    if(selectedEl._layerItem) selectedEl._layerItem.classList.remove('on');
+  }
+  selectedEl = el;
+  el.classList.add('sel');
+  if(el._layerItem) el._layerItem.classList.add('on');
+  updateRightPanel(el);
+}
+
+function deselect(){
+  if(selectedEl){
+    selectedEl.classList.remove('sel');
+    if(selectedEl._layerItem) selectedEl._layerItem.classList.remove('on');
+    selectedEl = null;
+  }
+  document.getElementById('rpSelName').textContent = 'Nothing selected';
+  document.getElementById('rpBody').innerHTML = '<div class="rp-no-sel">Click a frame or element to see its properties.</div>';
+}
+
+// ─── RIGHT PANEL ─────────────────────────────────────────────────────────
+function updateRightPanel(el){
+  const name = el.dataset.label || el.dataset.kind || 'Element';
+  document.getElementById('rpSelName').textContent = name;
+  const x = parseInt(el.style.left)||parseInt(el.dataset.x)||0;
+  const y = parseInt(el.style.top)||parseInt(el.dataset.y)||0;
+  const w = parseInt(el.style.width)||parseInt(el.dataset.w)||100;
+  const h = parseInt(el.style.height)||parseInt(el.dataset.h)||100;
+  const bg = el.style.background || '#ffffff';
+  document.getElementById('rpBody').innerHTML = `
+    <div class="rp-sec">
+      <div class="rp-sec-title">Alignment</div>
+      <div class="rp-actions">
+        ${['align-left','align-center-horizontal','align-right','align-top','align-center-vertical','align-bottom'].map(ic=>
+          `<button class="align-btn" title="${ic}"><i class="ph ph-${ic}" style="font-size:12px;"></i></button>`
+        ).join('')}
+      </div>
+    </div>
+    <div class="rp-hr"></div>
+    <div class="rp-sec">
+      <div class="rp-sec-title">Position</div>
+      <div class="rp-row2">
+        <div class="rp-field"><label>X</label><input class="rp-input" id="px" value="${x}" onchange="moveEl('x',this.value)"></div>
+        <div class="rp-field"><label>Y</label><input class="rp-input" id="py" value="${y}" onchange="moveEl('y',this.value)"></div>
+      </div>
+      <div class="rp-row2">
+        <div class="rp-field"><label>W</label><input class="rp-input" id="pw" value="${w}" onchange="resizeEl('w',this.value)"></div>
+        <div class="rp-field"><label>H</label><input class="rp-input" id="ph" value="${h}" onchange="resizeEl('h',this.value)"></div>
+      </div>
+      <div class="rp-row2">
+        <div class="rp-field"><label>Rotation</label><input class="rp-input" value="0°" readonly></div>
+        <div class="rp-field"><label>Opacity</label><input class="rp-input" value="100%" readonly></div>
+      </div>
+    </div>
+    <div class="rp-hr"></div>
+    <div class="rp-sec">
+      <div class="rp-sec-title">Fill <span class="ico"><i class="ph ph-plus" onclick="void 0"></i></span></div>
+      <div class="fill-swatch" onclick="pickColor()">
+        <div class="fill-dot" id="fillDot" style="background:${bg};"></div>
+        <span class="fill-hex" id="fillHex">${bg.replace('#','').toUpperCase().slice(0,6)||'FFFFFF'}</span>
+        <span class="fill-op">100%</span>
+      </div>
+    </div>
+    <div class="rp-hr"></div>
+    <div class="rp-sec">
+      <div class="rp-sec-title">Typography</div>
+      <select class="font-select" onchange="void 0">
+        <option>Inter</option><option>Manrope</option><option>Roboto</option><option>Georgia</option>
+      </select>
+      <div class="rp-row2">
+        <div class="rp-field"><label>Size</label><input class="rp-input" value="14" onchange="void 0"></div>
+        <div class="rp-field"><label>Line H</label><input class="rp-input" value="Auto"></div>
+      </div>
+    </div>`;
+}
+
+function moveEl(axis, val){
+  if(!selectedEl) return;
+  val = parseInt(val)||0;
+  if(axis==='x') selectedEl.style.left = val+'px';
+  else selectedEl.style.top = val+'px';
+}
+function resizeEl(axis, val){
+  if(!selectedEl) return;
+  val = Math.max(10, parseInt(val)||10);
+  if(axis==='w'){
+    selectedEl.style.width = val+'px';
+    // for frames also update dataset
+    selectedEl.dataset.w = val;
+  } else {
+    selectedEl.style.height = val+'px';
+    selectedEl.dataset.h = val;
+  }
+  // live update the other input
+  const pw=document.getElementById('pw'), ph=document.getElementById('ph');
+  if(axis==='w'&&ph) {} 
+  if(axis==='h'&&pw) {}
+}
+function pickColor(){
+  const inp = document.createElement('input');
+  inp.type='color'; inp.value='#9966ff';
+  inp.click();
+  inp.addEventListener('input', e=>{
+    if(selectedEl && !selectedEl.classList.contains('cframe')){
+      selectedEl.style.background = e.target.value;
+      const dot = document.getElementById('fillDot');
+      const hex = document.getElementById('fillHex');
+      if(dot) dot.style.background = e.target.value;
+      if(hex) hex.textContent = e.target.value.slice(1).toUpperCase();
+    }
+  });
+}
+
+// ─── DRAG ELEMENTS ───────────────────────────────────────────────────────
+function startDragEl(e, el){
+  if(tool!=='select') return;
+  e.stopPropagation();
+  e.preventDefault();
+  isDragging = true;
+  dragStart = {x:e.clientX, y:e.clientY};
+  dragElStart = {x:parseInt(el.style.left)||0, y:parseInt(el.style.top)||0};
+  const onMove = ev=>{
+    if(!isDragging) return;
+    const dx = (ev.clientX - dragStart.x)/zoom;
+    const dy = (ev.clientY - dragStart.y)/zoom;
+    el.style.left = (dragElStart.x+dx)+'px';
+    el.style.top  = (dragElStart.y+dy)+'px';
+    const px = document.getElementById('px'), py = document.getElementById('py');
+    if(px) px.value = Math.round(dragElStart.x+dx);
+    if(py) py.value = Math.round(dragElStart.y+dy);
+  };
+  const onUp = ()=>{ isDragging=false; document.removeEventListener('mousemove',onMove); document.removeEventListener('mouseup',onUp); };
+  document.addEventListener('mousemove',onMove);
+  document.addEventListener('mouseup',onUp);
+}
+
+// ─── HAND/PAN ─────────────────────────────────────────────────────────────
+const cWrap = document.getElementById('canvasWrap');
+cWrap.addEventListener('mousedown', e=>{
+  if(tool==='hand' || e.button===1){
+    isPanning=true;
+    panStart={x:e.clientX-panX, y:e.clientY-panY};
+    cWrap.style.cursor='grabbing';
+    e.preventDefault();
+  } else if(tool==='select'){
+    deselect();
+  } else if(tool==='rect'||tool==='ellipse'||tool==='frame'){
+    startDraw(e);
+  } else if(tool==='text'){
+    createText(e);
+  }
+});
+document.addEventListener('mousemove', e=>{
+  if(isPanning){
+    panX=e.clientX-panStart.x;
+    panY=e.clientY-panStart.y;
+    applyTransform();
+  }
+  if(isDrawing) updateDraw(e);
+});
+document.addEventListener('mouseup', e=>{
+  if(isPanning){ isPanning=false; cWrap.style.cursor='default'; }
+  if(isDrawing) finishDraw(e);
+});
+
+// ─── DRAW SHAPES/FRAMES ───────────────────────────────────────────────────
+let drawEl = null;
+function canvasCoords(e){
+  const r = world.getBoundingClientRect();
+  return { x:(e.clientX-r.left)/zoom, y:(e.clientY-r.top)/zoom };
+}
+function canvasWrapCoords(e){
+  const r = cWrap.getBoundingClientRect();
+  const wx = (e.clientX - r.left - panX) / zoom;
+  const wy = (e.clientY - r.top  - panY) / zoom;
+  return {x:wx, y:wy};
+}
+function startDraw(e){
+  if(!['rect','ellipse','frame'].includes(tool)) return;
+  const c = canvasWrapCoords(e);
+  drawStart = c;
+  isDrawing = true;
+  drawEl = document.createElement('div');
+  drawEl.className = 'canvas-elem';
+  if(tool==='rect')   drawEl.classList.add('shape-rect');
+  if(tool==='ellipse')drawEl.classList.add('shape-ellipse');
+  if(tool==='frame'){
+    drawEl.classList.add('cframe');
+    const lbl = document.createElement('div'); lbl.className='frame-lbl'; lbl.textContent='Frame'; drawEl.appendChild(lbl);
+    drawEl.dataset.label='Frame';
+    drawEl.dataset.kind='frame';
+  } else {
+    drawEl.dataset.label=tool==='rect'?'Rectangle':'Ellipse';
+    drawEl.dataset.kind=tool;
+  }
+  drawEl.style.cssText=`left:${c.x}px;top:${c.y}px;width:1px;height:1px;`;
+  drawEl.addEventListener('mousedown', ev=>{ if(tool==='select') startDragEl(ev,drawEl); });
+  drawEl.addEventListener('click', ev=>{ ev.stopPropagation(); selectElement(drawEl); });
+  world.appendChild(drawEl);
+}
+function updateDraw(e){
+  if(!isDrawing||!drawEl) return;
+  const c = canvasWrapCoords(e);
+  const x=Math.min(c.x,drawStart.x), y=Math.min(c.y,drawStart.y);
+  const w=Math.abs(c.x-drawStart.x), h=Math.abs(c.y-drawStart.y);
+  drawEl.style.left=x+'px'; drawEl.style.top=y+'px';
+  drawEl.style.width=w+'px'; drawEl.style.height=h+'px';
+}
+function finishDraw(e){
+  if(!isDrawing||!drawEl) return;
+  isDrawing=false;
+  const w=parseInt(drawEl.style.width), h=parseInt(drawEl.style.height);
+  if(w<5||h<5){ drawEl.remove(); drawEl=null; return; }
+  selectElement(drawEl);
+  buildLayersList();
+  drawEl=null;
+  setTool('select');
+}
+
+// ─── TEXT TOOL ────────────────────────────────────────────────────────────
+function createText(e){
+  const c = canvasWrapCoords(e);
+  const el = document.createElement('div');
+  el.className = 'canvas-elem text-elem';
+  el.dataset.label = 'Text';
+  el.dataset.kind = 'text';
+  el.dataset.editing = 'false';
+  el.style.cssText = `left:${c.x}px;top:${c.y}px;min-width:80px;min-height:24px;padding:2px 4px;`;
+  el.textContent = 'Text';
+  // Single click: select & drag. Double click: edit
+  el.addEventListener('mousedown', ev=>{
+    if(el.dataset.editing==='true') return; // allow cursor inside text
+    if(tool==='select'){ ev.stopPropagation(); startDragEl(ev,el); }
+  });
+  el.addEventListener('click', ev=>{ ev.stopPropagation(); selectElement(el); });
+  el.addEventListener('dblclick', ev=>{
+    ev.stopPropagation();
+    el.contentEditable='true';
+    el.dataset.editing='true';
+    el.focus();
+    // Select all text
+    const range=document.createRange(); range.selectNodeContents(el);
+    const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  });
+  el.addEventListener('blur', ()=>{
+    el.contentEditable='false';
+    el.dataset.editing='false';
+  });
+  world.appendChild(el);
+  // Immediately enter edit mode on creation
+  el.contentEditable='true';
+  el.dataset.editing='true';
+  el.focus();
+  const range=document.createRange(); range.selectNodeContents(el);
+  const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  selectElement(el);
+  buildLayersList();
+  setTool('select');
+}
+
+// ─── KEYBOARD SHORTCUTS ───────────────────────────────────────────────────
+document.addEventListener('keydown', e=>{
+  if(e.target.isContentEditable||e.target.tagName==='INPUT') return;
+  const map = {v:'select',f:'frame',r:'rect',o:'ellipse',t:'text',h:'hand'};
+  if(map[e.key]) { setTool(map[e.key]); return; }
+  if(e.key==='Delete'||e.key==='Backspace'){
+    if(selectedEl && !selectedEl.classList.contains('cframe')){
+      selectedEl.remove(); deselect(); buildLayersList();
+    }
+  }
+  if((e.ctrlKey||e.metaKey)&&e.key==='+') { e.preventDefault(); changeZoom(0.1); }
+  if((e.ctrlKey||e.metaKey)&&e.key==='-') { e.preventDefault(); changeZoom(-0.1); }
+  if((e.ctrlKey||e.metaKey)&&e.key==='0') { e.preventDefault(); zoom=1;panX=60;panY=60;applyTransform(); }
+});
+
+// ─── TOOL SELECT ─────────────────────────────────────────────────────────
+function setTool(t){
+  tool=t;
+  document.querySelectorAll('.bt[data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===t));
+  cWrap.style.cursor = t==='hand'?'grab' : t==='text'?'text' : ['rect','ellipse','frame'].includes(t)?'crosshair' : 'default';
+}
+document.querySelectorAll('.bt[data-tool]').forEach(b=>b.addEventListener('click',()=>setTool(b.dataset.tool)));
+
+// ─── PANEL TOGGLE ────────────────────────────────────────────────────────
+let panelOpen=true;
+function togglePanel(){
+  panelOpen=!panelOpen;
+  document.getElementById('lpanel').style.display = panelOpen?'':'none';
+  document.getElementById('ib-layers').classList.toggle('on',panelOpen);
+  // Adjust grid
+  const shell = document.querySelector('.shell');
+  shell.style.gridTemplateColumns = panelOpen
+    ? 'var(--icon) var(--lpanel) 1fr var(--rpanel)'
+    : 'var(--icon) 0 1fr var(--rpanel)';
+}
+
+// ─── TAB SWITCH ──────────────────────────────────────────────────────────
+function switchMode(el, mode){
+  document.querySelectorAll('.t-tab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+}
+
+applyTransform();
+</script>
+</body>
+</html>
