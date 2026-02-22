@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="image/profile/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fahmi Bastari - Fullstack Developer</title>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="desktop.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ===== TITLEBAR ===== -->
+  <header class="titlebar">
+    <!-- <div class="titlebar-logo">
+      <img src="image/profile/profile.jpg" class="titlebar-avatar" alt="Profile">
+      <span class="titlebar-logo-chevron">
+        <i class="ph ph-caret-down" style="font-size:12px;"></i>
+      </span>
+    </div>
+    <button class="titlebar-action-btn" title="Notifications" style="margin-left:2px; -webkit-app-region:no-drag;">
+      <i class="ph ph-bell" style="font-size:16px;"></i>
+    </button>
+
+    <div class="titlebar-search">
+      <span class="titlebar-search-icon">
+        <i class="ph ph-magnifying-glass" style="font-size:13px;"></i>
+      </span>
+      <input type="text" id="searchInput" placeholder="Search projects...">
+    </div> -->
+
+    <div class="titlebar-spacer"></div>
+
+    <!-- Portfolio skill pills -->
+    <nav class="titlebar-apps">
+      <a href="#" class="app-pill active-pill">
+        <span class="app-icon pill-fullstack">
+          <i class="ph ph-code" style="font-size:11px; color:#fff;"></i>
+        </span>
+        Fullstack
+      </a>
+      <a href="#" class="app-pill">
+        <span class="app-icon pill-mobile">
+          <i class="ph ph-device-mobile" style="font-size:11px; color:#fff;"></i>
+        </span>
+        Mobile
+      </a>
+      <a href="#" class="app-pill">
+        <span class="app-icon pill-web">
+          <i class="ph ph-globe" style="font-size:11px; color:#fff;"></i>
+        </span>
+        Web
+      </a>
+      <a href="index.html" class="app-pill" title="Go to main portfolio">
+        <span class="app-icon pill-home">
+          <i class="ph ph-house" style="font-size:11px; color:#fff;"></i>
+        </span>
+        Portfolio
+      </a>
+    </nav>
+
+    <div class="titlebar-actions">
+      <button class="titlebar-action-btn" title="More">
+        <i class="ph ph-dots-nine" style="font-size:18px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+
+    <!-- User -->
+    <div class="sidebar-section">
+      <div class="sidebar-user">
+        <img src="image/profile/profile.jpg" class="user-avatar-img" alt="Profile">
+        <div class="user-info">
+          <div class="user-name">Fahmi Bastari</div>
+          <div class="user-sub">Full-Stack Developer</div>
+        </div>
+        <span class="badge-avail">Available</span>
+      </div>
+    </div>
+
+    <!-- Sidebar Search -->
+    <div class="sidebar-section" style="padding-bottom:4px;">
+      <div class="sidebar-search">
+        <i class="ph ph-magnifying-glass" style="font-size:13px;"></i>
+        <input type="text" id="searchInput" placeholder="Search projects...">
+      </div>
+    </div>
+
+    <!-- Main Nav -->
+    <div class="sidebar-section">
+      <a href="#" class="nav-item active" data-filter="all">
+        <i class="ph-fill ph-clock-clockwise" style="font-size:16px;"></i>
+        All Projects
+      </a>
+      <a href="#" class="nav-item" data-filter="featured">
+        <i class="ph-fill ph-star" style="font-size:16px;"></i>
+        Featured
+      </a>
+      <a href="#" class="nav-item" data-filter="web">
+        <i class="ph ph-globe" style="font-size:16px;"></i>
+        Web Apps
+      </a>
+      <a href="#" class="nav-item" data-filter="mobile">
+        <i class="ph ph-device-mobile" style="font-size:16px;"></i>
+        Mobile Apps
+      </a>
+    </div>
+
+    <!-- Info -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Contact</div>
+      <a href="mailto:fahmi@example.com" class="nav-item">
+        <i class="ph ph-envelope" style="font-size:16px;"></i>
+        Email Me
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="nav-item">
+        <i class="ph ph-linkedin-logo" style="font-size:16px;"></i>
+        LinkedIn
+      </a>
+      <a href="https://github.com" target="_blank" class="nav-item">
+        <i class="ph ph-github-logo" style="font-size:16px;"></i>
+        GitHub
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Stats</div>
+      <div class="sidebar-stat">
+        <span class="stat-num">12</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="sidebar-stat">
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years Exp.</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <h1 class="page-title">All Projects</h1>
+      <div class="tabs">
+        <a href="#" class="tab active" data-filter="all">Recently viewed</a>
+        <a href="#" class="tab" data-filter="featured">Featured</a>
+        <a href="#" class="tab" data-filter="web">Web</a>
+        <a href="#" class="tab" data-filter="mobile">Mobile</a>
+        <div style="flex:1;"></div>
+        <button class="view-btn active" id="gridBtn" title="Grid view">
+          <i class="ph-fill ph-squares-four" style="font-size:16px;"></i>
+        </button>
+        <button class="view-btn" id="listBtn" title="List view">
+          <i class="ph ph-list" style="font-size:16px;"></i>
+        </button>
+      </div>
+    </div>
+
+
+
+    <!-- File Grid -->
+    <div class="content-area">
+      <div class="file-grid" id="projectGrid">
+
+        <!-- 1. Flamboys Ecosystem -->
+        <div class="file-card" data-cat="web mobile featured">
+          <div class="file-card-thumb">
+            <img src="image/flamboys/Mobile - HomeMenu.png" alt="Flamboys Ecosystem">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-fullstack"><i class="ph ph-code" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Flamboys Roaster Ecosystem</div>
+              <div class="file-card-tags"><span class="tag">Fullstack IoT</span><span class="tag">Mobile</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. UBM Storage -->
+        <div class="file-card" data-cat="featured web">
+          <div class="file-card-thumb">
+            <img src="image/ubmstorage/LP - 3D PSP.png" alt="UBM Storage 3D">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-web"><i class="ph ph-cube" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">UBM Storage 3D</div>
+              <div class="file-card-tags"><span class="tag">Immersive WebGL</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. DIGIVASS -->
+        <div class="file-card" data-cat="featured mobile">
+          <div class="file-card-thumb">
+            <img src="image/digivass/MobileMockup.png" alt="DIGIVASS Field Ops">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-mobile"><i class="ph ph-device-mobile" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">DIGIVASS Field Ops</div>
+              <div class="file-card-tags"><span class="tag">Featured Ecosystem</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. JustSpeak -->
+        <div class="file-card" data-cat="featured web">
+          <div class="file-card-thumb">
+            <img src="image/justspeak/Dashboard.png" alt="JustSpeak IELTS">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-web"><i class="ph ph-chalkboard-teacher" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">JustSpeak IELTS</div>
+              <div class="file-card-tags"><span class="tag">EdTech</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Mental Healing -->
+        <div class="file-card" data-cat="web">
+          <div class="file-card-thumb">
+            <img src="image/mentalhealing/Dashboard.png" alt="Mental Healing ID">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-web"><i class="ph ph-heart" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Mental Healing ID</div>
+              <div class="file-card-tags"><span class="tag">HealthTech</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 2Watuju -->
+        <div class="file-card" data-cat="web featured">
+          <div class="file-card-thumb">
+            <img src="image/2watuju/DashboardCatalog.png" alt="2Watuju Architecture">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-web"><i class="ph ph-buildings" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">2Watuju Architecture</div>
+              <div class="file-card-tags"><span class="tag">VR / SEO</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. PERPAHMIAN -->
+        <div class="file-card" data-cat="featured web">
+          <div class="file-card-thumb">
+            <img src="image/perpahmian-gamestation/Dashboard.png" alt="PERPAHMIAN Game Station">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-game"><i class="ph ph-game-controller" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">PERPAHMIAN Game Station</div>
+              <div class="file-card-tags"><span class="tag">Gaming Platform</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Navara Profile -->
+        <div class="file-card" data-cat="web">
+          <div class="file-card-thumb">
+            <img src="image/navaraprofile/1.png" alt="Navara City Park Profile">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-web"><i class="ph ph-city" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Navara City Park Profile</div>
+              <div class="file-card-tags"><span class="tag">Dynamic CMS</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Opening Ceremony -->
+        <div class="file-card" data-cat="web">
+          <div class="file-card-thumb">
+            <img src="image/navaraopening/1.png" alt="Opening Ceremony Inv.">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-event"><i class="ph ph-confetti" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Opening Ceremony Inv.</div>
+              <div class="file-card-tags"><span class="tag">Event System</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Examlent -->
+        <div class="file-card" data-cat="web mobile">
+          <div class="file-card-thumb">
+            <img src="image/examlent/StudentLandingPage.png" alt="Examlent">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-saas"><i class="ph ph-article" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Examlent</div>
+              <div class="file-card-tags"><span class="tag">SaaS Product</span><span class="tag">Mobile</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. CCED Hiring Portal -->
+        <div class="file-card" data-cat="web mobile featured">
+          <div class="file-card-thumb">
+            <img src="image/cced/LandingPage.png" alt="CCED Hiring Portal">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-gov"><i class="ph ph-briefcase" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">CCED Hiring Portal</div>
+              <div class="file-card-tags"><span class="tag">Public Sector</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Freelancer Tracker -->
+        <div class="file-card" data-cat="web">
+          <div class="file-card-thumb">
+            <img src="image/freelance/1.png" alt="Freelancer Tracker">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-tool"><i class="ph ph-wrench" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">Freelancer Tracker</div>
+              <div class="file-card-tags"><span class="tag">Utility Tool</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /file-grid -->
+
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <i class="ph ph-folder-open" style="font-size:48px; color:var(--text-muted); display:block; margin-bottom:12px;"></i>
+        <p>No projects found in this category.</p>
+      </div>
+
+    </div><!-- /content-area -->
+  </main>
+</div>
+
+<script>
+  // ---- Filter Logic ----
+  const cards = document.querySelectorAll('.file-card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const tabs = document.querySelectorAll('.tab');
+  const navItems = document.querySelectorAll('.nav-item[data-filter]');
+  const emptyState = document.getElementById('emptyState');
+  const searchInput = document.getElementById('searchInput');
+  const grid = document.getElementById('projectGrid');
+  const gridBtn = document.getElementById('gridBtn');
+  const listBtn = document.getElementById('listBtn');
+
+  function applyFilter(filter) {
+    let visible = 0;
+    cards.forEach(card => {
+      const cats = card.getAttribute('data-cat') || '';
+      const matches = filter === 'all' || cats.includes(filter);
+      card.style.display = matches ? '' : 'none';
+      if (matches) visible++;
+    });
+    emptyState.style.display = visible === 0 ? 'flex' : 'none';
+  }
+
+  // Sync all filter controls
+  function setActiveFilter(filter) {
+    filterBtns.forEach(b => b.classList.toggle('active-filter', b.dataset.filter === filter));
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === filter));
+    navItems.forEach(n => n.classList.toggle('active', n.dataset.filter === filter));
+    applyFilter(filter);
+  }
+
+  filterBtns.forEach(btn => btn.addEventListener('click', () => setActiveFilter(btn.dataset.filter)));
+  tabs.forEach(tab => tab.addEventListener('click', e => { e.preventDefault(); setActiveFilter(tab.dataset.filter); }));
+  navItems.forEach(item => item.addEventListener('click', e => { e.preventDefault(); setActiveFilter(item.dataset.filter); }));
+
+  // Search
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase();
+    cards.forEach(card => {
+      const name = card.querySelector('.file-card-name')?.textContent.toLowerCase() || '';
+      const tags = card.querySelector('.file-card-tags')?.textContent.toLowerCase() || '';
+      card.style.display = (name.includes(q) || tags.includes(q)) ? '' : 'none';
+    });
+  });
+
+  // ---- Grid / List Toggle ----
+  gridBtn.addEventListener('click', () => {
+    grid.classList.remove('list-view');
+    gridBtn.classList.add('active');
+    listBtn.classList.remove('active');
+  });
+
+  listBtn.addEventListener('click', () => {
+    grid.classList.add('list-view');
+    listBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+  });
+
+  // ---- Card Links — all projects → universal workspace template ----
+  const cardLinks = {
+    'Flamboys Roaster Ecosystem': 'workspace.html?id=flamboys',
+    'UBM Storage 3D':             'workspace.html?id=ubmstorage',
+    'DIGIVASS Field Ops':         'workspace.html?id=digivass',
+    'JustSpeak IELTS':            'workspace.html?id=justspeak',
+    'Mental Healing ID':          'workspace.html?id=mental',
+    '2Watuju Architecture':       'workspace.html?id=2watuju',
+    'PERPAHMIAN Game Station':    'workspace.html?id=perpahmian',
+    'Navara City Park Profile':   'workspace.html?id=navaraprofile',
+    'Opening Ceremony Inv.':      'workspace.html?id=navaraopening',
+    'Examlent':                   'workspace.html?id=examlent',
+    'CCED Hiring Portal':         'workspace.html?id=cced',
+    'Freelancer Tracker':         'workspace.html?id=freelance',
+    'Wakaf Digital':              'workspace.html?id=wakaf',
+  };
+
+  cards.forEach(card => {
+    const name = card.querySelector('.file-card-name')?.textContent.trim();
+    if (cardLinks[name]) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => openProject(name, cardLinks[name]));
+    }
+  });
+
+  function openProject(name, url) {
+    const ov = document.getElementById('projOverlay');
+    const lbl = document.getElementById('projOverlayName');
+    const bar = document.getElementById('projOverlayBar');
+    lbl.textContent = name;
+    ov.style.display = 'flex';
+    requestAnimationFrame(() => {
+      ov.style.opacity = '1';
+      bar.style.width = '100%';
+    });
+    setTimeout(() => { window.location.href = url; }, 900);
+  }
+</script>
+
+<!-- ── Figma-style project open overlay ── -->
+<div id="projOverlay" style="
+  display:none; opacity:0;
+  position:fixed; inset:0; z-index:9999;
+  background:var(--bg-base,#1e1e1e);
+  flex-direction:column; align-items:center; justify-content:center;
+  transition:opacity .18s ease;
+  font-family:'Manrope',sans-serif;
+">
+  <div style="text-align:center; width:280px;">
+    <!-- Figma-like icon -->
+    <div style="width:40px;height:40px;background:var(--accent,#7c5cbf);border-radius:10px;
+                display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+    </div>
+
+    <div style="font-size:11px;color:var(--text-muted,#888);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;">
+      Opening project
+    </div>
+    <div id="projOverlayName" style="font-size:15px;font-weight:600;color:var(--text-primary,#eee);
+                                      margin-bottom:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+
+    <!-- progress bar -->
+    <div style="height:2px;background:var(--border-color,#333);border-radius:1px;overflow:hidden;">
+      <div id="projOverlayBar" style="
+        height:100%;width:0%;
+        background:var(--accent,#7c5cbf);
+        transition:width .75s cubic-bezier(.4,0,.2,1);
+      "></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
