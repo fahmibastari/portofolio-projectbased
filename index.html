@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -50,7 +50,15 @@
       <div class="row align-items-end g-4">
         <div class="col-lg-8">
           <h1 class="hero-title fw-extra-bold">
-            ARCHITECTING <br><span class="text-teal">SCALABLE</span> SOLUTIONS.
+            ARCHITECTING <br>
+            <a href="desktop.html" id="easterLink"
+               style="text-decoration:none;color:inherit;opacity:1;transition:opacity .2s;cursor:pointer;"
+               onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'"
+               onclick="triggerEaster(event)">
+              <span class="text-teal">SCALABLE</span>
+            </a>
+
+            SOLUTIONS.
           </h1>
         </div>
         <div class="col-lg-4 text-lg-end">
@@ -901,6 +909,60 @@
         });
       });
     });
+  </script>
+
+  <!-- ═══ EASTER EGG OVERLAY ═══ -->
+  <div id="easterOverlay" style="display:none;opacity:0;position:fixed;inset:0;z-index:99999;background:#1a1a1a;flex-direction:column;align-items:center;justify-content:center;transition:opacity .2s ease;font-family:'Manrope','Inter',sans-serif;">
+    <div style="text-align:center;width:300px;">
+      <div id="easterIcon" style="width:44px;height:44px;background:#7c5cbf;border-radius:11px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;opacity:0;transform:scale(.7);transition:opacity .35s,transform .35s;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <div style="font-size:10px;color:#555;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Easter Egg Found</div>
+      <div id="easterTitle" style="font-size:17px;font-weight:600;color:#f0f0f0;line-height:1.5;margin-bottom:28px;min-height:2.6em;white-space:pre-wrap;"></div>
+      <div id="easterSub" style="font-size:12px;color:#555;margin-bottom:32px;opacity:0;transition:opacity .5s;">Buckle up - entering the project workspace&hellip;</div>
+      <div style="height:2px;background:#2a2a2a;border-radius:1px;overflow:hidden;margin-bottom:20px;">
+        <div id="easterBar" style="height:100%;width:0%;background:#7c5cbf;transition:width 1.5s cubic-bezier(.4,0,.2,1);"></div>
+      </div>
+      <p style="font-size:10px;color:#383838;letter-spacing:.09em;text-transform:uppercase;margin:0;">&#128377;&nbsp; Best experienced on a desktop browser</p>
+    </div>
+  </div>
+
+  <style>#easterOverlay.show{display:flex!important;}</style>
+
+  <script>
+    function triggerEaster(e) {
+      e.preventDefault();
+      var ov    = document.getElementById('easterOverlay');
+      var icon  = document.getElementById('easterIcon');
+      var title = document.getElementById('easterTitle');
+      var sub   = document.getElementById('easterSub');
+      var bar   = document.getElementById('easterBar');
+      ov.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        ov.style.opacity = '1';
+        setTimeout(function() {
+          icon.style.opacity = '1';
+          icon.style.transform = 'scale(1)';
+        }, 200);
+      }, 20);
+      var msg = 'Congratulations,\nyou found the easter egg!';
+      var i = 0;
+      function type() {
+        if (i < msg.length) {
+          title.textContent += msg[i];
+          i++;
+          setTimeout(type, i < 15 ? 65 : 35);
+        } else {
+          setTimeout(function() { sub.style.opacity = '1'; bar.style.width = '100%'; }, 150);
+          setTimeout(function() { window.location.href = 'desktop.html'; }, 2200);
+        }
+      }
+      setTimeout(type, 550);
+    }
   </script>
 </body>
 </html>

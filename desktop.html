@@ -429,10 +429,59 @@
     const name = card.querySelector('.file-card-name')?.textContent.trim();
     if (cardLinks[name]) {
       card.style.cursor = 'pointer';
-      card.addEventListener('click', () => { window.location.href = cardLinks[name]; });
+      card.addEventListener('click', () => openProject(name, cardLinks[name]));
     }
   });
+
+  function openProject(name, url) {
+    const ov = document.getElementById('projOverlay');
+    const lbl = document.getElementById('projOverlayName');
+    const bar = document.getElementById('projOverlayBar');
+    lbl.textContent = name;
+    ov.style.display = 'flex';
+    requestAnimationFrame(() => {
+      ov.style.opacity = '1';
+      bar.style.width = '100%';
+    });
+    setTimeout(() => { window.location.href = url; }, 900);
+  }
 </script>
+
+<!-- ── Figma-style project open overlay ── -->
+<div id="projOverlay" style="
+  display:none; opacity:0;
+  position:fixed; inset:0; z-index:9999;
+  background:var(--bg-base,#1e1e1e);
+  flex-direction:column; align-items:center; justify-content:center;
+  transition:opacity .18s ease;
+  font-family:'Manrope',sans-serif;
+">
+  <div style="text-align:center; width:280px;">
+    <!-- Figma-like icon -->
+    <div style="width:40px;height:40px;background:var(--accent,#7c5cbf);border-radius:10px;
+                display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+    </div>
+
+    <div style="font-size:11px;color:var(--text-muted,#888);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;">
+      Opening project
+    </div>
+    <div id="projOverlayName" style="font-size:15px;font-weight:600;color:var(--text-primary,#eee);
+                                      margin-bottom:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
+
+    <!-- progress bar -->
+    <div style="height:2px;background:var(--border-color,#333);border-radius:1px;overflow:hidden;">
+      <div id="projOverlayBar" style="
+        height:100%;width:0%;
+        background:var(--accent,#7c5cbf);
+        transition:width .75s cubic-bezier(.4,0,.2,1);
+      "></div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
