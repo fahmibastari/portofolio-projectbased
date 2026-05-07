@@ -81,6 +81,21 @@
   </div>
 
   <main class="catalog-grid">
+
+    <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('sicater')">
+  <div class="catalog-img-wrapper">
+    <img src="image/sicater/Thumbnail-Sicater.png" class="catalog-img" alt="SiCater Ultimate">
+    <div class="catalog-overlay"><span class="overlay-text">SiCater Ultimate Ecosystem</span></div>
+  </div>
+  <div class="catalog-body">
+    <div>
+      <span class="catalog-category">Enterprise GovTech</span>
+      <h3 class="catalog-title">SiCater Ultimate</h3>
+      <p class="catalog-desc">Mission-critical system for water utility management, integrating AI-OCR field inspections with enterprise-grade analytics.</p>
+    </div>
+    <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
+  </div>
+</article>
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('flamboys')">
       <div class="catalog-img-wrapper">
         <img src="image/flamboys/Mobile - HomeMenu.png" class="catalog-img" alt="Flamboys Ecosystem">
@@ -649,6 +664,31 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      sicater: {
+  title: "SiCater Ultimate Ecosystem",
+  desc: "An enterprise-grade utility management ecosystem for water districts (PDAM). This 3-tier system bridges the gap between field operations and executive oversight. Features include an offline-first mobile app with AI-OCR and NFC validation, real-time GPS tracking for meter readers, and a robust web command center for revenue estimation, abnormal consumption analysis, and automated activity logging.",
+  tech: ["NestJS", "React Native", "Expo", "TypeORM", "MySQL", "AI OCR", "NFC"],
+  link: "#",
+  images: [
+    "image/sicater/Thumbnail-Sicater.png",
+    "image/sicater/Web-Dashboard.png",
+    "image/sicater/Web-Revenue.png",
+    "image/sicater/Web-DataMeter.png",
+    "image/sicater/Web-MeterMap.png",
+    "image/sicater/Web-StatsPetugas.png",
+    "image/sicater/Mobile-Login.jpg",
+    "image/sicater/Mobile-DashboardStats.jpg",
+    "image/sicater/Mobile-Route.jpg",
+    "image/sicater/Mobile-Pelanggan.jpg",
+    "image/sicater/Mobile-ScanQR.jpg",
+    "image/sicater/Mobile-ScanNFC.jpg",
+    "image/sicater/Mobile-Pencatatan.jpg",
+    "image/sicater/Mobile-StatsDetail.jpg",
+    "image/sicater/Mobile-Profile.jpg",
+    "image/sicater/Web-DBBackupOptimization.png",
+    "image/sicater/Web-ActivityLog.png"
+  ]
+},
       perpahmian: {
         title: "PERPAHMIAN Game Station",
         desc: "A high-performance browser gaming platform built entirely with Vanilla JavaScript to demonstrate core web development mastery. Features 10 fully playable games (including Tetris, Space Shooter, and Rhythm games) without any game engine dependencies. The architecture utilizes the Web Audio API and Tone.js for procedural music generation, while the UI employs glassmorphism and GPU-accelerated canvas rendering for a futuristic, 60 FPS experience.",
