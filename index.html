@@ -82,6 +82,36 @@
 
   <main class="catalog-grid">
 
+    <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('magicpin')">
+      <div class="catalog-img-wrapper">
+        <img src="image/magicpin/Thumbnail.jpg" class="catalog-img" alt="Magic Pin Trading Ecosystem">
+        <div class="catalog-overlay"><span class="overlay-text">Magic Pin Trading Ecosystem</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">AI / Mobile Ecosystem</span>
+          <h3 class="catalog-title">Magic Pin Ecosystem</h3>
+          <p class="catalog-desc">A premium pin-trading platform for Disney collectors, integrating semantic Mask2Former AI for scanning, real-time chat, and custom Leaflet/GDAL interactive maps.</p>
+        </div>
+        <div class="catalog-btn">View Ecosystem <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
+
+    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('spekhp')">
+      <div class="catalog-img-wrapper">
+        <img src="image/spekhp/Main.png" class="catalog-img" alt="SpekHP Specs Portal">
+        <div class="catalog-overlay"><span class="overlay-text">SpekHP Specs Portal</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Custom CMS / Portal</span>
+          <h3 class="catalog-title">SpekHP Specs Portal</h3>
+          <p class="catalog-desc">A GSMArena-style phone specifications portal tailored for the Indonesian market, featuring automated GSMArena scraping, AJAX-based comparisons, and a custom ads-management CMS.</p>
+        </div>
+        <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
+
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('sicater')">
   <div class="catalog-img-wrapper">
     <img src="image/sicater/Thumbnail-Sicater.png" class="catalog-img" alt="SiCater Ultimate">
@@ -113,7 +143,7 @@
 
     <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('ubmstorage')">
       <div class="catalog-img-wrapper">
-        <img src="image/ubmstorage/LP - 3D PSP.png" class="catalog-img" alt="UBM Storage 3D">
+        <img src="image/ubmstorage/Thumbnail.png" class="catalog-img" alt="UBM Storage 3D">
         <div class="catalog-overlay"><span class="overlay-text">UBM Storage 3D</span></div>
       </div>
       <div class="catalog-body">
@@ -664,6 +694,46 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      magicpin: {
+        title: "Magic Pin Trading Ecosystem",
+        desc: "A massive, multi-repo digital ecosystem for Disney pin collectors and traders. Features an Android & iOS mobile app with AI-powered multi-scan capabilities (using PyTorch and Mask2Former for segmenting pin boards and removing backgrounds), a real-time messaging microservice built on Socket.io, and a custom interactive map engine using GDAL and Leaflet to render high-resolution Disneyland/Disney World map tiles. The web dashboard (React + Tailwind) allows admins to curate the pin catalog, approve trades, manage subscription tiers via PayPal, and view real-time platform analytics.",
+        tech: ["NestJS", "React Native", "Python Flask", "PyTorch", "Socket.io", "GDAL", "PostgreSQL", "React", "Prisma"],
+        link: "https://www.magicpinapp.com/",
+        images: [
+          "image/magicpin/DashboardGuest1.png",
+          "image/magicpin/DashboardGuest2.png",
+          "image/magicpin/DashboardGuest3.png",
+          "image/magicpin/DashboardGuest4.png",
+          "image/magicpin/Web - Map Tiles - List Map.png",
+          "image/magicpin/Web - Marketplace.png",
+          "image/magicpin/Web - My Profile - Board.png",
+          "image/magicpin/Web - Detail Pin.png",
+          "image/magicpin/Mobile - My Profile.png",
+          "image/magicpin/Mobile - AccountSettings.png",
+          "image/magicpin/Mobile - List Map.png",
+          "image/magicpin/Mobile - FullMapTiles.png",
+          "image/magicpin/Mobile - Pin Detail.png"
+        ]
+      },
+      spekhp: {
+        title: "SpekHP Specs Portal",
+        desc: "A GSMArena-style phone specifications portal designed for the Indonesian market. Built on Leaf MVC v4 (PHP 8.2+) with Eloquent ORM, this custom CMS features AJAX-powered autocomplete search, a dual-device specifications comparison engine, and a fully automated web scraper for GSMArena. The dashboard empowers administrators to manage devices, ad slots, and SEO metadata. Optimized for monetization and discoverability with Adsense slots, automated sitemaps, JSON-LD schema, and an integrated WordPress blog structure via .htaccess.",
+        tech: ["Leaf MVC", "PHP", "TailwindCSS", "Alpine.js", "MySQL", "Eloquent ORM", "Vite"],
+        link: "https://perpahmian-dev.lovestoblog.com/",
+        images: [
+          "image/spekhp/Main.png",
+          "image/spekhp/Main2.png",
+          "image/spekhp/Main3.png",
+          "image/spekhp/Dashboard-SearchHP.png",
+          "image/spekhp/Dashboard-HPCompare.png",
+          "image/spekhp/Dashboard-AllBrand.png",
+          "image/spekhp/Dashboard-AllCapture.png",
+          "image/spekhp/Admin-Dashboard.png",
+          "image/spekhp/Admin-ManageBrands.png",
+          "image/spekhp/Admin-ManageAds.png",
+          "image/spekhp/Admin-ManageTestimonial.png"
+        ]
+      },
       sicater: {
   title: "SiCater Ultimate Ecosystem",
   desc: "An enterprise-grade utility management ecosystem for water districts (PDAM). This 3-tier system bridges the gap between field operations and executive oversight. Features include an offline-first mobile app with AI-OCR and NFC validation, real-time GPS tracking for meter readers, and a robust web command center for revenue estimation, abnormal consumption analysis, and automated activity logging.",
