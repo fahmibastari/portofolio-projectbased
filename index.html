@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="image/profile/icon.png">
@@ -7,8 +8,11 @@
   <title>Fahmi Bastari - Fullstack Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -24,7 +28,7 @@
   <nav class="navbar fixed-top">
     <div class="container-fluid px-3 px-lg-5">
       <a class="navbar-brand" href="#">FAHMI BASTARI</a>
-      
+
       <div class="d-none d-md-flex align-items-center">
         <a href="https://wa.me/6281271662745" class="nav-link">CONTACT</a>
         <a href="https://github.com/fahmibastari" target="_blank" class="nav-link">GITHUB</a>
@@ -52,14 +56,16 @@
           <h1 class="hero-title fw-extra-bold">
             ARCHITECTING <br>
             <a href="desktop.html" id="easterLink"
-               style="text-decoration:none;color:inherit;opacity:1;transition:opacity .2s;cursor:pointer;"
-               onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'"
-               onclick="triggerEaster(event)">
+              style="text-decoration:none;color:inherit;opacity:1;transition:opacity .2s;cursor:pointer;"
+              onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'" onclick="triggerEaster(event)">
               <span class="text-teal">SCALABLE</span>
             </a>
 
             SOLUTIONS.
           </h1>
+          <a href="#contact-cta" class="btn-contact-hero">
+            Contact Me <i class="bi bi-arrow-down-right"></i>
+          </a>
         </div>
         <div class="col-lg-4 text-lg-end">
           <p class="hero-subtitle ms-auto mb-0">
@@ -71,7 +77,8 @@
   </header>
 
   <div class="filter-sticky-container">
-    <div class="container px-0"> <div class="filter-bar">
+    <div class="container px-0">
+      <div class="filter-bar">
         <button class="btn-filter active" data-filter="all">All Projects</button>
         <button class="btn-filter" data-filter="featured">Featured</button>
         <button class="btn-filter" data-filter="web">Web Apps</button>
@@ -91,7 +98,8 @@
         <div>
           <span class="catalog-category">AI / Mobile Ecosystem</span>
           <h3 class="catalog-title">Magic Pin Ecosystem</h3>
-          <p class="catalog-desc">A premium pin-trading platform for Disney collectors, integrating semantic Mask2Former AI for scanning, real-time chat, and custom Leaflet/GDAL interactive maps.</p>
+          <p class="catalog-desc">A premium pin-trading platform for Disney collectors, integrating semantic Mask2Former
+            AI for scanning, real-time chat, and custom Leaflet/GDAL interactive maps.</p>
         </div>
         <div class="catalog-btn">View Ecosystem <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -106,26 +114,28 @@
         <div>
           <span class="catalog-category">Custom CMS / Portal</span>
           <h3 class="catalog-title">SpekHP Specs Portal</h3>
-          <p class="catalog-desc">A GSMArena-style phone specifications portal tailored for the Indonesian market, featuring automated GSMArena scraping, AJAX-based comparisons, and a custom ads-management CMS.</p>
+          <p class="catalog-desc">A GSMArena-style phone specifications portal tailored for the Indonesian market,
+            featuring automated GSMArena scraping, AJAX-based comparisons, and a custom ads-management CMS.</p>
         </div>
         <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
 
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('sicater')">
-  <div class="catalog-img-wrapper">
-    <img src="image/sicater/Thumbnail-Sicater.png" class="catalog-img" alt="SiCater Ultimate">
-    <div class="catalog-overlay"><span class="overlay-text">SiCater Ultimate Ecosystem</span></div>
-  </div>
-  <div class="catalog-body">
-    <div>
-      <span class="catalog-category">Enterprise GovTech</span>
-      <h3 class="catalog-title">SiCater Ultimate</h3>
-      <p class="catalog-desc">Mission-critical system for water utility management, integrating AI-OCR field inspections with enterprise-grade analytics.</p>
-    </div>
-    <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
-  </div>
-</article>
+      <div class="catalog-img-wrapper">
+        <img src="image/sicater/Thumbnail-Sicater.png" class="catalog-img" alt="SiCater Ultimate">
+        <div class="catalog-overlay"><span class="overlay-text">SiCater Ultimate Ecosystem</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Enterprise GovTech</span>
+          <h3 class="catalog-title">SiCater Ultimate</h3>
+          <p class="catalog-desc">Mission-critical system for water utility management, integrating AI-OCR field
+            inspections with enterprise-grade analytics.</p>
+        </div>
+        <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('flamboys')">
       <div class="catalog-img-wrapper">
         <img src="image/flamboys/Mobile - HomeMenu.png" class="catalog-img" alt="Flamboys Ecosystem">
@@ -135,7 +145,8 @@
         <div>
           <span class="catalog-category">Fullstack IoT System</span>
           <h3 class="catalog-title">Flamboys Roaster Ecosystem</h3>
-          <p class="catalog-desc">End-to-end digital transformation for coffee production, bridging precision roasting logs with real-time inventory intelligence.</p>
+          <p class="catalog-desc">End-to-end digital transformation for coffee production, bridging precision roasting
+            logs with real-time inventory intelligence.</p>
         </div>
         <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -150,12 +161,13 @@
         <div>
           <span class="catalog-category">Immersive WebGL</span>
           <h3 class="catalog-title">UBM Storage 3D</h3>
-          <p class="catalog-desc">A fully interactive 3D virtual store simulating a retro handheld console experience directly in the browser using React Three Fiber.</p>
+          <p class="catalog-desc">A fully interactive 3D virtual store simulating a retro handheld console experience
+            directly in the browser using React Three Fiber.</p>
         </div>
         <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-    
+
     <article class="catalog-item fade-in" data-cat="featured mobile" onclick="openModal('digivass')">
       <div class="catalog-img-wrapper">
         <img src="image/digivass/MobileMockup.png" class="catalog-img" alt="Digivass">
@@ -165,12 +177,13 @@
         <div>
           <span class="catalog-category">Featured Ecosystem</span>
           <h3 class="catalog-title">DIGIVASS Field Ops</h3>
-          <p class="catalog-desc">An integrated command center solving the disconnect between office management and field surveyors with offline-first mobile architecture.</p>
+          <p class="catalog-desc">An integrated command center solving the disconnect between office management and
+            field surveyors with offline-first mobile architecture.</p>
         </div>
         <div class="catalog-btn">View Case Study <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-    
+
     <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('justspeak')">
       <div class="catalog-img-wrapper">
         <img src="image/justspeak/Dashboard.png" class="catalog-img" alt="JustSpeak">
@@ -180,12 +193,13 @@
         <div>
           <span class="catalog-category">EdTech Platform</span>
           <h3 class="catalog-title">JustSpeak IELTS</h3>
-          <p class="catalog-desc">Synchronized classroom experience using Laravel & Inertia.js. Replaces heavy websockets with optimized REST strategies.</p>
+          <p class="catalog-desc">Synchronized classroom experience using Laravel & Inertia.js. Replaces heavy
+            websockets with optimized REST strategies.</p>
         </div>
         <div class="catalog-btn">View Architecture <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-    
+
     <article class="catalog-item fade-in" data-cat="web" onclick="openModal('mental')">
       <div class="catalog-img-wrapper">
         <img src="image/mentalhealing/Dashboard.png" class="catalog-img" alt="Mental Healing">
@@ -195,12 +209,13 @@
         <div>
           <span class="catalog-category">HealthTech</span>
           <h3 class="catalog-title">Mental Healing ID</h3>
-          <p class="catalog-desc">High-performance executive dashboard translating complex patient data into intuitive visual insights with Next.js.</p>
+          <p class="catalog-desc">High-performance executive dashboard translating complex patient data into intuitive
+            visual insights with Next.js.</p>
         </div>
         <div class="catalog-btn">View Dashboard <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-    
+
     <article class="catalog-item fade-in" data-cat="web featured" onclick="openModal('2watuju')">
       <div class="catalog-img-wrapper">
         <img src="image/2watuju/DashboardCatalog.png" class="catalog-img" alt="2Watuju">
@@ -210,7 +225,8 @@
         <div>
           <span class="catalog-category">VR / SEO</span>
           <h3 class="catalog-title">2Watuju Architecture</h3>
-          <p class="catalog-desc">Lightning-fast Svelte app focused on technical SEO and immersive 360° VR visualizations (Panolens.js).</p>
+          <p class="catalog-desc">Lightning-fast Svelte app focused on technical SEO and immersive 360° VR
+            visualizations (Panolens.js).</p>
         </div>
         <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -224,7 +240,8 @@
         <div>
           <span class="catalog-category">Gaming Platform</span>
           <h3 class="catalog-title">PERPAHMIAN Game Station</h3>
-          <p class="catalog-desc">A futuristic collection of 10 playable browser games built with pure Vanilla JS, featuring glassmorphism UI and procedural music generation via Tone.js.</p>
+          <p class="catalog-desc">A futuristic collection of 10 playable browser games built with pure Vanilla JS,
+            featuring glassmorphism UI and procedural music generation via Tone.js.</p>
         </div>
         <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -238,7 +255,8 @@
         <div>
           <span class="catalog-category">Dynamic CMS</span>
           <h3 class="catalog-title">Navara City Park Profile</h3>
-          <p class="catalog-desc">A fully dynamic corporate identity platform where every section is editable via a custom admin panel using Supabase.</p>
+          <p class="catalog-desc">A fully dynamic corporate identity platform where every section is editable via a
+            custom admin panel using Supabase.</p>
         </div>
         <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -253,7 +271,8 @@
         <div>
           <span class="catalog-category">Event System</span>
           <h3 class="catalog-title">Opening Ceremony Inv.</h3>
-          <p class="catalog-desc">Smart digital invitation system with Google Sheets API integration to auto-generate personalized guest links and track RSVPs.</p>
+          <p class="catalog-desc">Smart digital invitation system with Google Sheets API integration to auto-generate
+            personalized guest links and track RSVPs.</p>
         </div>
         <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -268,7 +287,8 @@
         <div>
           <span class="catalog-category">SaaS Product</span>
           <h3 class="catalog-title">Examlent Simulator</h3>
-          <p class="catalog-desc">Full-featured exam simulator with token entry, auto-grading, and CSV reporting built on Supabase.</p>
+          <p class="catalog-desc">Full-featured exam simulator with token entry, auto-grading, and CSV reporting built
+            on Supabase.</p>
         </div>
         <div class="catalog-btn">View Details <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -283,12 +303,13 @@
         <div>
           <span class="catalog-category">Public Sector</span>
           <h3 class="catalog-title">CCED Hiring Portal</h3>
-          <p class="catalog-desc">University job marketplace connecting students with companies using role-based access control.</p>
+          <p class="catalog-desc">University job marketplace connecting students with companies using role-based access
+            control.</p>
         </div>
         <div class="catalog-btn">View Details <i class="bi bi-arrow-right"></i></div>
       </div>
     </article>
-    
+
     <article class="catalog-item fade-in" data-cat="web" onclick="openModal('freelance')">
       <div class="catalog-img-wrapper">
         <img src="image/freelance/1.png" class="catalog-img" alt="Freelance">
@@ -298,7 +319,8 @@
         <div>
           <span class="catalog-category">Utility Tool</span>
           <h3 class="catalog-title">Freelancer Tracker</h3>
-          <p class="catalog-desc">Multi-currency fee tracker and session manager handling complex timezone conversions.</p>
+          <p class="catalog-desc">Multi-currency fee tracker and session manager handling complex timezone conversions.
+          </p>
         </div>
         <div class="catalog-btn">View Details <i class="bi bi-arrow-right"></i></div>
       </div>
@@ -323,115 +345,115 @@
 
   <section class="bento-section">
     <div class="container px-4 px-lg-5">
-      
+
       <h2 class="bento-title" data-aos="fade-up">
         COMPREHENSIVE <br>PROJECT DELIVERABLES
       </h2>
-      
+
       <div class="bento-scroll-wrapper">
         <div class="bento-grid">
-  
+
           <div class="bento-card col-span-1">
             <h4 class="bento-text">High-Fidelity<br>UI/UX Design</h4>
             <i class="bi bi-bezier2 bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-1">
             <h4 class="bento-text">Multi-Device<br>Responsiveness</h4>
             <i class="bi bi-laptop bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-1">
             <h4 class="bento-text">System Architecture<br>Blueprints</h4>
             <i class="bi bi-diagram-3 bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-2">
             <h4 class="bento-text">Full IP Ownership<br>& Clean Source Code</h4>
             <i class="bi bi-file-earmark-lock2 bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-1">
             <h4 class="bento-text">Transparent<br>Project Proposal</h4>
             <i class="bi bi-receipt bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-1">
             <h4 class="bento-text">Complete Asset<br>& Database Handoff</h4>
             <i class="bi bi-database-check bento-icon"></i>
           </div>
-  
+
           <div class="bento-card col-span-2">
             <h4 class="bento-text">Interactive Live Demo<br>& User Manuals</h4>
             <i class="bi bi-play-circle bento-icon"></i>
           </div>
-  
+
         </div>
       </div>
-      
+
       <div class="d-block d-lg-none text-center mt-3 opacity-50 text-white small">
         <i class="bi bi-arrow-left-right"></i> Swipe to explore more
       </div>
-  
+
     </div>
   </section>
 
   <section class="tech-section">
     <div class="container px-4 px-lg-5">
-      
+
       <div class="row gx-5">
-        
+
         <div class="col-lg-6">
-          
+
           <div class="tech-group">
             <h3 class="tech-category-title">Languages & Frameworks</h3>
             <div class="tech-grid">
-              
+
               <div class="tech-card">
                 <i class="devicon-html5-plain tech-icon" style="color: #E34F26;"></i>
                 <span class="tech-name">HTML</span>
               </div>
-              
+
               <div class="tech-card">
                 <i class="devicon-css3-plain tech-icon" style="color: #1572B6;"></i>
                 <span class="tech-name">CSS</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-javascript-plain tech-icon" style="color: #F7DF1E;"></i>
                 <span class="tech-name">JavaScript</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-typescript-plain tech-icon" style="color: #3178C6;"></i>
                 <span class="tech-name">TypeScript</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-php-plain tech-icon" style="color: #777BB4;"></i>
                 <span class="tech-name">PHP</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-laravel-plain tech-icon" style="color: #FF2D20;"></i>
                 <span class="tech-name">Laravel</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-codeigniter-plain tech-icon" style="color: #EF4223;"></i>
                 <span class="tech-name">CodeIgniter</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-react-original tech-icon" style="color: #61DAFB;"></i>
                 <span class="tech-name">React</span>
               </div>
-  
+
               <div class="tech-card">
                 <span class="iconify tech-icon" data-icon="skill-icons:nextjs-light"></span>
                 <span class="tech-name">Next.js</span>
               </div>
-  
+
               <div class="tech-card">
                 <i class="devicon-nodejs-plain tech-icon" style="color: #339933;"></i>
                 <span class="tech-name">Node.js</span>
@@ -461,191 +483,197 @@
                 <i class="devicon-bootstrap-plain tech-icon" style="color: #7952B3;"></i>
                 <span class="tech-name">Bootstrap</span>
               </div>
-  
+
             </div>
           </div>
-  
-          <div class="tech-group">
-              <h3 class="tech-category-title">UI/UX & Tools</h3>
-              <div class="tech-grid">
-                
-                <div class="tech-card">
-                  <i class="devicon-tailwindcss-plain tech-icon" style="color: #38B2AC;"></i>
-                  <span class="tech-name">Tailwind</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-figma-plain tech-icon" style="color: #F24E1E;"></i>
-                  <span class="tech-name">Figma</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-git-plain tech-icon" style="color: #F05032;"></i>
-                  <span class="tech-name">Git</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-docker-plain tech-icon" style="color: #2496ED;"></i>
-                  <span class="tech-name">Docker</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-vercel-original tech-icon" style="color: #000;"></i>
-                  <span class="tech-name">Vercel</span>
-                </div>
-  
-                <div class="tech-card">
-                  <i class="devicon-netlify-plain tech-icon" style="color: #00C7B7;"></i>
-                  <span class="tech-name">Netlify</span>
-                </div>
 
-                <div class="tech-card">
-                  <i class="devicon-vitejs-plain tech-icon" style="color: #646CFF;"></i>
-                  <span class="tech-name">Vite</span>
-                </div>
-  
-                <div class="tech-card">
-                   <i class="devicon-expo-plain tech-icon" style="color: #000020;"></i>
-                   <span class="tech-name">Expo</span>
-                </div>
-  
-              </div>
-          </div>
-  
-        </div>
-  
-        <div class="col-lg-6">
-          
           <div class="tech-group">
-              <h3 class="tech-category-title">Database & APIs</h3>
-              <div class="tech-grid">
-                
-                <div class="tech-card">
-                  <i class="devicon-postgresql-plain tech-icon" style="color: #336791;"></i>
-                  <span class="tech-name">PostgreSQL</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-mysql-plain tech-icon" style="color: #4479A1;"></i>
-                  <span class="tech-name">MySQL</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-prisma-original tech-icon" style="color: #0C344B;"></i>
-                  <span class="tech-name">Prisma</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-supabase-plain tech-icon" style="color: #3ECF8E;"></i>
-                  <span class="tech-name">Supabase</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-graphql-plain tech-icon" style="color: #E10098;"></i>
-                  <span class="tech-name">GraphQL</span>
-                </div>
-    
-                <div class="tech-card">
-                  <i class="devicon-postman-plain tech-icon" style="color: #FF6C37;"></i>
-                  <span class="tech-name">REST API</span>
-                </div>
-  
-                <div class="tech-card">
-                  <i class="bi bi-file-earmark-spreadsheet tech-icon" style="color: #0F9D58;"></i>
-                  <span class="tech-name">Google API</span>
-                </div>
-  
+            <h3 class="tech-category-title">UI/UX & Tools</h3>
+            <div class="tech-grid">
+
+              <div class="tech-card">
+                <i class="devicon-tailwindcss-plain tech-icon" style="color: #38B2AC;"></i>
+                <span class="tech-name">Tailwind</span>
               </div>
+
+              <div class="tech-card">
+                <i class="devicon-figma-plain tech-icon" style="color: #F24E1E;"></i>
+                <span class="tech-name">Figma</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-git-plain tech-icon" style="color: #F05032;"></i>
+                <span class="tech-name">Git</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-docker-plain tech-icon" style="color: #2496ED;"></i>
+                <span class="tech-name">Docker</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-vercel-original tech-icon" style="color: #000;"></i>
+                <span class="tech-name">Vercel</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-netlify-plain tech-icon" style="color: #00C7B7;"></i>
+                <span class="tech-name">Netlify</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-vitejs-plain tech-icon" style="color: #646CFF;"></i>
+                <span class="tech-name">Vite</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-expo-plain tech-icon" style="color: #000020;"></i>
+                <span class="tech-name">Expo</span>
+              </div>
+
+            </div>
           </div>
-          
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="tech-group">
+            <h3 class="tech-category-title">Database & APIs</h3>
+            <div class="tech-grid">
+
+              <div class="tech-card">
+                <i class="devicon-postgresql-plain tech-icon" style="color: #336791;"></i>
+                <span class="tech-name">PostgreSQL</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-mysql-plain tech-icon" style="color: #4479A1;"></i>
+                <span class="tech-name">MySQL</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-prisma-original tech-icon" style="color: #0C344B;"></i>
+                <span class="tech-name">Prisma</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-supabase-plain tech-icon" style="color: #3ECF8E;"></i>
+                <span class="tech-name">Supabase</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-graphql-plain tech-icon" style="color: #E10098;"></i>
+                <span class="tech-name">GraphQL</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="devicon-postman-plain tech-icon" style="color: #FF6C37;"></i>
+                <span class="tech-name">REST API</span>
+              </div>
+
+              <div class="tech-card">
+                <i class="bi bi-file-earmark-spreadsheet tech-icon" style="color: #0F9D58;"></i>
+                <span class="tech-name">Google API</span>
+              </div>
+
+            </div>
           </div>
-  
+
+        </div>
+
       </div>
     </div>
   </section>
 
-  
-  <section class="cta-section">
+
+  <section id="contact-cta" class="cta-section">
     <div class="bubble" style="width: 150px; height: 150px; top: 10%; left: 15%;"></div>
     <div class="bubble" style="width: 100px; height: 100px; bottom: 10%; right: 15%; animation-delay: 1s;"></div>
 
     <div class="container">
-        <div class="row align-items-center justify-content-center text-center text-lg-start g-5">
-            <div class="col-lg-7">
-                <h2 class="cta-title">
-                    READY TO <br> 
-                    <span class="">COLLABORATE?</span>
-                </h2>
-            </div>
-            
-            <div class="col-lg-3 d-flex justify-content-center">
-                <div class="btn-collab-wrapper">
-                    <div class="particle p1" style="top: 0; right: 0;"></div>
-                    <div class="particle p2" style="bottom: 0; left: 0;"></div>
-                    
-                    <div class="btn-spinner"></div>
-                    
-                    <a href="https://wa.me/6281271662745" class="btn-collab" aria-label="Start Collaboration">
-                        <i class="bi bi-arrow-right fs-1"></i>
-                    </a>
-                </div>
-            </div>
+      <div class="row align-items-center justify-content-center text-center text-lg-start g-5">
+        <div class="col-lg-7">
+          <h2 class="cta-title">
+            READY TO <br>
+            <span class="">COLLABORATE?</span>
+          </h2>
         </div>
+
+        <div class="col-lg-3 d-flex justify-content-center">
+          <div class="btn-collab-wrapper">
+            <div class="particle p1" style="top: 0; right: 0;"></div>
+            <div class="particle p2" style="bottom: 0; left: 0;"></div>
+
+            <div class="btn-spinner"></div>
+
+            <a href="https://wa.me/6281271662745" class="btn-collab" aria-label="Start Collaboration">
+              <i class="bi bi-arrow-right fs-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
   <footer style="background: #fff; border-top: 1px solid var(--arch-border);">
-  <div class="container">
-      
+    <div class="container">
+
       <div class="footer-grid-wrapper">
-          
-          <div class="footer-col-main">
-              <p class="footer-text">
-                At PERPAHMIAN.LTD, we architect digital success. We specialize in end-to-end fullstack solutions, bridging the gap between high-fidelity interfaces and enterprise-grade backend infrastructure. Our mission is to deliver scalable, robust, and efficient digital ecosystems that drive business growth and operational excellence.
-              </p>
-          </div>
 
-          <div class="footer-col-social ps-lg-5"> <h3 class="footer-heading">Social Media</h3>
-              <div class="d-flex flex-column gap-2">
-                  
-                  <a href="https://instagram.com/fahmibastari" target="_blank" class="social-link">
-                      <span class="social-text">Instagram</span>
-                  </a>
-
-                  <a href="https://linkedin.com/in/fahmibastari" target="_blank" class="social-link">
-                      <span class="social-text">LinkedIn</span>
-                  </a>
-
-                  <a href="https://github.com/fahmibastari" target="_blank" class="social-link">
-                      <span class="social-text">Github</span>
-                  </a>
-
-              </div>
-          </div>
-
-          <div class="footer-col-contact ps-lg-5"> <div class="mb-5">
-                  <h4 class="footer-heading">Address</h4>
-                  <p class="footer-text mb-0">
-                      Lampung,<br>
-                      Indonesia
-                  </p>
-              </div>
-
-              <div>
-                  <h3 class="footer-heading mb-3">Contact</h3>
-                  <a href="tel:+6281271662745" class="contact-link">+62 812-7166-2745</a>
-                  <a href="mailto:fahmibastari.work@gmail.com" class="contact-link mt-2">fahmibastari.work@gmail.com</a>
-              </div>
-          </div>
-
-      </div> <div class="py-4 text-center border-top border-light">
-          <p class="small text-muted font-monospace mb-0">
-            &copy; 2026 FAHMI BASTARI.
+        <div class="footer-col-main">
+          <p class="footer-text">
+            At PERPAHMIAN.LTD, we architect digital success. We specialize in end-to-end fullstack solutions, bridging
+            the gap between high-fidelity interfaces and enterprise-grade backend infrastructure. Our mission is to
+            deliver scalable, robust, and efficient digital ecosystems that drive business growth and operational
+            excellence.
           </p>
+        </div>
+
+        <div class="footer-col-social ps-lg-5">
+          <h3 class="footer-heading">Social Media</h3>
+          <div class="d-flex flex-column gap-2">
+
+            <a href="https://instagram.com/fahmibastari" target="_blank" class="social-link">
+              <span class="social-text">Instagram</span>
+            </a>
+
+            <a href="https://linkedin.com/in/fahmibastari" target="_blank" class="social-link">
+              <span class="social-text">LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/fahmibastari" target="_blank" class="social-link">
+              <span class="social-text">Github</span>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="footer-col-contact ps-lg-5">
+          <div class="mb-5">
+            <h4 class="footer-heading">Address</h4>
+            <p class="footer-text mb-0">
+              Bandung,<br>
+              Indonesia
+            </p>
+          </div>
+
+          <div>
+            <h3 class="footer-heading mb-3">Contact</h3>
+            <a href="tel:+6281271662745" class="contact-link">+62 812-7166-2745</a>
+            <a href="mailto:fahmibastari.work@gmail.com" class="contact-link mt-2">fahmibastari.work@gmail.com</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="py-4 text-center border-top border-light">
+        <p class="small text-muted font-monospace mb-0">
+          &copy; 2026 FAHMI BASTARI.
+        </p>
       </div>
 
-  </div>
-</footer>
+    </div>
+  </footer>
 
 
   <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
@@ -658,7 +686,7 @@
         <div class="modal-body">
           <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner" id="mCarouselInner">
-              </div>
+            </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
               <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
             </button>
@@ -666,9 +694,9 @@
               <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
             </button>
           </div>
-          
+
           <div class="modal-thumbs" id="mThumbs">
-            </div>
+          </div>
 
           <div class="modal-desc-area">
             <div class="row">
@@ -679,8 +707,9 @@
               <div class="col-lg-4 border-start border-light ps-lg-4 mt-4 mt-lg-0">
                 <h6 class="fw-bold mb-3">TECH STACK</h6>
                 <div id="mTech" class="d-flex flex-wrap gap-2 mb-4">
-                  </div>
-                <a href="#" id="mLink" target="_blank" class="btn btn-dark w-100 rounded-0 text-uppercase fw-bold">Visit Live Production</a>
+                </div>
+                <a href="#" id="mLink" target="_blank" class="btn btn-dark w-100 rounded-0 text-uppercase fw-bold">Visit
+                  Live Production</a>
               </div>
             </div>
           </div>
@@ -735,30 +764,30 @@
         ]
       },
       sicater: {
-  title: "SiCater Ultimate Ecosystem",
-  desc: "An enterprise-grade utility management ecosystem for water districts (PDAM). This 3-tier system bridges the gap between field operations and executive oversight. Features include an offline-first mobile app with AI-OCR and NFC validation, real-time GPS tracking for meter readers, and a robust web command center for revenue estimation, abnormal consumption analysis, and automated activity logging.",
-  tech: ["NestJS", "React Native", "Expo", "TypeORM", "MySQL", "AI OCR", "NFC"],
-  link: "#",
-  images: [
-    "image/sicater/Thumbnail-Sicater.png",
-    "image/sicater/Web-Dashboard.png",
-    "image/sicater/Web-Revenue.png",
-    "image/sicater/Web-DataMeter.png",
-    "image/sicater/Web-MeterMap.png",
-    "image/sicater/Web-StatsPetugas.png",
-    "image/sicater/Mobile-Login.jpg",
-    "image/sicater/Mobile-DashboardStats.jpg",
-    "image/sicater/Mobile-Route.jpg",
-    "image/sicater/Mobile-Pelanggan.jpg",
-    "image/sicater/Mobile-ScanQR.jpg",
-    "image/sicater/Mobile-ScanNFC.jpg",
-    "image/sicater/Mobile-Pencatatan.jpg",
-    "image/sicater/Mobile-StatsDetail.jpg",
-    "image/sicater/Mobile-Profile.jpg",
-    "image/sicater/Web-DBBackupOptimization.png",
-    "image/sicater/Web-ActivityLog.png"
-  ]
-},
+        title: "SiCater Ultimate Ecosystem",
+        desc: "An enterprise-grade utility management ecosystem for water districts (PDAM). This 3-tier system bridges the gap between field operations and executive oversight. Features include an offline-first mobile app with AI-OCR and NFC validation, real-time GPS tracking for meter readers, and a robust web command center for revenue estimation, abnormal consumption analysis, and automated activity logging.",
+        tech: ["NestJS", "React Native", "Expo", "TypeORM", "MySQL", "AI OCR", "NFC"],
+        link: "#",
+        images: [
+          "image/sicater/Thumbnail-Sicater.png",
+          "image/sicater/Web-Dashboard.png",
+          "image/sicater/Web-Revenue.png",
+          "image/sicater/Web-DataMeter.png",
+          "image/sicater/Web-MeterMap.png",
+          "image/sicater/Web-StatsPetugas.png",
+          "image/sicater/Mobile-Login.jpg",
+          "image/sicater/Mobile-DashboardStats.jpg",
+          "image/sicater/Mobile-Route.jpg",
+          "image/sicater/Mobile-Pelanggan.jpg",
+          "image/sicater/Mobile-ScanQR.jpg",
+          "image/sicater/Mobile-ScanNFC.jpg",
+          "image/sicater/Mobile-Pencatatan.jpg",
+          "image/sicater/Mobile-StatsDetail.jpg",
+          "image/sicater/Mobile-Profile.jpg",
+          "image/sicater/Web-DBBackupOptimization.png",
+          "image/sicater/Web-ActivityLog.png"
+        ]
+      },
       perpahmian: {
         title: "PERPAHMIAN Game Station",
         desc: "A high-performance browser gaming platform built entirely with Vanilla JavaScript to demonstrate core web development mastery. Features 10 fully playable games (including Tetris, Space Shooter, and Rhythm games) without any game engine dependencies. The architecture utilizes the Web Audio API and Tone.js for procedural music generation, while the UI employs glassmorphism and GPU-accelerated canvas rendering for a futuristic, 60 FPS experience.",
@@ -936,16 +965,16 @@
     // --- MODAL LOGIC ---
     const modalEl = document.getElementById('projectModal');
     const modal = new bootstrap.Modal(modalEl);
-    
+
     function openModal(key) {
       const p = projects[key];
-      if(!p) return;
+      if (!p) return;
 
       // Set Texts
       document.getElementById('mTitle').innerText = p.title;
       document.getElementById('mDesc').innerText = p.desc;
       document.getElementById('mLink').href = p.link;
-      
+
       // Set Tech Stack
       const techContainer = document.getElementById('mTech');
       // Fix badge style just in case
@@ -980,10 +1009,10 @@
       const carouselEl = document.getElementById('modalCarousel');
       const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
       bsCarousel.to(index);
-      
+
       // Update Active Thumb State
       document.querySelectorAll('.modal-thumb').forEach((thumb, idx) => {
-        if(idx === index) thumb.classList.add('active');
+        if (idx === index) thumb.classList.add('active');
         else thumb.classList.remove('active');
       });
     }
@@ -991,7 +1020,7 @@
     // Sync Thumb on Slide Event
     document.getElementById('modalCarousel').addEventListener('slide.bs.carousel', event => {
       document.querySelectorAll('.modal-thumb').forEach((thumb, idx) => {
-        if(idx === event.to) thumb.classList.add('active');
+        if (idx === event.to) thumb.classList.add('active');
         else thumb.classList.remove('active');
       });
     });
@@ -1009,7 +1038,7 @@
         const filterValue = btn.getAttribute('data-filter');
 
         items.forEach(item => {
-          if(filterValue === 'all' || item.getAttribute('data-cat').includes(filterValue)) {
+          if (filterValue === 'all' || item.getAttribute('data-cat').includes(filterValue)) {
             item.style.display = 'flex';
             setTimeout(() => item.style.opacity = '1', 50);
           } else {
@@ -1022,39 +1051,54 @@
   </script>
 
   <!-- ═══ EASTER EGG OVERLAY ═══ -->
-  <div id="easterOverlay" style="display:none;opacity:0;position:fixed;inset:0;z-index:99999;background:#1a1a1a;flex-direction:column;align-items:center;justify-content:center;transition:opacity .2s ease;font-family:'Manrope','Inter',sans-serif;">
+  <div id="easterOverlay"
+    style="display:none;opacity:0;position:fixed;inset:0;z-index:99999;background:#1a1a1a;flex-direction:column;align-items:center;justify-content:center;transition:opacity .2s ease;font-family:'Manrope','Inter',sans-serif;">
     <div style="text-align:center;width:300px;">
-      <div id="easterIcon" style="width:44px;height:44px;background:#7c5cbf;border-radius:11px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;opacity:0;transform:scale(.7);transition:opacity .35s,transform .35s;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
-          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      <div id="easterIcon"
+        style="width:44px;height:44px;background:#7c5cbf;border-radius:11px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;opacity:0;transform:scale(.7);transition:opacity .35s,transform .35s;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"
+          stroke-linecap="round">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
         </svg>
       </div>
-      <div style="font-size:10px;color:#555;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Easter Egg Found</div>
-      <div id="easterTitle" style="font-size:17px;font-weight:600;color:#f0f0f0;line-height:1.5;margin-bottom:28px;min-height:2.6em;white-space:pre-wrap;"></div>
-      <div id="easterSub" style="font-size:12px;color:#555;margin-bottom:32px;opacity:0;transition:opacity .5s;">Buckle up - entering the project workspace&hellip;</div>
-      <div style="height:2px;background:#2a2a2a;border-radius:1px;overflow:hidden;margin-bottom:20px;">
-        <div id="easterBar" style="height:100%;width:0%;background:#7c5cbf;transition:width 1.5s cubic-bezier(.4,0,.2,1);"></div>
+      <div style="font-size:10px;color:#555;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Easter
+        Egg Found</div>
+      <div id="easterTitle"
+        style="font-size:17px;font-weight:600;color:#f0f0f0;line-height:1.5;margin-bottom:28px;min-height:2.6em;white-space:pre-wrap;">
       </div>
-      <p style="font-size:10px;color:#383838;letter-spacing:.09em;text-transform:uppercase;margin:0;">&#128377;&nbsp; Best experienced on a desktop browser</p>
+      <div id="easterSub" style="font-size:12px;color:#555;margin-bottom:32px;opacity:0;transition:opacity .5s;">Buckle
+        up - entering the project workspace&hellip;</div>
+      <div style="height:2px;background:#2a2a2a;border-radius:1px;overflow:hidden;margin-bottom:20px;">
+        <div id="easterBar"
+          style="height:100%;width:0%;background:#7c5cbf;transition:width 1.5s cubic-bezier(.4,0,.2,1);"></div>
+      </div>
+      <p style="font-size:10px;color:#383838;letter-spacing:.09em;text-transform:uppercase;margin:0;">&#128377;&nbsp;
+        Best experienced on a desktop browser</p>
     </div>
   </div>
 
-  <style>#easterOverlay.show{display:flex!important;}</style>
+  <style>
+    #easterOverlay.show {
+      display: flex !important;
+    }
+  </style>
 
   <script>
     function triggerEaster(e) {
       e.preventDefault();
-      var ov    = document.getElementById('easterOverlay');
-      var icon  = document.getElementById('easterIcon');
+      var ov = document.getElementById('easterOverlay');
+      var icon = document.getElementById('easterIcon');
       var title = document.getElementById('easterTitle');
-      var sub   = document.getElementById('easterSub');
-      var bar   = document.getElementById('easterBar');
+      var sub = document.getElementById('easterSub');
+      var bar = document.getElementById('easterBar');
       ov.classList.add('show');
       document.body.style.overflow = 'hidden';
-      setTimeout(function() {
+      setTimeout(function () {
         ov.style.opacity = '1';
-        setTimeout(function() {
+        setTimeout(function () {
           icon.style.opacity = '1';
           icon.style.transform = 'scale(1)';
         }, 200);
@@ -1067,12 +1111,13 @@
           i++;
           setTimeout(type, i < 15 ? 65 : 35);
         } else {
-          setTimeout(function() { sub.style.opacity = '1'; bar.style.width = '100%'; }, 150);
-          setTimeout(function() { window.location.href = 'desktop.html'; }, 2200);
+          setTimeout(function () { sub.style.opacity = '1'; bar.style.width = '100%'; }, 150);
+          setTimeout(function () { window.location.href = 'desktop.html'; }, 2200);
         }
       }
       setTimeout(type, 550);
     }
   </script>
 </body>
+
 </html>

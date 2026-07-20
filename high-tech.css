@@ -114,6 +114,27 @@
     text-shadow: 0 0 20px var(--ht-primary);
 }
 
+/* Hero Contact Button - High-Tech Override */
+.high-tech-mode .btn-contact-hero {
+    border: 1px solid var(--ht-primary);
+    border-radius: 0;
+    color: var(--ht-primary);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    font-family: var(--theme-font-head);
+}
+
+.high-tech-mode .btn-contact-hero::before {
+    background: rgba(0, 243, 255, 0.15);
+    border-radius: 0;
+}
+
+.high-tech-mode .btn-contact-hero:hover {
+    color: var(--ht-primary);
+    border-color: var(--ht-primary);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    text-shadow: 0 0 8px var(--ht-primary);
+}
+
 /* --- FILTER BAR (FUTURISTIC TABS) --- */
 .high-tech-mode .filter-sticky-container {
     background: rgba(2, 4, 8, 0.95);
