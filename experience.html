@@ -473,6 +473,24 @@
       });
     });
   </script>
+  <script>
+    // ── Page Transition ──────────────────────────────
+    document.body.style.opacity = '0';
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+    });
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') ||
+          href.startsWith('http') || link.target === '_blank' || link.hasAttribute('data-bs-dismiss') ||
+          link.hasAttribute('data-no-transition')) return;
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+      setTimeout(() => { window.location.href = href; }, 280);
+    });
+  </script>
 </body>
 
 </html>

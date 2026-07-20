@@ -48,6 +48,7 @@
         background-color: var(--theme-body-bg);
         color: var(--theme-dark);
         font-family: var(--theme-font);
+        transition: opacity 0.3s ease;
     }
 
     /* --- Typography Utils --- */
@@ -1628,4 +1629,34 @@
         .exp-preview-meta {
             flex-direction: row;
         }
+    }
+
+    /* =========================
+       PAGE TRANSITION
+       ========================= */
+
+    body.page-exit {
+        opacity: 0;
+    }
+
+    /* =========================
+       MODAL TRANSITION OVERRIDE
+       ========================= */
+
+    /* Bootstrap fade already handles overlay; we override dialog motion */
+    #projectModal .modal-dialog {
+        transform: translateY(24px);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    #projectModal.show .modal-dialog {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    #projectModal .modal-content {
+        border-radius: 0;
+        border: var(--theme-border-width) solid var(--theme-border-color);
+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.08);
     }
