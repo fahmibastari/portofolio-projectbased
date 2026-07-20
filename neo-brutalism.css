@@ -88,6 +88,27 @@
     padding: 0 0.5rem;
 }
 
+/* Hero Contact Button - Neo Override */
+.neo-mode .btn-contact-hero {
+    border: 3px solid var(--neo-black);
+    border-radius: 0;
+    color: var(--neo-black);
+    box-shadow: 4px 4px 0 var(--neo-black);
+    font-weight: 900;
+}
+
+.neo-mode .btn-contact-hero::before {
+    background: var(--neo-yellow);
+    border-radius: 0;
+}
+
+.neo-mode .btn-contact-hero:hover {
+    color: var(--neo-black);
+    border-color: var(--neo-black);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--neo-black);
+}
+
 /* Filter Sticky Container */
 .neo-mode .filter-sticky-container {
     background: #fff;
