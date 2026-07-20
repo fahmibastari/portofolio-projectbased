@@ -109,6 +109,53 @@
     box-shadow: 2px 2px 0 var(--neo-black);
 }
 
+/* Blueprint Radar - Neo Brutalism Override */
+.neo-mode .blueprint-radar-wrapper {
+    margin-top: 1.5rem;
+}
+
+.neo-mode .radar-coords {
+    color: var(--neo-black);
+    font-weight: 800;
+}
+
+.neo-mode .radar-ring-outer {
+    border: 3px solid var(--neo-black);
+    border-radius: 0 !important; /* Square ring */
+    opacity: 1;
+}
+
+.neo-mode .radar-ring-inner {
+    border: 2px dashed var(--neo-black);
+    border-radius: 0 !important; /* Square ring */
+    opacity: 1;
+}
+
+.neo-mode .radar-core {
+    border: 3px solid var(--neo-black);
+    border-radius: 0 !important;
+    background: #fff;
+    color: var(--neo-black);
+    box-shadow: 4px 4px 0 var(--neo-black);
+    font-weight: 900;
+}
+
+.neo-mode .blueprint-radar-wrapper:hover .radar-core {
+    background: var(--neo-yellow) !important;
+    color: var(--neo-black) !important;
+    transform: translate(2px, 2px) scale(1.05);
+    box-shadow: 2px 2px 0 var(--neo-black) !important;
+}
+
+.neo-mode .blueprint-radar-wrapper:hover .radar-ring-outer {
+    transform: rotate(45deg) scale(1.02);
+}
+
+.neo-mode .blueprint-radar-wrapper:hover .radar-ring-inner {
+    transform: rotate(-45deg) scale(0.98);
+}
+
+
 /* Filter Sticky Container */
 .neo-mode .filter-sticky-container {
     background: #fff;
@@ -529,3 +576,157 @@
         opacity: 1;
     }
 }
+
+/* =========================================
+   NEO-BRUTALISM OVERRIDES - EXPERIENCE
+   ========================================= */
+.neo-mode .experience-page-container {
+    background-color: var(--neo-bg);
+}
+
+.neo-mode .exp-profile-card,
+.neo-mode .exp-nav-menu,
+.neo-mode .exp-card {
+    border: 3px solid #000 !important;
+    border-radius: 0 !important;
+    box-shadow: 6px 6px 0 #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+}
+
+.neo-mode .exp-avatar {
+    border: 3px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+.neo-mode .exp-profile-name {
+    color: #000 !important;
+    font-weight: 900 !important;
+}
+
+.neo-mode .exp-profile-title {
+    color: #000 !important;
+    background: var(--neo-yellow);
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border: 2px solid #000;
+    font-weight: 900 !important;
+}
+
+.neo-mode .exp-profile-location {
+    color: #000 !important;
+    font-weight: 700;
+}
+
+.neo-mode .exp-social-links a {
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    color: #000 !important;
+    background: #fff !important;
+}
+
+.neo-mode .exp-social-links a:hover {
+    background: var(--neo-yellow) !important;
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 3px 3px 0 #000 !important;
+}
+
+.neo-mode .exp-nav-link {
+    border-radius: 0 !important;
+    color: #000 !important;
+    font-weight: 800 !important;
+}
+
+.neo-mode .exp-nav-link i {
+    color: #000 !important;
+}
+
+.neo-mode .exp-nav-link:hover,
+.neo-mode .exp-nav-link.active {
+    background: var(--neo-yellow) !important;
+    border: 2px solid #000 !important;
+}
+
+.neo-mode .exp-section-title {
+    border-left: none !important;
+    background: #000 !important;
+    color: var(--neo-yellow) !important;
+    display: inline-block !important;
+    padding: 0.35rem 1rem !important;
+    border: 3px solid #000 !important;
+    box-shadow: 4px 4px 0 #000 !important;
+    font-weight: 900 !important;
+}
+
+.neo-mode .exp-card:hover {
+    transform: translate(-3px, -3px) !important;
+    box-shadow: 9px 9px 0 #000 !important;
+}
+
+.neo-mode .exp-timeline {
+    border-left: 3px solid #000 !important;
+}
+
+.neo-mode .timeline-badge {
+    background: var(--neo-yellow) !important;
+    border: 3px solid #000 !important;
+    border-radius: 0 !important;
+    width: 14px;
+    height: 14px;
+    left: calc(-2rem - 8px);
+}
+
+.neo-mode .timeline-item:hover .timeline-badge {
+    background: #000 !important;
+    transform: scale(1.3) !important;
+    box-shadow: none !important;
+}
+
+.neo-mode .role-title {
+    color: #000 !important;
+    font-weight: 900 !important;
+}
+
+.neo-mode .company-name {
+    color: #000 !important;
+    background: var(--neo-yellow);
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid #000;
+    width: fit-content;
+}
+
+.neo-mode .role-period {
+    color: #000 !important;
+    font-weight: 800 !important;
+}
+
+.neo-mode .role-bullets {
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.neo-mode .skills-category h4 {
+    color: #000 !important;
+    font-weight: 900 !important;
+}
+
+.neo-mode .skills-tags span {
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-weight: 800 !important;
+}
+
+.neo-mode .skills-tags span:hover {
+    background: var(--neo-yellow) !important;
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 2px 2px 0 #000 !important;
+}
+
+.neo-mode .certifications-list {
+    color: #000 !important;
+    font-weight: 500;
+}

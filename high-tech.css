@@ -135,6 +135,51 @@
     text-shadow: 0 0 8px var(--ht-primary);
 }
 
+/* Blueprint Radar - High-Tech Override */
+.high-tech-mode .blueprint-radar-wrapper {
+    margin-top: 1.5rem;
+}
+
+.high-tech-mode .radar-coords {
+    color: var(--ht-primary);
+    text-shadow: 0 0 5px var(--ht-primary);
+    font-family: var(--theme-font-head) !important;
+}
+
+.high-tech-mode .radar-ring-outer {
+    border-color: var(--ht-primary);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.high-tech-mode .radar-ring-inner {
+    border-color: var(--ht-primary);
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.15);
+}
+
+.high-tech-mode .radar-core {
+    background: rgba(2, 4, 8, 0.95);
+    border-color: var(--ht-primary);
+    color: var(--ht-primary);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    font-family: var(--theme-font-head) !important;
+    text-shadow: 0 0 5px var(--ht-primary);
+}
+
+.high-tech-mode .blueprint-radar-wrapper:hover .radar-core {
+    background: rgba(0, 243, 255, 0.15) !important;
+    color: var(--ht-primary) !important;
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.5) !important;
+}
+
+.high-tech-mode .blueprint-radar-wrapper:hover .radar-ring-outer {
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+.high-tech-mode .blueprint-radar-wrapper:hover .radar-ring-inner {
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+
 /* --- FILTER BAR (FUTURISTIC TABS) --- */
 .high-tech-mode .filter-sticky-container {
     background: rgba(2, 4, 8, 0.95);
@@ -519,7 +564,6 @@
     z-index: 9999 !important;
 }
 
-/* --- ANIMATIONS --- */
 @keyframes scanline {
     0% {
         top: -100%;
@@ -529,3 +573,151 @@
         top: 100%;
     }
 }
+
+/* =========================================
+   HIGH-TECH OVERRIDES - EXPERIENCE
+   ========================================= */
+.high-tech-mode .experience-page-container {
+    background-color: var(--ht-bg);
+}
+
+.high-tech-mode .exp-profile-card,
+.high-tech-mode .exp-nav-menu,
+.high-tech-mode .exp-card {
+    background: rgba(10, 15, 24, 0.9) !important;
+    border: 1px solid rgba(0, 243, 255, 0.2) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.05) !important;
+    color: var(--ht-text) !important;
+}
+
+.high-tech-mode .exp-avatar {
+    border: 1px solid var(--ht-primary) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.high-tech-mode .exp-profile-name {
+    color: var(--ht-text) !important;
+    font-family: var(--theme-font-head) !important;
+}
+
+.high-tech-mode .exp-profile-title {
+    color: var(--ht-primary) !important;
+    font-family: var(--theme-font-head) !important;
+    text-shadow: 0 0 8px var(--ht-primary);
+}
+
+.high-tech-mode .exp-profile-location {
+    color: var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .exp-social-links a {
+    border: 1px solid rgba(0, 243, 255, 0.3) !important;
+    border-radius: 0 !important;
+    color: var(--ht-primary) !important;
+    background: transparent !important;
+}
+
+.high-tech-mode .exp-social-links a:hover {
+    background: rgba(0, 243, 255, 0.1) !important;
+    border-color: var(--ht-primary) !important;
+    box-shadow: 0 0 15px var(--ht-primary) !important;
+    transform: translateY(-3px) !important;
+}
+
+.high-tech-mode .exp-nav-link {
+    border-radius: 0 !important;
+    color: var(--ht-text-dim) !important;
+    border: 1px solid transparent;
+}
+
+.high-tech-mode .exp-nav-link i {
+    color: var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .exp-nav-link:hover,
+.high-tech-mode .exp-nav-link.active {
+    background: rgba(0, 243, 255, 0.08) !important;
+    color: var(--ht-primary) !important;
+    border: 1px solid rgba(0, 243, 255, 0.3) !important;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+.high-tech-mode .exp-section-title {
+    border-left: none !important;
+    color: var(--ht-primary) !important;
+    font-family: var(--theme-font-head) !important;
+    text-shadow: 0 0 10px var(--ht-primary) !important;
+    border-bottom: 1px solid var(--ht-primary) !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0 !important;
+}
+
+.high-tech-mode .exp-card:hover {
+    border-color: var(--ht-primary) !important;
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+.high-tech-mode .exp-timeline {
+    border-left: 1px dashed rgba(0, 243, 255, 0.3) !important;
+}
+
+.high-tech-mode .timeline-badge {
+    background: var(--ht-bg) !important;
+    border: 1px solid var(--ht-primary) !important;
+    box-shadow: 0 0 8px var(--ht-primary) !important;
+    border-radius: 0 !important;
+    width: 10px;
+    height: 10px;
+    left: calc(-2rem - 5px);
+}
+
+.high-tech-mode .timeline-item:hover .timeline-badge {
+    transform: scale(1.4) !important;
+    box-shadow: 0 0 15px var(--ht-primary) !important;
+}
+
+.high-tech-mode .role-title {
+    color: var(--ht-text) !important;
+    font-family: var(--theme-font-head) !important;
+}
+
+.high-tech-mode .company-name {
+    color: var(--ht-primary) !important;
+    text-shadow: 0 0 4px var(--ht-primary);
+}
+
+.high-tech-mode .role-period {
+    color: var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .role-bullets {
+    color: var(--ht-text-dim) !important;
+}
+
+.high-tech-mode .skills-category h4 {
+    color: var(--ht-text) !important;
+    font-family: var(--theme-font-head) !important;
+}
+
+.high-tech-mode .skills-tags span {
+    background: transparent !important;
+    border: 1px solid rgba(0, 243, 255, 0.2) !important;
+    color: var(--ht-text-dim) !important;
+    border-radius: 0 !important;
+    clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+
+.high-tech-mode .skills-tags span:hover {
+    border-color: var(--ht-primary) !important;
+    color: var(--ht-primary) !important;
+    background: rgba(0, 243, 255, 0.05) !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) !important;
+}
+
+.high-tech-mode .certifications-list {
+    color: var(--ht-text-dim) !important;
+}

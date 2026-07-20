@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="image/profile/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fahmi Bastari - Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="neo-brutalism.css">
+  <link rel="stylesheet" href="high-tech.css">
+
+  <script>
+    // Theme logic - run instantly to prevent FOUC
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'neo') document.documentElement.classList.add('neo-mode');
+    if (savedTheme === 'hitech') document.documentElement.classList.add('high-tech-mode');
+  </script>
+</head>
+
+<body>
+  <!-- Theme checker helper on body load -->
+  <script>
+    if (savedTheme === 'neo') document.body.classList.add('neo-mode');
+    if (savedTheme === 'hitech') document.body.classList.add('high-tech-mode');
+  </script>
+
+  <!-- Navigation bar -->
+  <nav class="navbar fixed-top">
+    <div class="container-fluid px-3 px-lg-5">
+      <a class="navbar-brand" href="index.html">FAHMI BASTARI</a>
+
+      <div class="d-none d-md-flex align-items-center">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="experience.html" class="nav-link active">EXPERIENCE</a>
+        <a href="https://wa.me/6281271662745" class="nav-link">CONTACT</a>
+        <a href="https://github.com/fahmibastari" target="_blank" class="nav-link">GITHUB</a>
+      </div>
+
+      <button class="btn p-0 border-0 d-md-none" type="button" onclick="toggleMobileMenu()">
+        <i class="bi bi-list fs-1 text-dark"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenu" class="mobile-menu-overlay">
+    <button class="mobile-close-btn" onclick="toggleMobileMenu()"><i class="bi bi-x-lg"></i></button>
+    <a href="index.html#projects" class="mobile-nav-link" onclick="toggleMobileMenu()">Projects</a>
+    <a href="experience.html" class="mobile-nav-link active" onclick="toggleMobileMenu()">Experience</a>
+    <a href="https://github.com/fahmibastari" class="mobile-nav-link">Github</a>
+    <a href="https://wa.me/6281271662745" class="mobile-nav-link">Contact</a>
+    <a href="mailto:fahmibastari.work@gmail.com" class="mobile-nav-link">Email</a>
+    <a href="https://linkedin.com/in/fahmibastari" class="mobile-nav-link">LinkedIn</a>
+  </div>
+
+  <!-- Page Layout Wrapper -->
+  <div class="experience-page-container container px-3 px-lg-5">
+    <div class="row g-4 g-lg-5">
+
+      <!-- Sticky Sidebar Section -->
+      <aside class="col-lg-4 col-xl-3">
+        <div class="exp-sidebar">
+
+          <!-- Profile Quick Info -->
+          <div class="exp-profile-card">
+            <img src="image/profile/profile.jpg" alt="Fahmi Bastari" class="exp-avatar">
+            <h2 class="exp-profile-name">Fahmi Bastari</h2>
+            <p class="exp-profile-title">Fullstack Developer</p>
+            <div class="exp-profile-location">
+              <i class="bi bi-geo-alt"></i> Bandung, Indonesia
+            </div>
+
+            <div class="exp-social-links">
+              <a href="mailto:fahmibastari.work@gmail.com" title="Email"><i class="bi bi-envelope"></i></a>
+              <a href="https://linkedin.com/in/fahmibastari" target="_blank" title="LinkedIn"><i
+                  class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/fahmibastari" target="_blank" title="Github"><i class="bi bi-github"></i></a>
+              <a href="https://wa.me/6281271662745" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <!-- Sticky Navigation Links -->
+          <nav class="exp-nav-menu">
+            <a href="#summary" class="exp-nav-link active"><i class="bi bi-person"></i> Summary</a>
+            <a href="#experience" class="exp-nav-link"><i class="bi bi-briefcase"></i> Work Experience</a>
+            <a href="#skills" class="exp-nav-link"><i class="bi bi-cpu"></i> Technical Skills</a>
+            <a href="#education" class="exp-nav-link"><i class="bi bi-mortarboard"></i> Education</a>
+            <a href="#leadership" class="exp-nav-link"><i class="bi bi-people"></i> Leadership</a>
+            <a href="#certifications" class="exp-nav-link"><i class="bi bi-award"></i> Certifications</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content Section -->
+      <main class="col-lg-8 col-xl-9">
+        <div class="exp-content-wrapper">
+
+          <!-- Summary Section -->
+          <section id="summary" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">SUMMARY</h2>
+            <div class="exp-card">
+              <p class="mb-0 leading-relaxed">
+                Fullstack Developer with experience delivering and maintaining scalable web and mobile applications in
+                fintech, education, and enterprise environments. Proficient in JavaScript, TypeScript, React, Next.js,
+                and backend technologies, with strong expertise in system integration, legacy application maintenance,
+                debugging, performance optimization, and production support. Experienced in remote collaboration with
+                distributed teams, ensuring application stability and delivering reliable solutions throughout the
+                software lifecycle.
+              </p>
+            </div>
+          </section>
+
+          <!-- Work Experience Section -->
+          <section id="experience" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">WORK EXPERIENCE</h2>
+
+            <div class="exp-timeline">
+
+              <!-- Taiwan Mobile -->
+              <div class="timeline-item">
+                <div class="timeline-badge"></div>
+                <div class="timeline-content exp-card">
+                  <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                    <div>
+                      <h3 class="role-title">Software Developer</h3>
+                      <span class="company-name">Taiwan Mobile (Remote)</span>
+                    </div>
+                    <span class="role-period">Jun 2026 - Present</span>
+                  </div>
+                  <ul class="role-bullets">
+                    <li>Maintained and enhanced legacy mobile applications to improve stability, usability, and
+                      long-term maintainability</li>
+                    <li>Investigated, reproduced, and resolved application issues through debugging, testing, and root
+                      cause analysis</li>
+                    <li>Performed functional testing and bug validation to ensure software quality before deployment
+                    </li>
+                    <li>Collaborated remotely with cross-functional teams to identify requirements and deliver
+                      production-ready solutions</li>
+                    <li>Built, configured, and deployed mobile application releases across different environments</li>
+                    <li>Monitored application behavior and provided ongoing support for production issues and
+                      user-reported defects</li>
+                    <li>Contributed to continuous improvements in application performance, reliability, and user
+                      experience</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- PT Mega Kreasi Indotama -->
+              <div class="timeline-item">
+                <div class="timeline-badge"></div>
+                <div class="timeline-content exp-card">
+                  <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                    <div>
+                      <h3 class="role-title">Fullstack Developer</h3>
+                      <span class="company-name">PT Mega Kreasi Indotama (MKI)</span>
+                    </div>
+                    <span class="role-period">Feb 2026 - Jun 2026</span>
+                  </div>
+                  <ul class="role-bullets">
+                    <li>Developed and maintained core modules for large-scale fintech applications</li>
+                    <li>Designed and optimized RESTful APIs for transaction processing, authentication, and system
+                      integration</li>
+                    <li>Conducted end-to-end QA, load testing, and stress testing to ensure system reliability under
+                      high-volume workloads (150K+ records)</li>
+                    <li>Investigated and resolved application defects, performance bottlenecks, and production issues
+                    </li>
+                    <li>Improved legacy systems through refactoring and performance optimization initiatives</li>
+                    <li>Collaborated with product, QA, and infrastructure teams to deliver secure and scalable software
+                      solutions</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Freelance -->
+              <div class="timeline-item">
+                <div class="timeline-badge"></div>
+                <div class="timeline-content exp-card">
+                  <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                    <div>
+                      <h3 class="role-title">Freelance Fullstack Web Developer</h3>
+                      <span class="company-name">Remote / Self-Employed</span>
+                    </div>
+                    <span class="role-period">Jan 2023 - Present</span>
+                  </div>
+                  <ul class="role-bullets">
+                    <li><strong>Digivass (Cross-Platform Survey App):</strong> Developed a mobile application with
+                      offline-first capabilities for field surveyors and a web-based admin dashboard for real-time
+                      monitoring.</li>
+                    <li><strong>JustSpeak (EduTech Platform):</strong> Built an IELTS simulation platform featuring
+                      interactive test modules and automated scoring logic using Next.js and React.</li>
+                    <li><strong>EXAMLENT (CBT System):</strong> Engineered a secure computer-based test platform,
+                      optimizing data flow with RESTful APIs to reduce exam setup time by 85%.</li>
+                    <li><strong>Mental Healing ID:</strong> Designed responsive data visualization dashboards to present
+                      complex mental health statistics intuitively.</li>
+                    <li><strong>Technical Environment:</strong> Utilized React.js, Next.js, Tailwind CSS, and Git.
+                      Proficient in adapting layouts using Bootstrap and implementing Vue.js concepts for specific
+                      client requirements.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Web Programming Assistant Lecturer -->
+              <div class="timeline-item">
+                <div class="timeline-badge"></div>
+                <div class="timeline-content exp-card">
+                  <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                    <div>
+                      <h3 class="role-title">Web Programming Assistant Lecturer</h3>
+                      <span class="company-name">University of Lampung</span>
+                    </div>
+                    <span class="role-period">Feb 2022 - Jul 2024</span>
+                  </div>
+                  <ul class="role-bullets">
+                    <li>Delivered lectures and practical labs on JavaScript (ES6+), React.js, and RESTful API
+                      integration to computer science students.</li>
+                    <li>Mentored students in building production-grade web applications, emphasizing clean architecture
+                      and mobile-first responsive design.</li>
+                    <li>Evaluated student projects based on code efficiency, functionality, and UI/UX best practices.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- AR/VR Assistant Lecturer -->
+              <div class="timeline-item">
+                <div class="timeline-badge"></div>
+                <div class="timeline-content exp-card">
+                  <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                    <div>
+                      <h3 class="role-title">AR/VR Assistant Lecturer</h3>
+                      <span class="company-name">University of Lampung</span>
+                    </div>
+                    <span class="role-period">Feb 2023 - Jul 2025</span>
+                  </div>
+                  <ul class="role-bullets">
+                    <li>Conducted classes on AR/VR and human-computer interaction emphasizing intuitive UI/UX design and
+                      responsive environments.</li>
+                    <li>Guided over 50 students in creating interactive 3D applications and mobile prototypes.</li>
+                    <li>Promoted modern UX approaches and data visualization principles for immersive applications.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Technical Skills Section -->
+          <section id="skills" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">TECHNICAL SKILLS</h2>
+            <div class="exp-card">
+              <div class="skills-grid-wrapper">
+
+                <div class="skills-category">
+                  <h4>Languages & Frameworks</h4>
+                  <div class="skills-tags">
+                    <span>JavaScript (ES6+)</span>
+                    <span>React.js</span>
+                    <span>Next.js</span>
+                    <span>React Native</span>
+                    <span>TypeScript</span>
+                    <span>Node.js</span>
+                    <span>Nest.js</span>
+                    <span>Vue.js</span>
+                    <span>Svelte</span>
+                    <span>Bootstrap</span>
+                    <span>PHP (Laravel/CI4)</span>
+                    <span>Electron.js</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Data & APIs</h4>
+                  <div class="skills-tags">
+                    <span>RESTful API</span>
+                    <span>GraphQL (basic)</span>
+                    <span>Prisma ORM</span>
+                    <span>Supabase</span>
+                    <span>NeonDB</span>
+                    <span>PostgreSQL</span>
+                    <span>MySQL</span>
+                    <span>jQuery</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Mobile Development</h4>
+                  <div class="skills-tags">
+                    <span>React Native</span>
+                    <span>Expo</span>
+                    <span>Android Studio</span>
+                    <span>Push Notifications</span>
+                    <span>Offline Storage</span>
+                    <span>Geolocation</span>
+                    <span>Flutter</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>UI/UX & Design</h4>
+                  <div class="skills-tags">
+                    <span>UI/UX Fundamentals</span>
+                    <span>Wireframing (Figma)</span>
+                    <span>Responsive Design</span>
+                    <span>Accessibility (WCAG 2.1)</span>
+                    <span>TailwindCSS</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Data Visualization</h4>
+                  <div class="skills-tags">
+                    <span>Chart.js</span>
+                    <span>Recharts</span>
+                    <span>Victory Native</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Tools & Collaboration</h4>
+                  <div class="skills-tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Vercel</span>
+                    <span>Netlify</span>
+                    <span>Postman</span>
+                    <span>Docker</span>
+                    <span>Linear</span>
+                    <span>Notion</span>
+                    <span>Google Cloud Platform</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Testing & Optimization</h4>
+                  <div class="skills-tags">
+                    <span>Vitest</span>
+                    <span>React Testing Library</span>
+                    <span>Performance Tuning</span>
+                    <span>Lighthouse Auditing</span>
+                    <span>CI/CD (GitHub Actions)</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Additional & Soft Skills</h4>
+                  <div class="skills-tags">
+                    <span>Redis</span>
+                    <span>Temporal</span>
+                    <span>PostgreSQL Optimization</span>
+                    <span>Turbo (monorepos)</span>
+                    <span>Analytical Thinking</span>
+                    <span>Problem Solving</span>
+                    <span>Remote Collaboration</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- Education Section -->
+          <section id="education" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">EDUCATION</h2>
+            <div class="exp-card">
+              <div
+                class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <div>
+                  <h3 class="role-title">University of Lampung</h3>
+                  <span class="company-name text-muted">Bachelor of Computer Science</span>
+                </div>
+                <span class="role-period">Sept 2020 - Aug 2025</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Leadership Section -->
+          <section id="leadership" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">LEADERSHIP & ORGANIZATIONAL EXPERIENCE</h2>
+            <div class="exp-card">
+              <div
+                class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                <div>
+                  <h3 class="role-title">Internal Division Coordinator</h3>
+                  <span class="company-name">Computer Science Students Association - University of Lampung</span>
+                </div>
+              </div>
+              <ul class="role-bullets">
+                <li>Collaborated in app prototyping and student showcases promoting digital innovation.</li>
+                <li>Strengthened adaptability, public speaking, and problem-solving skills in team environments.</li>
+                <li>Actively participated in UI/UX innovation and mobile prototyping projects promoting inclusive
+                  technology adoption.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Certifications Section -->
+          <section id="certifications" class="exp-section scroll-mt">
+            <h2 class="exp-section-title">CERTIFICATIONS</h2>
+            <div class="exp-card">
+              <ul class="certifications-list">
+                <li>RevoU Certified Online Course - Data Analytics Fundamentals (2025)</li>
+                <li>Dicoding Indonesia - Belajar Dasar Pemrograman Web (2025)</li>
+                <li>MySkill Indonesia - Website Development Fundamentals (2025)</li>
+                <li>API (Application Programming Interface)</li>
+                <li>Back-End Development Introduction</li>
+                <li>Front-End Development Introduction</li>
+                <li>Internet Introduction</li>
+                <li>General Lecture: "Roadmaps to Become a Mobile Developer" - University of Lampung</li>
+                <li>GEMASTIK XV - National ICT Competition Participant</li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background: #fff; border-top: 1px solid var(--arch-border);">
+    <div class="container py-4 text-center">
+      <p class="small text-muted font-monospace mb-0">
+        &copy; 2026 FAHMI BASTARI.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Mobile Menu Logic
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    // Scroll spy logic for active sidebar links
+    window.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          if (entry.intersectionRatio > 0) {
+            document.querySelectorAll('.exp-nav-link').forEach(link => {
+              link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`.exp-nav-link[href="#${id}"]`);
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -80% 0px'
+      });
+
+      // Track all sections
+      document.querySelectorAll('.exp-section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+
+</html>
