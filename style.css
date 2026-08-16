@@ -859,27 +859,57 @@
         display: inline-block;
     }
 
-    /* 2. FIX THUMBNAIL */
-    .modal-thumbs-container {
+    /* Quiet circular nav arrows instead of raw bootstrap icons */
+    #projectModal .carousel-control-prev,
+    #projectModal .carousel-control-next {
+        width: 4rem;
+        opacity: 1;
+    }
+
+    #projectModal .carousel-control-prev-icon,
+    #projectModal .carousel-control-next-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        background-color: var(--theme-dark);
+        background-size: 42%;
+        border-radius: 50%;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+        transition: var(--theme-transition);
+    }
+
+    #projectModal .carousel-control-prev:hover .carousel-control-prev-icon,
+    #projectModal .carousel-control-next:hover .carousel-control-next-icon {
+        background-color: var(--theme-primary);
+        transform: scale(1.08);
+    }
+
+    /* 2. FIX THUMBNAIL (was .modal-thumbs-container — never matched the markup) */
+    .modal-thumbs {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
         background: var(--theme-bg);
         border-bottom: var(--theme-border-width) solid var(--theme-border-color);
-        padding: 1rem;
+        padding: 1rem 1.5rem;
         width: 100%;
         overflow-x: auto;
-        white-space: nowrap;
+        scrollbar-width: none;
+    }
+
+    .modal-thumbs::-webkit-scrollbar {
+        display: none;
     }
 
     .modal-thumb {
-        display: inline-block;
-        width: 80px !important;
-        height: 50px !important;
+        flex: 0 0 auto;
+        width: 88px;
+        height: 56px;
         object-fit: cover;
-        margin-right: 0.5rem;
         border-radius: 4px;
-        opacity: 0.5;
+        opacity: 0.45;
         cursor: pointer;
         border: 2px solid transparent;
-        transition: all 0.2s;
+        transition: var(--theme-transition);
     }
 
     .modal-thumb.active,
@@ -892,6 +922,72 @@
     .modal-desc-area {
         padding: 2rem;
         background: var(--theme-bg);
+    }
+
+    .modal-section-label {
+        display: inline-block;
+        margin: 0 0 1rem;
+        padding-bottom: 0.6rem;
+        position: relative;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--theme-dark);
+    }
+
+    .modal-section-label::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: var(--theme-primary);
+    }
+
+    #mDesc {
+        color: var(--theme-gray);
+        line-height: 1.75;
+    }
+
+    .modal-tech-chip {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--theme-primary);
+        border: 1px solid var(--theme-primary);
+        border-radius: 99px;
+        padding: 0.4rem 0.9rem;
+        background: transparent;
+    }
+
+    .modal-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #fff;
+        background: var(--theme-dark);
+        border-radius: 99px;
+        text-decoration: none;
+        transition: var(--theme-transition);
+    }
+
+    .modal-cta-btn:hover {
+        background: var(--theme-primary);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(74, 156, 166, 0.35);
+        transform: translateY(-2px);
     }
 
     /* --- MOBILE RESPONSIVE TWEAKS --- */

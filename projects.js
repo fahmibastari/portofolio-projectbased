@@ -17,6 +17,66 @@
 
 const PROJECTS = {
 
+    worldofbooth: {
+        id: 'worldofbooth',
+        name: 'World of Booth',
+        category: '3D Browser Game · WebGL',
+        desc: 'A browser-based 3D exploration game where players walk or drive through a small stylized city to discover three themed photobooths — Downtown, Fountain Studio, and Neon Transit — each with its own filters, frames, and pose prompts. Built with React Three Fiber and Three.js, the world uses a BVH-accelerated collision system for player, vehicle, and camera-occlusion physics, with Meshopt-compressed runtime models for fast loading. Every photo session runs entirely in-canvas: webcam frames are processed client-side into downloadable photostrips and stored locally via IndexedDB, with a discovery/collection loop, character switching, and full desktop/touch controls — no backend, no account, no automatic uploads.',
+        role: 'Solo Developer', timeline: '2 weeks', type: 'Personal Project',
+        thumb: 'image/worldOfBooth/MainMenu.png',
+        tech: [
+            { name: 'React Three Fiber', color: '#ff6c37' },
+            { name: 'Three.js', color: '#000000' },
+            { name: 'three-mesh-bvh', color: '#4a4a4a' },
+            { name: 'TypeScript', color: '#3178c6' },
+            { name: 'Vite', color: '#a855f7' },
+            { name: 'IndexedDB', color: '#22c55e' },
+        ],
+        images: [
+            { file: 'image/worldOfBooth/MainMenu.png', label: 'Menu · Character & Quality Select' },
+            { file: 'image/worldOfBooth/Gameplay1.png', label: 'World · Downtown Street' },
+            { file: 'image/worldOfBooth/LoadingScreen.png', label: 'Menu · Loading Screen' },
+            { file: 'image/worldOfBooth/Gameplay - Walk Around.png', label: 'World · Walking Tutorial' },
+            { file: 'image/worldOfBooth/Gameplay - Woman Char.png', label: 'World · Female Character Exploring' },
+            { file: 'image/worldOfBooth/Gameplay - Car Driving.png', label: 'World · Driving Tutorial' },
+            { file: 'image/worldOfBooth/Gameplay - Booth Finding.png', label: 'World · Booth Discovered' },
+            { file: 'image/worldOfBooth/Gameplay - Booth Opening.png', label: 'World · Entering Photobooth' },
+            { file: 'image/worldOfBooth/Booth - Standby Cam.png', label: 'Booth · Camera Standby' },
+            { file: 'image/worldOfBooth/Booth - Cam Timer.png', label: 'Booth · Countdown Pose' },
+            { file: 'image/worldOfBooth/Booth - Result Review.png', label: 'Booth · Photostrip Result' },
+            { file: 'image/worldOfBooth/Booth - Different Booth Result.png', label: 'Booth · Alternate Theme Result' },
+            { file: 'image/worldOfBooth/Booth - Gallery.png', label: 'Gallery · My Memories' },
+            { file: 'image/worldOfBooth/About.png', label: 'Info · About Page' },
+            { file: 'image/worldOfBooth/Privacy.png', label: 'Info · Privacy Page' },
+            { file: 'image/worldOfBooth/Support.png', label: 'Info · Support Page' },
+        ],
+    },
+
+    duzz: {
+        id: 'duzz',
+        name: 'DUZZ — Analog Camera Lab',
+        category: 'Mobile PWA · Camera Lab',
+        desc: 'A mobile-first browser camera lab that reimagines the analog/instant photography experience. Eighteen original film recipes across Film, Instant, Mono, CCD, and Lab families are rendered through a custom Canvas 2D pipeline covering exposure, grain, halation, light leaks, dust, vignette, and date stamps. Photos save locally as IndexedDB blobs first, then optionally back up to a private Supabase bucket under anonymous-auth RLS with a 12-month retention cron and a rate-limited admin recovery flow for lost photos. The app installs as a PWA with an offline shell, ships full SEO/PWA metadata, and is deployed in production with Google Search Console indexing already verified.',
+        role: 'Solo Developer', timeline: '2 weeks', type: 'Personal Project',
+        thumb: 'image/duzz/Gallery.png',
+        tech: [
+            { name: 'Next.js', color: '#000000' },
+            { name: 'React', color: '#61dafb' },
+            { name: 'Tailwind', color: '#38bdf8' },
+            { name: 'Supabase', color: '#3ecf8e' },
+            { name: 'Canvas 2D', color: '#22c55e' },
+            { name: 'PWA', color: '#a855f7' },
+        ],
+        images: [
+            { file: 'image/duzz/Gallery.png', label: 'Foto · Contact Sheet & Backup' },
+            { file: 'image/duzz/Camera.png', label: 'Kamera · Slide 100 Capture' },
+            { file: 'image/duzz/Filter Menu 1.png', label: 'Studio · Film Family' },
+            { file: 'image/duzz/Filter Menu 2.png', label: 'Studio · Instant Family' },
+            { file: 'image/duzz/Filter Menu 3.png', label: 'Studio · Mono Family' },
+            { file: 'image/duzz/Main + Studio.png', label: 'Studio · Darkroom Controls' },
+        ],
+    },
+
     magicpin: {
         id: 'magicpin',
         name: 'Magic Pin Trading Ecosystem',

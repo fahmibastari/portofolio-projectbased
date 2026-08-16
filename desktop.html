@@ -134,7 +134,7 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Stats</div>
       <div class="sidebar-stat">
-        <span class="stat-num">14</span>
+        <span class="stat-num">16</span>
         <span class="stat-label">Projects</span>
       </div>
       <div class="sidebar-stat">
@@ -170,6 +170,34 @@
     <!-- File Grid -->
     <div class="content-area">
       <div class="file-grid" id="projectGrid">
+
+        <!-- World of Booth -->
+        <div class="file-card" data-cat="featured web">
+          <div class="file-card-thumb">
+            <img src="image/worldOfBooth/MainMenu.png" alt="World of Booth">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-game"><i class="ph ph-game-controller" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">World of Booth</div>
+              <div class="file-card-tags"><span class="tag">3D Browser Game</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DUZZ - Analog Camera Lab -->
+        <div class="file-card" data-cat="featured web mobile">
+          <div class="file-card-thumb">
+            <img src="image/duzz/Gallery.png" alt="DUZZ Analog Camera Lab">
+          </div>
+          <div class="file-card-meta">
+            <span class="file-card-type-icon icon-mobile"><i class="ph ph-device-mobile" style="font-size:10px;color:#fff;"></i></span>
+            <div class="file-card-info">
+              <div class="file-card-name">DUZZ — Analog Camera Lab</div>
+              <div class="file-card-tags"><span class="tag">Mobile PWA</span><span class="tag tag-feat">Featured</span></div>
+            </div>
+          </div>
+        </div>
 
         <!-- Magic Pin Trading Ecosystem -->
         <div class="file-card" data-cat="web mobile featured">
@@ -438,6 +466,8 @@
 
   // ---- Card Links — all projects → universal workspace template ----
   const cardLinks = {
+    'World of Booth':             'workspace.html?id=worldofbooth',
+    'DUZZ — Analog Camera Lab':   'workspace.html?id=duzz',
     'Magic Pin Trading Ecosystem': 'workspace.html?id=magicpin',
     'SpekHP Specs Portal':        'workspace.html?id=spekhp',
     'Flamboys Roaster Ecosystem': 'workspace.html?id=flamboys',

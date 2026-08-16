@@ -93,6 +93,39 @@
 
   <main class="catalog-grid">
 
+    <article class="catalog-item fade-in" data-cat="featured web" onclick="openModal('worldofbooth')">
+      <div class="catalog-img-wrapper">
+        <img src="image/worldOfBooth/MainMenu.png" class="catalog-img" alt="World of Booth">
+        <div class="catalog-overlay"><span class="overlay-text">World of Booth</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">3D Browser Game</span>
+          <h3 class="catalog-title">World of Booth</h3>
+          <p class="catalog-desc">A fully explorable 3D city built with React Three Fiber, where players drive or walk
+            to discover themed photobooths, snap real webcam photostrips, and collect memories entirely client-side.</p>
+        </div>
+        <div class="catalog-btn">View Experience <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
+
+    <article class="catalog-item fade-in" data-cat="featured web mobile" onclick="openModal('duzz')">
+      <div class="catalog-img-wrapper">
+        <img src="image/duzz/Gallery.png" class="catalog-img" alt="DUZZ Analog Camera Lab">
+        <div class="catalog-overlay"><span class="overlay-text">DUZZ Analog Camera Lab</span></div>
+      </div>
+      <div class="catalog-body">
+        <div>
+          <span class="catalog-category">Mobile-First PWA</span>
+          <h3 class="catalog-title">DUZZ — Analog Camera Lab</h3>
+          <p class="catalog-desc">A mobile-first analog camera PWA offering 18 original film recipes with real-time
+            Canvas 2D grain, halation, and light-leak processing, backed by optional private cloud backup via
+            Supabase.</p>
+        </div>
+        <div class="catalog-btn">View Project <i class="bi bi-arrow-right"></i></div>
+      </div>
+    </article>
+
     <article class="catalog-item fade-in" data-cat="web mobile featured" onclick="openModal('magicpin')">
       <div class="catalog-img-wrapper">
         <img src="image/magicpin/Thumbnail.jpg" class="catalog-img" alt="Magic Pin Trading Ecosystem">
@@ -756,10 +789,10 @@
             <div class="carousel-inner" id="mCarouselInner">
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
           </div>
 
@@ -769,15 +802,15 @@
           <div class="modal-desc-area">
             <div class="row">
               <div class="col-lg-8">
-                <h4 class="mb-3">Overview</h4>
+                <h4 class="modal-section-label">Overview</h4>
                 <p id="mDesc" class="text-muted">Description goes here...</p>
               </div>
               <div class="col-lg-4 border-start border-light ps-lg-4 mt-4 mt-lg-0">
-                <h6 class="fw-bold mb-3">TECH STACK</h6>
+                <h6 class="modal-section-label">Tech Stack</h6>
                 <div id="mTech" class="d-flex flex-wrap gap-2 mb-4">
                 </div>
-                <a href="#" id="mLink" target="_blank" class="btn btn-dark w-100 rounded-0 text-uppercase fw-bold">Visit
-                  Live Production</a>
+                <a href="#" id="mLink" target="_blank" class="modal-cta-btn">Visit Live Production <i
+                    class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -791,6 +824,44 @@
   <script>
     // --- DATA PROJECT (Semua Aset Kamu) ---
     const projects = {
+      worldofbooth: {
+        title: "World of Booth",
+        desc: "A browser-based 3D exploration game where players walk or drive through a small stylized city to discover three themed photobooths — Downtown, Fountain Studio, and Neon Transit — each with its own filters, frames, and pose prompts. Built with React Three Fiber and Three.js, the world uses a BVH-accelerated collision system for player, vehicle, and camera-occlusion physics, with Meshopt-compressed runtime models for fast loading. Every photo session runs entirely in-canvas: webcam frames are processed client-side into downloadable photostrips and stored locally via IndexedDB, with a discovery/collection loop, character switching, and full desktop/touch controls — no backend, no account, no automatic uploads.",
+        tech: ["React Three Fiber", "Three.js", "three-mesh-bvh", "TypeScript", "Vite", "IndexedDB"],
+        link: "https://world-of-booth.vercel.app/",
+        images: [
+          "image/worldOfBooth/MainMenu.png",
+          "image/worldOfBooth/Gameplay1.png",
+          "image/worldOfBooth/LoadingScreen.png",
+          "image/worldOfBooth/Gameplay - Walk Around.png",
+          "image/worldOfBooth/Gameplay - Woman Char.png",
+          "image/worldOfBooth/Gameplay - Car Driving.png",
+          "image/worldOfBooth/Gameplay - Booth Finding.png",
+          "image/worldOfBooth/Gameplay - Booth Opening.png",
+          "image/worldOfBooth/Booth - Standby Cam.png",
+          "image/worldOfBooth/Booth - Cam Timer.png",
+          "image/worldOfBooth/Booth - Result Review.png",
+          "image/worldOfBooth/Booth - Different Booth Result.png",
+          "image/worldOfBooth/Booth - Gallery.png",
+          "image/worldOfBooth/About.png",
+          "image/worldOfBooth/Privacy.png",
+          "image/worldOfBooth/Support.png"
+        ]
+      },
+      duzz: {
+        title: "DUZZ — Analog Camera Lab",
+        desc: "A mobile-first browser camera lab that reimagines the analog/instant photography experience. Eighteen original film recipes across Film, Instant, Mono, CCD, and Lab families are rendered through a custom Canvas 2D pipeline covering exposure, grain, halation, light leaks, dust, vignette, and date stamps. Photos save locally as IndexedDB blobs first, then optionally back up to a private Supabase bucket under anonymous-auth RLS with a 12-month retention cron and a rate-limited admin recovery flow for lost photos. The app installs as a PWA with an offline shell, ships full SEO/PWA metadata, and is deployed in production with Google Search Console indexing already verified.",
+        tech: ["Next.js", "React", "Tailwind CSS", "Supabase", "Canvas 2D", "PWA"],
+        link: "https://duzz-sigma.vercel.app/",
+        images: [
+          "image/duzz/Gallery.png",
+          "image/duzz/Camera.png",
+          "image/duzz/Filter Menu 1.png",
+          "image/duzz/Filter Menu 2.png",
+          "image/duzz/Filter Menu 3.png",
+          "image/duzz/Main + Studio.png"
+        ]
+      },
       magicpin: {
         title: "Magic Pin Trading Ecosystem",
         desc: "A massive, multi-repo digital ecosystem for Disney pin collectors and traders. Features an Android & iOS mobile app with AI-powered multi-scan capabilities (using PyTorch and Mask2Former for segmenting pin boards and removing backgrounds), a real-time messaging microservice built on Socket.io, and a custom interactive map engine using GDAL and Leaflet to render high-resolution Disneyland/Disney World map tiles. The web dashboard (React + Tailwind) allows admins to curate the pin catalog, approve trades, manage subscription tiers via PayPal, and view real-time platform analytics.",
@@ -1045,8 +1116,7 @@
 
       // Set Tech Stack
       const techContainer = document.getElementById('mTech');
-      // Fix badge style just in case
-      techContainer.innerHTML = p.tech.map(t => `<span class="badge bg-dark rounded-0 px-3 py-2 fw-light tracking-wider" style="font-size: 0.7rem;">${t}</span>`).join('');
+      techContainer.innerHTML = p.tech.map(t => `<span class="modal-tech-chip">${t}</span>`).join('');
 
       // Set Carousel Images
       const carouselInner = document.getElementById('mCarouselInner');
@@ -1193,8 +1263,8 @@
       if (!link) return;
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') ||
-          href.startsWith('http') || link.target === '_blank' || link.hasAttribute('data-bs-dismiss') ||
-          link.hasAttribute('data-no-transition')) return;
+        href.startsWith('http') || link.target === '_blank' || link.hasAttribute('data-bs-dismiss') ||
+        link.hasAttribute('data-no-transition')) return;
       e.preventDefault();
       document.body.classList.add('page-exit');
       setTimeout(() => { window.location.href = href; }, 280);

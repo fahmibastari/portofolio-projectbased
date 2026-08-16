@@ -511,7 +511,7 @@
     border-bottom: 4px solid #000;
 }
 
-.neo-mode .modal-thumbs-container {
+.neo-mode .modal-thumbs {
     border-bottom: 4px solid #000;
     background: var(--neo-yellow);
 }

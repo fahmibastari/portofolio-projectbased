@@ -509,7 +509,7 @@
     background: transparent;
 }
 
-.high-tech-mode .modal-thumbs-container {
+.high-tech-mode .modal-thumbs {
     background: transparent;
     border-bottom: 1px solid var(--ht-text-dim);
 }
