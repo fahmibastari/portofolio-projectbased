@@ -1,6 +1,10 @@
 [build]
-  command = "npm run build || echo 'no build step'"
-  publish = "."
+  base = "."
+  command = "npm ci --prefix showcase && npm run build --prefix showcase"
+  publish = "showcase/dist"
+
+[build.environment]
+  NODE_VERSION = "24"
 
 [functions]
   directory = "netlify/functions"

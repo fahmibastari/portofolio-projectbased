@@ -1,0 +1,1821 @@
+{
+  "projects": [
+    {
+      "id": "worldofbooth",
+      "name": "World of Booth",
+      "category": "3D Browser Game · WebGL",
+      "desc": "A browser-based 3D exploration game where players walk or drive through a small stylized city to discover three themed photobooths — Downtown, Fountain Studio, and Neon Transit — each with its own filters, frames, and pose prompts. Built with React Three Fiber and Three.js, the world uses a BVH-accelerated collision system for player, vehicle, and camera-occlusion physics, with Meshopt-compressed runtime models for fast loading. Every photo session runs entirely in-canvas: webcam frames are processed client-side into downloadable photostrips and stored locally via IndexedDB, with a discovery/collection loop, character switching, and full desktop/touch controls — no backend, no account, no automatic uploads.",
+      "role": "Solo Developer",
+      "timeline": "2 weeks",
+      "type": "Personal Project",
+      "thumb": "image/worldOfBooth/MainMenu.png",
+      "tech": [
+        {
+          "name": "React Three Fiber",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "Three.js",
+          "color": "#000000"
+        },
+        {
+          "name": "three-mesh-bvh",
+          "color": "#4a4a4a"
+        },
+        {
+          "name": "TypeScript",
+          "color": "#3178c6"
+        },
+        {
+          "name": "Vite",
+          "color": "#a855f7"
+        },
+        {
+          "name": "IndexedDB",
+          "color": "#22c55e"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/worldofbooth-mainmenu.webp",
+          "width": 1600,
+          "height": 805,
+          "label": "Menu · Character & Quality Select"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay1.webp",
+          "width": 1600,
+          "height": 808,
+          "label": "World · Downtown Street"
+        },
+        {
+          "src": "./media/worldofbooth-loadingscreen.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "Menu · Loading Screen"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay-walk-around.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "World · Walking Tutorial"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay-woman-char.webp",
+          "width": 1600,
+          "height": 809,
+          "label": "World · Female Character Exploring"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay-car-driving.webp",
+          "width": 1600,
+          "height": 803,
+          "label": "World · Driving Tutorial"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay-booth-finding.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "World · Booth Discovered"
+        },
+        {
+          "src": "./media/worldofbooth-gameplay-booth-opening.webp",
+          "width": 799,
+          "height": 783,
+          "label": "World · Entering Photobooth"
+        },
+        {
+          "src": "./media/worldofbooth-booth-standby-cam.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "Booth · Camera Standby"
+        },
+        {
+          "src": "./media/worldofbooth-booth-cam-timer.webp",
+          "width": 1600,
+          "height": 803,
+          "label": "Booth · Countdown Pose"
+        },
+        {
+          "src": "./media/worldofbooth-booth-result-review.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "Booth · Photostrip Result"
+        },
+        {
+          "src": "./media/worldofbooth-booth-different-booth-result.webp",
+          "width": 1600,
+          "height": 808,
+          "label": "Booth · Alternate Theme Result"
+        },
+        {
+          "src": "./media/worldofbooth-booth-gallery.webp",
+          "width": 1600,
+          "height": 808,
+          "label": "Gallery · My Memories"
+        },
+        {
+          "src": "./media/worldofbooth-about.webp",
+          "width": 972,
+          "height": 1600,
+          "label": "Info · About Page"
+        },
+        {
+          "src": "./media/worldofbooth-privacy.webp",
+          "width": 738,
+          "height": 1600,
+          "label": "Info · Privacy Page"
+        },
+        {
+          "src": "./media/worldofbooth-support.webp",
+          "width": 1434,
+          "height": 1600,
+          "label": "Info · Support Page"
+        }
+      ],
+      "title": "World of Booth",
+      "subtitle": "Take the scenic route.",
+      "color": "#b6c9b6",
+      "kind": "world",
+      "summary": "A small 3D city with a reason to explore. Walk, drive, and find photobooths that turn your webcam into a memory.",
+      "cover": {
+        "src": "./media/worldofbooth-mainmenu.webp",
+        "width": 1600,
+        "height": 805
+      },
+      "featured": true,
+      "live": "https://world-of-booth.vercel.app/"
+    },
+    {
+      "id": "duzz",
+      "name": "DUZZ — Analog Camera Lab",
+      "category": "Mobile PWA · Camera Lab",
+      "desc": "A mobile-first browser camera lab that reimagines the analog/instant photography experience. Eighteen original film recipes across Film, Instant, Mono, CCD, and Lab families are rendered through a custom Canvas 2D pipeline covering exposure, grain, halation, light leaks, dust, vignette, and date stamps. Photos save locally as IndexedDB blobs first, then optionally back up to a private Supabase bucket under anonymous-auth RLS with a 12-month retention cron and a rate-limited admin recovery flow for lost photos. The app installs as a PWA with an offline shell, ships full SEO/PWA metadata, and is deployed in production with Google Search Console indexing already verified.",
+      "role": "Solo Developer",
+      "timeline": "2 weeks",
+      "type": "Personal Project",
+      "thumb": "image/duzz/Gallery.png",
+      "tech": [
+        {
+          "name": "Next.js",
+          "color": "#000000"
+        },
+        {
+          "name": "React",
+          "color": "#61dafb"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "Canvas 2D",
+          "color": "#22c55e"
+        },
+        {
+          "name": "PWA",
+          "color": "#a855f7"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/duzz-gallery.webp",
+          "width": 1600,
+          "height": 915,
+          "label": "Foto · Contact Sheet & Backup"
+        },
+        {
+          "src": "./media/duzz-camera.webp",
+          "width": 1002,
+          "height": 1600,
+          "label": "Kamera · Slide 100 Capture"
+        },
+        {
+          "src": "./media/duzz-filter-menu-1.webp",
+          "width": 1583,
+          "height": 283,
+          "label": "Studio · Film Family"
+        },
+        {
+          "src": "./media/duzz-filter-menu-2.webp",
+          "width": 1587,
+          "height": 645,
+          "label": "Studio · Instant Family"
+        },
+        {
+          "src": "./media/duzz-filter-menu-3.webp",
+          "width": 1584,
+          "height": 694,
+          "label": "Studio · Mono Family"
+        },
+        {
+          "src": "./media/duzz-main-studio.webp",
+          "width": 1600,
+          "height": 1564,
+          "label": "Studio · Darkroom Controls"
+        }
+      ],
+      "title": "DUZZ",
+      "subtitle": "A pocket-sized darkroom.",
+      "color": "#c7b79f",
+      "kind": "camera",
+      "summary": "An analog camera lab in your browser. Eighteen film recipes, a custom image pipeline, and photos that stay yours.",
+      "cover": {
+        "src": "./media/duzz-gallery.webp",
+        "width": 1600,
+        "height": 915
+      },
+      "featured": true,
+      "live": "https://duzz-sigma.vercel.app/"
+    },
+    {
+      "id": "magicpin",
+      "name": "Magic Pin Trading Ecosystem",
+      "category": "Fullstack · AI · Mobile",
+      "desc": "A massive, multi-repo digital ecosystem for Disney pin collectors and traders. Features an Android & iOS mobile app with AI-powered multi-scan capabilities (using PyTorch and Mask2Former for segmenting pin boards and removing backgrounds), a real-time messaging microservice built on Socket.io, and a custom interactive map engine using GDAL and Leaflet to render high-resolution Disneyland/Disney World map tiles. The web dashboard (React + Tailwind) allows admins to curate the pin catalog, approve trades, manage subscription tiers via PayPal, and view real-time platform analytics.",
+      "role": "Fullstack Developer",
+      "timeline": "6 months",
+      "type": "Collaborative Work",
+      "thumb": "image/magicpin/Mobile - FullMapTiles.png",
+      "tech": [
+        {
+          "name": "NestJS",
+          "color": "#e0234e"
+        },
+        {
+          "name": "React Native",
+          "color": "#61dafb"
+        },
+        {
+          "name": "Python Flask",
+          "color": "#3776ab"
+        },
+        {
+          "name": "PyTorch AI",
+          "color": "#ee4c2c"
+        },
+        {
+          "name": "Socket.io",
+          "color": "#010101"
+        },
+        {
+          "name": "GDAL Map",
+          "color": "#006400"
+        },
+        {
+          "name": "PostgreSQL",
+          "color": "#336791"
+        },
+        {
+          "name": "React",
+          "color": "#61dafb"
+        },
+        {
+          "name": "TailwindCSS",
+          "color": "#38bdf8"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/magicpin-mobile-fullmaptiles.webp",
+          "width": 387,
+          "height": 848,
+          "label": "Mobile · Interactive Park Map"
+        },
+        {
+          "src": "./media/magicpin-dashboardguest1.webp",
+          "width": 1600,
+          "height": 811,
+          "label": "Mobile · Home Dashboard"
+        },
+        {
+          "src": "./media/magicpin-dashboardguest2.webp",
+          "width": 1600,
+          "height": 805,
+          "label": "Mobile · Social Trade Feed"
+        },
+        {
+          "src": "./media/magicpin-dashboardguest3.webp",
+          "width": 1600,
+          "height": 810,
+          "label": "Mobile · AI Multi-Scan Board"
+        },
+        {
+          "src": "./media/magicpin-dashboardguest4.webp",
+          "width": 1600,
+          "height": 805,
+          "label": "Mobile · AI Crop Results"
+        },
+        {
+          "src": "./media/magicpin-mobile-list-map.webp",
+          "width": 387,
+          "height": 846,
+          "label": "Mobile · Park Locations List"
+        },
+        {
+          "src": "./media/magicpin-mobile-pin-detail.webp",
+          "width": 385,
+          "height": 837,
+          "label": "Mobile · Pin Details"
+        },
+        {
+          "src": "./media/magicpin-mobile-wishlist.webp",
+          "width": 386,
+          "height": 752,
+          "label": "Mobile · Wishlist & Collection"
+        },
+        {
+          "src": "./media/magicpin-mobile-my-profile.webp",
+          "width": 387,
+          "height": 844,
+          "label": "Mobile · User Profile Collection"
+        },
+        {
+          "src": "./media/magicpin-mobile-accountsettings.webp",
+          "width": 386,
+          "height": 848,
+          "label": "Mobile · Settings Page"
+        },
+        {
+          "src": "./media/magicpin-web-map-tiles-list-map.webp",
+          "width": 1600,
+          "height": 797,
+          "label": "Web · Custom Tiles Map Admin"
+        },
+        {
+          "src": "./media/magicpin-web-marketplace.webp",
+          "width": 1600,
+          "height": 808,
+          "label": "Web · Marketplace Directory"
+        },
+        {
+          "src": "./media/magicpin-web-my-profile-board.webp",
+          "width": 1358,
+          "height": 925,
+          "label": "Web · User Profile Collection Board"
+        },
+        {
+          "src": "./media/magicpin-web-detail-pin.webp",
+          "width": 1600,
+          "height": 798,
+          "label": "Web · Pin Specs Details"
+        }
+      ],
+      "title": "Magic Pin",
+      "subtitle": "Made for the collectors.",
+      "color": "#b8bced",
+      "kind": "mobile",
+      "summary": "A connected world for pin collectors. Mobile scanning, custom park maps, trading, and a shared collection.",
+      "cover": {
+        "src": "./media/magicpin-mobile-fullmaptiles.webp",
+        "width": 387,
+        "height": 848
+      },
+      "featured": true,
+      "live": "https://www.magicpinapp.com/"
+    },
+    {
+      "id": "spekhp",
+      "name": "SpekHP Specs Portal",
+      "category": "Custom CMS · Web Portal",
+      "desc": "A GSMArena-style phone specifications portal designed for the Indonesian market. Built on Leaf MVC v4 (PHP 8.2+) with Eloquent ORM, this custom CMS features AJAX-powered autocomplete search, a dual-device specifications comparison engine, and a fully automated web scraper for GSMArena. The dashboard empowers administrators to manage devices, ad slots, and SEO metadata. Optimized for monetization and discoverability with Adsense slots, automated sitemaps, JSON-LD schema, and an integrated WordPress blog structure via .htaccess.",
+      "role": "Fullstack Developer",
+      "timeline": "2.5 months",
+      "type": "Client Work",
+      "thumb": "image/spekhp/Main.png",
+      "tech": [
+        {
+          "name": "Leaf MVC",
+          "color": "#85c226"
+        },
+        {
+          "name": "PHP",
+          "color": "#777bb4"
+        },
+        {
+          "name": "TailwindCSS",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "Alpine.js",
+          "color": "#77c1d2"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479a1"
+        },
+        {
+          "name": "Eloquent ORM",
+          "color": "#f55247"
+        },
+        {
+          "name": "Vite",
+          "color": "#a855f7"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/spekhp-main.webp",
+          "width": 1352,
+          "height": 665,
+          "label": "Landing · Home"
+        },
+        {
+          "src": "./media/spekhp-main2.webp",
+          "width": 1351,
+          "height": 664,
+          "label": "Landing · Specs Detail"
+        },
+        {
+          "src": "./media/spekhp-main3.webp",
+          "width": 1349,
+          "height": 663,
+          "label": "Landing · Alternative View"
+        },
+        {
+          "src": "./media/spekhp-dashboard-searchhp.webp",
+          "width": 841,
+          "height": 1600,
+          "label": "Portal · Search HP"
+        },
+        {
+          "src": "./media/spekhp-dashboard-hpcompare.webp",
+          "width": 419,
+          "height": 1600,
+          "label": "Portal · Compare HP"
+        },
+        {
+          "src": "./media/spekhp-dashboard-allbrand.webp",
+          "width": 1352,
+          "height": 1600,
+          "label": "Portal · Brand Categories"
+        },
+        {
+          "src": "./media/spekhp-dashboard-allcapture.webp",
+          "width": 241,
+          "height": 1600,
+          "label": "Portal · All Features Capture"
+        },
+        {
+          "src": "./media/spekhp-admin-dashboard.webp",
+          "width": 1358,
+          "height": 956,
+          "label": "Admin · Dashboard"
+        },
+        {
+          "src": "./media/spekhp-admin-managebrands.webp",
+          "width": 1358,
+          "height": 1342,
+          "label": "Admin · Manage Brands"
+        },
+        {
+          "src": "./media/spekhp-admin-manageads.webp",
+          "width": 1358,
+          "height": 695,
+          "label": "Admin · Manage Ads"
+        },
+        {
+          "src": "./media/spekhp-admin-managetestimonial.webp",
+          "width": 1358,
+          "height": 671,
+          "label": "Admin · Manage Testimonial"
+        }
+      ],
+      "title": "SpekHP",
+      "cover": {
+        "src": "./media/spekhp-main.webp",
+        "width": 1352,
+        "height": 665
+      },
+      "featured": true,
+      "live": "https://perpahmian-dev.lovestoblog.com/"
+    },
+    {
+      "id": "flamboys",
+      "name": "Flamboys Roaster Ecosystem",
+      "category": "Fullstack IoT · Mobile",
+      "desc": "End-to-end digital transformation for coffee production, bridging precision roasting logs with real-time inventory intelligence across web and mobile platforms.",
+      "role": "Lead Developer",
+      "timeline": "3 months",
+      "type": "Client Work",
+      "thumb": "image/flamboys/Mobile - HomeMenu.png",
+      "tech": [
+        {
+          "name": "React Native",
+          "color": "#61dafb"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "Laravel",
+          "color": "#f55247"
+        },
+        {
+          "name": "Vue.js",
+          "color": "#4fc08d"
+        },
+        {
+          "name": "PostgreSQL",
+          "color": "#336791"
+        },
+        {
+          "name": "Firebase",
+          "color": "#f89820"
+        },
+        {
+          "name": "REST API",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "Redux",
+          "color": "#764abc"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/flamboys-mobile-homemenu.webp",
+          "width": 421,
+          "height": 425,
+          "label": "Mobile · Home Menu"
+        },
+        {
+          "src": "./media/flamboys-mobile-roastingsession.webp",
+          "width": 423,
+          "height": 451,
+          "label": "Mobile · Roasting Session"
+        },
+        {
+          "src": "./media/flamboys-admin-dashboardanalytics.webp",
+          "width": 1600,
+          "height": 804,
+          "label": "Admin · Dashboard Analytics"
+        },
+        {
+          "src": "./media/flamboys-admin-inventorylist.webp",
+          "width": 1600,
+          "height": 780,
+          "label": "Admin · Inventory List"
+        },
+        {
+          "src": "./media/flamboys-admin-logrordetails.webp",
+          "width": 1600,
+          "height": 807,
+          "label": "Admin · Log ROR Details"
+        },
+        {
+          "src": "./media/flamboys-admin-roastermanagement.webp",
+          "width": 1600,
+          "height": 800,
+          "label": "Admin · Roaster Management"
+        }
+      ],
+      "title": "Flamboys",
+      "subtitle": "From roast to record.",
+      "color": "#d5b6a0",
+      "kind": "system",
+      "summary": "Connecting the roasting floor to inventory. A web and mobile system built around the work of coffee production.",
+      "cover": {
+        "src": "./media/flamboys-mobile-homemenu.webp",
+        "width": 421,
+        "height": 425
+      },
+      "featured": true,
+      "live": "https://drive.google.com/file/d/1aQOnqPLuiHevr6noDFuJ0I9fySmNS4ZF/view?usp=sharing"
+    },
+    {
+      "id": "ubmstorage",
+      "name": "UBM Storage 3D",
+      "category": "Immersive WebGL",
+      "desc": "A fully interactive 3D virtual store simulating a retro handheld console experience directly in the browser using React Three Fiber and custom GLSL shaders.",
+      "role": "Frontend Developer",
+      "timeline": "1.5 months",
+      "type": "Client Work",
+      "thumb": "image/ubmstorage/LP - 3D PSP.png",
+      "tech": [
+        {
+          "name": "React",
+          "color": "#61dafb"
+        },
+        {
+          "name": "Three.js",
+          "color": "#000000"
+        },
+        {
+          "name": "React Three Fiber",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "GLSL",
+          "color": "#5568ff"
+        },
+        {
+          "name": "Vite",
+          "color": "#a855f7"
+        },
+        {
+          "name": "Zustand",
+          "color": "#ffb700"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/ubmstorage-lp-3d-psp.webp",
+          "width": 1600,
+          "height": 801,
+          "label": "Landing · 3D PSP View"
+        },
+        {
+          "src": "./media/ubmstorage-psp-boot-logo-ubm.webp",
+          "width": 1600,
+          "height": 801,
+          "label": "PSP · Boot Logo"
+        },
+        {
+          "src": "./media/ubmstorage-psp-catalog-with-music-player.webp",
+          "width": 1600,
+          "height": 801,
+          "label": "PSP · Catalog + Music"
+        },
+        {
+          "src": "./media/ubmstorage-psp-menu-custom-ui.webp",
+          "width": 1600,
+          "height": 800,
+          "label": "PSP · Custom Menu UI"
+        },
+        {
+          "src": "./media/ubmstorage-psp-music-player.webp",
+          "width": 1600,
+          "height": 796,
+          "label": "PSP · Music Player"
+        },
+        {
+          "src": "./media/ubmstorage-psp-product-catalog.webp",
+          "width": 1600,
+          "height": 800,
+          "label": "PSP · Product Catalog"
+        }
+      ],
+      "title": "UBM Storage",
+      "subtitle": "A different kind of store.",
+      "color": "#cdccc2",
+      "kind": "console",
+      "summary": "An interactive storefront inside a retro handheld console. A little nostalgia, running right in the browser.",
+      "cover": {
+        "src": "./media/ubmstorage-lp-3d-psp.webp",
+        "width": 1600,
+        "height": 801
+      },
+      "featured": true,
+      "live": "https://console-rafyragah.netlify.app/"
+    },
+    {
+      "id": "digivass",
+      "name": "DIGIVASS Field Ops",
+      "category": "Featured Ecosystem · Mobile",
+      "desc": "An integrated command center solving the disconnect between office management and field surveyors with offline-first mobile architecture and real-time sync.",
+      "role": "Fullstack Developer",
+      "timeline": "4 months",
+      "type": "Client Work",
+      "thumb": "image/digivass/MobileMockup.png",
+      "tech": [
+        {
+          "name": "React Native",
+          "color": "#61dafb"
+        },
+        {
+          "name": "NestJS",
+          "color": "#e0234e"
+        },
+        {
+          "name": "PostgreSQL",
+          "color": "#336791"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "REST API",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "Expo",
+          "color": "#000000"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/digivass-mobilemockup.webp",
+          "width": 1131,
+          "height": 1600,
+          "label": "Mobile · Mockup Overview"
+        },
+        {
+          "src": "./media/digivass-adminlogin.webp",
+          "width": 1354,
+          "height": 631,
+          "label": "Admin · Login"
+        },
+        {
+          "src": "./media/digivass-admindashboard.webp",
+          "width": 1357,
+          "height": 633,
+          "label": "Admin · Dashboard"
+        },
+        {
+          "src": "./media/digivass-admincreatesurvey.webp",
+          "width": 1353,
+          "height": 633,
+          "label": "Admin · Create Survey"
+        },
+        {
+          "src": "./media/digivass-adminmanagesurvey.webp",
+          "width": 1352,
+          "height": 631,
+          "label": "Admin · Manage Survey"
+        },
+        {
+          "src": "./media/digivass-adminmanageteam.webp",
+          "width": 1354,
+          "height": 633,
+          "label": "Admin · Manage Team"
+        },
+        {
+          "src": "./media/digivass-adminsurveydetail.webp",
+          "width": 1357,
+          "height": 631,
+          "label": "Admin · Survey Detail"
+        },
+        {
+          "src": "./media/digivass-adminvalidation.webp",
+          "width": 1350,
+          "height": 631,
+          "label": "Admin · Validation"
+        }
+      ],
+      "title": "DIGIVASS",
+      "subtitle": "Out in the field. In sync.",
+      "color": "#d9c27d",
+      "kind": "dashboard",
+      "summary": "A bridge between field teams and the office. Mobile data collection, geolocation, and an admin command center.",
+      "cover": {
+        "src": "./media/digivass-mobilemockup.webp",
+        "width": 1131,
+        "height": 1600
+      },
+      "featured": true,
+      "live": null
+    },
+    {
+      "id": "justspeak",
+      "name": "JustSpeak IELTS",
+      "category": "EdTech Platform",
+      "desc": "Synchronized classroom experience using Laravel & Inertia.js. Replaces heavy websockets with optimized REST strategies for a real-time practice environment.",
+      "role": "Backend Developer",
+      "timeline": "2 months",
+      "type": "Client Work",
+      "thumb": "image/justspeak/Dashboard.png",
+      "tech": [
+        {
+          "name": "Laravel",
+          "color": "#f55247"
+        },
+        {
+          "name": "Inertia.js",
+          "color": "#9553e9"
+        },
+        {
+          "name": "Vue.js",
+          "color": "#4fc08d"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479a1"
+        },
+        {
+          "name": "REST API",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/justspeak-dashboard.webp",
+          "width": 1353,
+          "height": 632,
+          "label": "Student · Dashboard"
+        },
+        {
+          "src": "./media/justspeak-about.webp",
+          "width": 1353,
+          "height": 631,
+          "label": "Landing · About"
+        },
+        {
+          "src": "./media/justspeak-contact.webp",
+          "width": 1353,
+          "height": 631,
+          "label": "Landing · Contact"
+        },
+        {
+          "src": "./media/justspeak-quiz.webp",
+          "width": 1355,
+          "height": 634,
+          "label": "Student · Quiz"
+        },
+        {
+          "src": "./media/justspeak-resources.webp",
+          "width": 1352,
+          "height": 632,
+          "label": "Student · Resources"
+        },
+        {
+          "src": "./media/justspeak-admin-dashboard.webp",
+          "width": 1351,
+          "height": 632,
+          "label": "Admin · Dashboard"
+        },
+        {
+          "src": "./media/justspeak-admin-analytics.webp",
+          "width": 1352,
+          "height": 632,
+          "label": "Admin · Analytics"
+        },
+        {
+          "src": "./media/justspeak-admin-assessment.webp",
+          "width": 1354,
+          "height": 629,
+          "label": "Admin · Assessment"
+        }
+      ],
+      "title": "JustSpeak",
+      "cover": {
+        "src": "./media/justspeak-dashboard.webp",
+        "width": 1353,
+        "height": 632
+      },
+      "featured": true,
+      "live": "https://justspeak.co.id/"
+    },
+    {
+      "id": "mental",
+      "name": "Mental Healing ID",
+      "category": "HealthTech",
+      "desc": "High-performance executive dashboard translating complex patient data into intuitive visual insights. Built with Next.js and optimized for data-heavy views.",
+      "role": "Frontend Developer",
+      "timeline": "1 month",
+      "type": "Client Work",
+      "thumb": "image/mentalhealing/Dashboard.png",
+      "tech": [
+        {
+          "name": "Next.js",
+          "color": "#000000"
+        },
+        {
+          "name": "TypeScript",
+          "color": "#3178c6"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "Chart.js",
+          "color": "#ff6384"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/mentalhealing-dashboard.webp",
+          "width": 1335,
+          "height": 631,
+          "label": "Dashboard · Overview"
+        },
+        {
+          "src": "./media/mentalhealing-layanan.webp",
+          "width": 1339,
+          "height": 634,
+          "label": "Layanan · Services"
+        },
+        {
+          "src": "./media/mentalhealing-listpsikolog.webp",
+          "width": 1339,
+          "height": 634,
+          "label": "Psikolog · Directory"
+        }
+      ],
+      "title": "Mental Healing",
+      "cover": {
+        "src": "./media/mentalhealing-dashboard.webp",
+        "width": 1335,
+        "height": 631
+      },
+      "featured": false,
+      "live": "https://mentalhealing.id/home"
+    },
+    {
+      "id": "2watuju",
+      "name": "2Watuju Architecture",
+      "category": "VR / SEO",
+      "desc": "Lightning-fast Svelte app focused on technical SEO and immersive 360° VR visualizations (Panolens.js) for an architecture firm's portfolio showcase.",
+      "role": "Frontend Developer",
+      "timeline": "3 weeks",
+      "type": "Client Work",
+      "thumb": "image/2watuju/DashboardCatalog.png",
+      "tech": [
+        {
+          "name": "Svelte",
+          "color": "#ff3e00"
+        },
+        {
+          "name": "Panolens.js",
+          "color": "#4a9ca6"
+        },
+        {
+          "name": "Three.js",
+          "color": "#000000"
+        },
+        {
+          "name": "Vite",
+          "color": "#a855f7"
+        },
+        {
+          "name": "SEO",
+          "color": "#22c55e"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/2watuju-dashboardcatalog.webp",
+          "width": 1352,
+          "height": 630,
+          "label": "Dashboard · Catalog"
+        },
+        {
+          "src": "./media/2watuju-about.webp",
+          "width": 1354,
+          "height": 633,
+          "label": "Page · About"
+        },
+        {
+          "src": "./media/2watuju-projectdetail.webp",
+          "width": 1351,
+          "height": 629,
+          "label": "Page · Project Detail"
+        },
+        {
+          "src": "./media/2watuju-projectreview.webp",
+          "width": 1354,
+          "height": 630,
+          "label": "Page · Project Review"
+        }
+      ],
+      "title": "2Watuju",
+      "cover": {
+        "src": "./media/2watuju-dashboardcatalog.webp",
+        "width": 1352,
+        "height": 630
+      },
+      "featured": true,
+      "live": "https://2watuju.com/"
+    },
+    {
+      "id": "perpahmian",
+      "name": "PERPAHMIAN Game Station",
+      "category": "Gaming Platform",
+      "desc": "A futuristic collection of 10 playable browser games built with pure Vanilla JS, featuring glassmorphism UI and procedural music generation via Tone.js.",
+      "role": "Solo Developer",
+      "timeline": "2 months",
+      "type": "Personal Project",
+      "thumb": "image/perpahmian-gamestation/Dashboard.png",
+      "tech": [
+        {
+          "name": "Vanilla JS",
+          "color": "#f7df1e"
+        },
+        {
+          "name": "Tone.js",
+          "color": "#ff6c37"
+        },
+        {
+          "name": "Canvas API",
+          "color": "#22c55e"
+        },
+        {
+          "name": "Web Audio",
+          "color": "#a855f7"
+        },
+        {
+          "name": "CSS3",
+          "color": "#264de4"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/perpahmian-gamestation-dashboard.webp",
+          "width": 1600,
+          "height": 768,
+          "label": "Dashboard · Home"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-dashboardlistgame.webp",
+          "width": 1600,
+          "height": 771,
+          "label": "Dashboard · Game List"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game1.webp",
+          "width": 1099,
+          "height": 909,
+          "label": "Game 1"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game2.webp",
+          "width": 1022,
+          "height": 896,
+          "label": "Game 2"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game3.webp",
+          "width": 1097,
+          "height": 913,
+          "label": "Game 3"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game4.webp",
+          "width": 1258,
+          "height": 907,
+          "label": "Game 4"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game5.webp",
+          "width": 971,
+          "height": 903,
+          "label": "Game 5"
+        },
+        {
+          "src": "./media/perpahmian-gamestation-game6.webp",
+          "width": 946,
+          "height": 912,
+          "label": "Game 6"
+        }
+      ],
+      "title": "PERPAHMIAN",
+      "cover": {
+        "src": "./media/perpahmian-gamestation-dashboard.webp",
+        "width": 1600,
+        "height": 768
+      },
+      "featured": false,
+      "live": "https://perpahmian-gamestation.netlify.app/"
+    },
+    {
+      "id": "navaraprofile",
+      "name": "Navara City Park Profile",
+      "category": "Dynamic CMS",
+      "desc": "A fully dynamic corporate identity platform where every section is editable via a custom admin panel. Built on Supabase with real-time preview.",
+      "role": "Fullstack Developer",
+      "timeline": "6 weeks",
+      "type": "Client Work",
+      "thumb": "image/navaraprofile/1.png",
+      "tech": [
+        {
+          "name": "Next.js",
+          "color": "#000000"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "TypeScript",
+          "color": "#3178c6"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/navaraprofile-1.webp",
+          "width": 1340,
+          "height": 633,
+          "label": "Page 1"
+        },
+        {
+          "src": "./media/navaraprofile-2.webp",
+          "width": 1337,
+          "height": 633,
+          "label": "Page 2"
+        },
+        {
+          "src": "./media/navaraprofile-3.webp",
+          "width": 1338,
+          "height": 630,
+          "label": "Page 3"
+        },
+        {
+          "src": "./media/navaraprofile-4.webp",
+          "width": 1337,
+          "height": 634,
+          "label": "Page 4"
+        },
+        {
+          "src": "./media/navaraprofile-5.webp",
+          "width": 1338,
+          "height": 630,
+          "label": "Page 5"
+        },
+        {
+          "src": "./media/navaraprofile-6.webp",
+          "width": 1337,
+          "height": 633,
+          "label": "Page 6"
+        }
+      ],
+      "title": "Navara City Park",
+      "cover": {
+        "src": "./media/navaraprofile-1.webp",
+        "width": 1340,
+        "height": 633
+      },
+      "featured": false,
+      "live": "https://navara-invitation.vercel.app/"
+    },
+    {
+      "id": "navaraopening",
+      "name": "Opening Ceremony Inv.",
+      "category": "Event System",
+      "desc": "Smart digital invitation system with Google Sheets API integration to auto-generate personalized guest links and track RSVPs in real-time.",
+      "role": "Fullstack Developer",
+      "timeline": "2 weeks",
+      "type": "Client Work",
+      "thumb": "image/navaraopening/1.png",
+      "tech": [
+        {
+          "name": "Google Sheets API",
+          "color": "#0f9d58"
+        },
+        {
+          "name": "Laravel",
+          "color": "#f55247"
+        },
+        {
+          "name": "QR Code",
+          "color": "#333"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479a1"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/navaraopening-1.webp",
+          "width": 1337,
+          "height": 630,
+          "label": "Page 1"
+        },
+        {
+          "src": "./media/navaraopening-2.webp",
+          "width": 1339,
+          "height": 620,
+          "label": "Page 2"
+        },
+        {
+          "src": "./media/navaraopening-3.webp",
+          "width": 1335,
+          "height": 629,
+          "label": "Page 3"
+        },
+        {
+          "src": "./media/navaraopening-4.webp",
+          "width": 1336,
+          "height": 632,
+          "label": "Page 4"
+        },
+        {
+          "src": "./media/navaraopening-5.webp",
+          "width": 1336,
+          "height": 630,
+          "label": "Page 5"
+        },
+        {
+          "src": "./media/navaraopening-6.webp",
+          "width": 1336,
+          "height": 629,
+          "label": "Page 6"
+        }
+      ],
+      "title": "Navara Opening",
+      "cover": {
+        "src": "./media/navaraopening-1.webp",
+        "width": 1337,
+        "height": 630
+      },
+      "featured": false,
+      "live": "https://navaraopening.netlify.app/"
+    },
+    {
+      "id": "examlent",
+      "name": "Examlent",
+      "category": "SaaS Product",
+      "desc": "Full-featured exam simulator with token entry, auto-grading, and CSV reporting built on Supabase. Supports multiple question types including reading passages.",
+      "role": "Fullstack Developer",
+      "timeline": "2 months",
+      "type": "Personal Project",
+      "thumb": "image/examlent/StudentLandingPage.png",
+      "tech": [
+        {
+          "name": "Next.js",
+          "color": "#000000"
+        },
+        {
+          "name": "Supabase",
+          "color": "#3ecf8e"
+        },
+        {
+          "name": "TypeScript",
+          "color": "#3178c6"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "CSV Export",
+          "color": "#22c55e"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/examlent-studentlandingpage.webp",
+          "width": 1337,
+          "height": 632,
+          "label": "Student · Landing Page"
+        },
+        {
+          "src": "./media/examlent-studentjoinportal.webp",
+          "width": 1338,
+          "height": 631,
+          "label": "Student · Join Portal"
+        },
+        {
+          "src": "./media/examlent-studentjoinexam.webp",
+          "width": 1339,
+          "height": 632,
+          "label": "Student · Join Exam"
+        },
+        {
+          "src": "./media/examlent-studentjoinexam2.webp",
+          "width": 1337,
+          "height": 631,
+          "label": "Student · Exam View"
+        },
+        {
+          "src": "./media/examlent-adminlogin.webp",
+          "width": 1337,
+          "height": 631,
+          "label": "Admin · Login"
+        },
+        {
+          "src": "./media/examlent-adminpackagelist.webp",
+          "width": 1338,
+          "height": 631,
+          "label": "Admin · Package List"
+        },
+        {
+          "src": "./media/examlent-adminmanagepackage.webp",
+          "width": 1337,
+          "height": 631,
+          "label": "Admin · Manage Package"
+        },
+        {
+          "src": "./media/examlent-adminmanagequestion-questionlist.webp",
+          "width": 1338,
+          "height": 633,
+          "label": "Admin · Question List"
+        },
+        {
+          "src": "./media/examlent-adminmanagequestion-question-type.webp",
+          "width": 1338,
+          "height": 632,
+          "label": "Admin · Question Types"
+        },
+        {
+          "src": "./media/examlent-adminmanagequestion-reading-passage.webp",
+          "width": 1338,
+          "height": 632,
+          "label": "Admin · Reading Passage"
+        },
+        {
+          "src": "./media/examlent-adminreviewstudentattempt.webp",
+          "width": 1337,
+          "height": 631,
+          "label": "Admin · Review Attempt"
+        },
+        {
+          "src": "./media/examlent-adminexamresult.webp",
+          "width": 1337,
+          "height": 631,
+          "label": "Admin · Exam Results"
+        }
+      ],
+      "cover": {
+        "src": "./media/examlent-studentlandingpage.webp",
+        "width": 1337,
+        "height": 632
+      },
+      "featured": false,
+      "live": null
+    },
+    {
+      "id": "cced",
+      "name": "CCED Hiring Portal",
+      "category": "Public Sector",
+      "desc": "University job marketplace connecting students with companies using role-based access control. Built for Ciputra University's career development center.",
+      "role": "Fullstack Developer",
+      "timeline": "3 months",
+      "type": "Client Work",
+      "thumb": "image/cced/LandingPage.png",
+      "tech": [
+        {
+          "name": "Laravel",
+          "color": "#f55247"
+        },
+        {
+          "name": "Vue.js",
+          "color": "#4fc08d"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479a1"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "RBAC",
+          "color": "#a855f7"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/cced-landingpage.webp",
+          "width": 1337,
+          "height": 632,
+          "label": "Landing · Home"
+        },
+        {
+          "src": "./media/cced-loginpage.webp",
+          "width": 1336,
+          "height": 632,
+          "label": "Auth · Login"
+        },
+        {
+          "src": "./media/cced-registerpage.webp",
+          "width": 1338,
+          "height": 631,
+          "label": "Auth · Register"
+        },
+        {
+          "src": "./media/cced-jobseekerdashboard.webp",
+          "width": 1337,
+          "height": 632,
+          "label": "Seeker · Dashboard"
+        },
+        {
+          "src": "./media/cced-jobseekerprofile.webp",
+          "width": 1337,
+          "height": 632,
+          "label": "Seeker · Profile"
+        },
+        {
+          "src": "./media/cced-companydashboard.webp",
+          "width": 1338,
+          "height": 632,
+          "label": "Company · Dashboard"
+        },
+        {
+          "src": "./media/cced-companydetailjob.webp",
+          "width": 1339,
+          "height": 631,
+          "label": "Company · Job Detail"
+        },
+        {
+          "src": "./media/cced-companyprofile.webp",
+          "width": 1337,
+          "height": 632,
+          "label": "Company · Profile"
+        },
+        {
+          "src": "./media/cced-admindashboard.webp",
+          "width": 1339,
+          "height": 632,
+          "label": "Admin · Dashboard"
+        },
+        {
+          "src": "./media/cced-adminaddjob.webp",
+          "width": 1325,
+          "height": 631,
+          "label": "Admin · Add Job"
+        }
+      ],
+      "cover": {
+        "src": "./media/cced-landingpage.webp",
+        "width": 1337,
+        "height": 632
+      },
+      "featured": false,
+      "live": null
+    },
+    {
+      "id": "freelance",
+      "name": "Freelancer Tracker",
+      "category": "Utility Tool",
+      "desc": "Multi-currency fee tracker and session manager handling complex timezone conversions and client billing. Built for personal use as a freelance productivity tool.",
+      "role": "Solo Developer",
+      "timeline": "2 weeks",
+      "type": "Personal Project",
+      "thumb": "image/freelance/1.png",
+      "tech": [
+        {
+          "name": "Vanilla JS",
+          "color": "#f7df1e"
+        },
+        {
+          "name": "IndexedDB",
+          "color": "#22c55e"
+        },
+        {
+          "name": "LocalStorage",
+          "color": "#4479a1"
+        },
+        {
+          "name": "CSS3",
+          "color": "#264de4"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/freelance-1.webp",
+          "width": 1600,
+          "height": 769,
+          "label": "Screen 1"
+        },
+        {
+          "src": "./media/freelance-2.webp",
+          "width": 1600,
+          "height": 771,
+          "label": "Screen 2"
+        },
+        {
+          "src": "./media/freelance-3.webp",
+          "width": 1600,
+          "height": 772,
+          "label": "Screen 3"
+        },
+        {
+          "src": "./media/freelance-4.webp",
+          "width": 1600,
+          "height": 770,
+          "label": "Screen 4"
+        },
+        {
+          "src": "./media/freelance-5.webp",
+          "width": 1600,
+          "height": 779,
+          "label": "Screen 5"
+        },
+        {
+          "src": "./media/freelance-6.webp",
+          "width": 1600,
+          "height": 774,
+          "label": "Screen 6"
+        }
+      ],
+      "cover": {
+        "src": "./media/freelance-1.webp",
+        "width": 1600,
+        "height": 769
+      },
+      "featured": false,
+      "live": null
+    },
+    {
+      "id": "wakaf",
+      "name": "Wakaf Digital",
+      "category": "Civic Tech",
+      "desc": "Digital waqf platform enabling transparent donation tracking and project management for Islamic social finance. Built with full audit trail and reporting.",
+      "role": "Fullstack Developer",
+      "timeline": "2 months",
+      "type": "Client Work",
+      "thumb": "image/wakaf/1.png",
+      "tech": [
+        {
+          "name": "Laravel",
+          "color": "#f55247"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479a1"
+        },
+        {
+          "name": "Tailwind",
+          "color": "#38bdf8"
+        },
+        {
+          "name": "Alpine.js",
+          "color": "#77c1d2"
+        }
+      ],
+      "images": [
+        {
+          "src": "./media/wakaf-1.webp",
+          "width": 1600,
+          "height": 766,
+          "label": "Screen 1"
+        },
+        {
+          "src": "./media/wakaf-2.webp",
+          "width": 1600,
+          "height": 769,
+          "label": "Screen 2"
+        },
+        {
+          "src": "./media/wakaf-3.webp",
+          "width": 1600,
+          "height": 768,
+          "label": "Screen 3"
+        }
+      ],
+      "cover": {
+        "src": "./media/wakaf-1.webp",
+        "width": 1600,
+        "height": 766
+      },
+      "featured": false,
+      "live": null
+    },
+    {
+      "name": "Kopi Merbaoe",
+      "title": "Kopi Merbaoe",
+      "category": "Point of sale",
+      "desc": "A coffee shop point-of-sale system with a cashier workspace, shift records, ingredient inventory, purchasing, expenses, and sales reports.",
+      "summary": "From the counter to the stockroom. A coffee shop workspace connecting orders, cashier shifts, ingredients, purchasing, expenses, and reporting.",
+      "role": null,
+      "timeline": null,
+      "type": "Web application",
+      "tech": [],
+      "thumb": "image/merbaoe/screencapture-merbaoe-vercel-app-cashier-2026-09-05-22_36_22 1.png",
+      "images": [
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-cashier-2026-09-05-22-36-22-1.webp",
+          "width": 1600,
+          "height": 993,
+          "label": "Cashier workspace: product menu, cart and payment controls"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-dashboard-2026-09-05-22-19-33-1.webp",
+          "width": 1600,
+          "height": 1288,
+          "label": "Administration dashboard: sales, operating expenses and stock alerts"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-products-2026-09-05-22-20-41-1.webp",
+          "width": 1461,
+          "height": 1600,
+          "label": "Product catalogue management"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-ingredients-2026-09-05-22-30-00-1.webp",
+          "width": 1600,
+          "height": 1053,
+          "label": "Ingredient inventory"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-purchases-2026-09-05-22-23-26-1.webp",
+          "width": 1600,
+          "height": 901,
+          "label": "Stock purchasing records"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-expenses-2026-09-05-22-25-20-1.webp",
+          "width": 1600,
+          "height": 1110,
+          "label": "Operating expense records"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-reports-profit-2026-09-05-22-27-41-1.webp",
+          "width": 1600,
+          "height": 956,
+          "label": "Profit report"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-admin-reports-inventory-2026-09-05-22-32-36-1.webp",
+          "width": 1248,
+          "height": 1600,
+          "label": "Inventory report"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-cashier-shift-2026-09-05-22-40-11-1.webp",
+          "width": 1600,
+          "height": 773,
+          "label": "Cashier shift records"
+        },
+        {
+          "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-cashier-history-2026-09-05-22-37-13-1.webp",
+          "width": 1600,
+          "height": 1588,
+          "label": "Cashier transaction history"
+        }
+      ],
+      "id": "merbaoe",
+      "cover": {
+        "src": "./media/merbaoe-screencapture-merbaoe-vercel-app-cashier-2026-09-05-22-36-22-1.webp",
+        "width": 1600,
+        "height": 993
+      },
+      "featured": true,
+      "live": null
+    },
+    {
+      "id": "sicater",
+      "name": "SiCater Ultimate Ecosystem",
+      "title": "SiCater",
+      "category": "Web & mobile",
+      "desc": "An enterprise-grade utility management ecosystem for water districts (PDAM). This 3-tier system bridges the gap between field operations and executive oversight. Features include an offline-first mobile app with AI-OCR and NFC validation, real-time GPS tracking for meter readers, and a robust web command center for revenue estimation, abnormal consumption analysis, and automated activity logging.",
+      "role": null,
+      "timeline": null,
+      "type": "Project archive",
+      "cover": {
+        "src": "./media/sicater-thumbnail-sicater.webp",
+        "width": 1080,
+        "height": 1082,
+        "label": "SiCater Ultimate Ecosystem interface"
+      },
+      "images": [
+        {
+          "src": "./media/sicater-thumbnail-sicater.webp",
+          "width": 1080,
+          "height": 1082,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-dashboard.webp",
+          "width": 1600,
+          "height": 800,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-revenue.webp",
+          "width": 1600,
+          "height": 802,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-datameter.webp",
+          "width": 1600,
+          "height": 797,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-metermap.webp",
+          "width": 1600,
+          "height": 799,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-statspetugas.webp",
+          "width": 1600,
+          "height": 797,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-login.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-dashboardstats.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-route.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-pelanggan.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-scanqr.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-scannfc.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-pencatatan.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-statsdetail.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-mobile-profile.webp",
+          "width": 785,
+          "height": 1600,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-dbbackupoptimization.webp",
+          "width": 1600,
+          "height": 802,
+          "label": "SiCater Ultimate Ecosystem interface"
+        },
+        {
+          "src": "./media/sicater-web-activitylog.webp",
+          "width": 1600,
+          "height": 803,
+          "label": "SiCater Ultimate Ecosystem interface"
+        }
+      ],
+      "tech": [
+        {
+          "name": "NestJS"
+        },
+        {
+          "name": "React Native"
+        },
+        {
+          "name": "Expo"
+        },
+        {
+          "name": "TypeORM"
+        },
+        {
+          "name": "MySQL"
+        },
+        {
+          "name": "AI OCR"
+        },
+        {
+          "name": "NFC"
+        }
+      ],
+      "featured": true,
+      "live": null
+    }
+  ],
+  "selected": [
+    "merbaoe",
+    "flamboys",
+    "2watuju",
+    "magicpin",
+    "ubmstorage",
+    "justspeak",
+    "sicater",
+    "digivass",
+    "duzz",
+    "spekhp",
+    "worldofbooth"
+  ],
+  "profile": {
+    "src": "./media/profile-profile.webp",
+    "width": 460,
+    "height": 460
+  }
+}

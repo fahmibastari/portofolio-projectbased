@@ -1,1 +1,23 @@
 .codex
+.taste-skill
+
+# Local design studies, review captures and generation masters
+/showcase/docs/
+/showcase/scripts/check-*.mjs
+/showcase/scripts/record-*.mjs
+/showcase/scripts/prepare-thumbnails.mjs
+/showcase/scripts/prepare-world-cover.mjs
+/showcase/public/**/SOURCES.md
+/showcase/public/**/SOURCES.json
+/showcase/public/boards/*-1.webp
+/showcase/public/boards/examlent.webp
+/showcase/public/boards/navaraopening.webp
+/showcase/public/boards/navaraprofile.webp
+/showcase/public/boards/perpahmian.webp
+/showcase/public/motion/worldofbooth.mp4
+/image/merbaoe/
+
+# Build output and local dependencies
+node_modules/
+dist/
+.DS_Store

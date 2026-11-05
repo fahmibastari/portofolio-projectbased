@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Selected web, mobile and interactive work by Fahmi Bastari. A fullstack developer based in Bandung, Indonesia."
+    />
+    <meta property="og:title" content="Fahmi Bastari — Selected work" />
+    <meta
+      property="og:description"
+      content="Web, mobile, and a little curiosity. Explore client systems and independent experiments."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/media/share.webp" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Fahmi Bastari</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#work">Skip to selected work</a>
+    <div id="app">
+      <header class="site-header" inert>
+        <a class="wordmark" href="/" aria-label="Fahmi Bastari, home"
+          >Fahmi Bastari</a
+        >
+        <button class="profile-toggle" id="profile-toggle">Profile</button>
+      </header>
+      <main id="work" tabindex="-1">
+        <section class="gallery" aria-label="Selected work gallery">
+          <h1 class="sr-only">
+            Selected work by Fahmi Bastari, fullstack developer
+          </h1>
+          <div id="stage" class="stage" aria-hidden="true"></div>
+          <div class="project-links" id="project-links"></div>
+          <div class="loading-message" id="loading-message" role="status">
+            <span class="sr-only">Preparing the work</span>
+            <div class="loading-bars" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <p
+            class="sr-only"
+            id="gallery-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </section>
+        <section
+          class="index-view"
+          id="index-view"
+          aria-label="All projects"
+          hidden
+        >
+          <h2 class="sr-only">All projects</h2>
+          <div
+            class="index-preview"
+            id="index-preview"
+            aria-hidden="true"
+          ></div>
+          <div class="index-list" id="index-list"></div>
+        </section>
+        <noscript
+          ><style>
+            .gallery,
+            .profile-toggle,
+            .site-footer {
+              display: none;
+            }
+          </style>
+          <div class="no-script">
+            <h1>Fahmi Bastari</h1>
+            <p>Fullstack developer. Web, mobile and interactive projects.</p>
+            <a href="/archive.html">Browse the accessible project archive</a
+            ><a href="mailto:fahmibastari.work@gmail.com">Email Fahmi</a>
+          </div></noscript
+        >
+      </main>
+      <footer class="site-footer" inert>
+        <nav class="view-switch" aria-label="Work view">
+          <button id="featured-view" aria-pressed="true">Featured</button
+          ><span aria-hidden="true">/</span
+          ><button id="all-view" aria-pressed="false">Full</button>
+        </nav>
+        <button class="contact-link" id="newsletter-toggle">Newsletter</button>
+      </footer>
+    </div>
+    <div id="portal-stage" class="portal-stage" aria-hidden="true" hidden></div>
+    <dialog
+      id="project-dialog"
+      class="project-dialog"
+      aria-labelledby="project-title"
+    ></dialog>
+    <dialog
+      id="profile-dialog"
+      class="profile-dialog"
+      aria-labelledby="profile-title"
+    ></dialog>
+    <script type="module" src="/src/app.ts"></script>
+  </body>
+</html>

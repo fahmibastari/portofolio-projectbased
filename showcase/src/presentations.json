@@ -1,0 +1,361 @@
+{
+  "featured": [
+    "merbaoe",
+    "flamboys",
+    "2watuju",
+    "magicpin",
+    "ubmstorage",
+    "justspeak",
+    "sicater",
+    "digivass",
+    "duzz",
+    "spekhp",
+    "worldofbooth"
+  ],
+  "projects": {
+    "merbaoe": {
+      "layout": "screen",
+      "color": "#f2efea",
+      "aspect": 1.6,
+      "slides": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "details": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        4,
+        5,
+        8,
+        9
+      ],
+      "detailAspect": 1.61,
+      "thumbnail": "/thumbnails/merbaoe.webp"
+    },
+    "duzz": {
+      "layout": "camera-output",
+      "color": "#b7a68b",
+      "slides": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "details": [
+        0,
+        5,
+        1,
+        2,
+        3,
+        4
+      ],
+      "detailAspect": 1.7486338797814207,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/duzz.webp"
+    },
+    "worldofbooth": {
+      "motion": "/motion/worldofbooth-cover.mp4",
+      "layout": "world-scene",
+      "color": "#71917f",
+      "slides": [
+        [
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "details": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12
+      ],
+      "detailAspect": 1.85,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/worldofbooth.webp"
+    },
+    "magicpin": {
+      "layout": "screen",
+      "color": "#d9ddf0",
+      "slides": [
+        [
+          2
+        ],
+        [
+          10
+        ]
+      ],
+      "details": [
+        10,
+        11,
+        12,
+        0,
+        6,
+        8,
+        2
+      ],
+      "aspect": 1.6,
+      "detailAspect": 1.75,
+      "thumbnail": "/thumbnails/magicpin.webp"
+    },
+    "ubmstorage": {
+      "layout": "screen",
+      "color": "#220808",
+      "slides": [
+        [
+          2
+        ],
+        [
+          5
+        ]
+      ],
+      "details": [
+        0,
+        2,
+        3,
+        5,
+        4
+      ],
+      "detailAspect": 1.85,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/ubmstorage.webp"
+    },
+    "2watuju": {
+      "layout": "screen",
+      "color": "#d4dad6",
+      "slides": [
+        [
+          3
+        ],
+        [
+          2
+        ]
+      ],
+      "details": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "detailAspect": 1.85,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/2watuju.webp"
+    },
+    "navaraopening": {
+      "layout": "screen",
+      "color": "#32134d",
+      "slides": [
+        [
+          0
+        ],
+        [
+          2
+        ]
+      ],
+      "details": [
+        2,
+        3,
+        4,
+        0
+      ]
+    },
+    "sicater": {
+      "layout": "screen",
+      "color": "#2855bc",
+      "slides": [
+        [
+          4
+        ],
+        [
+          1
+        ]
+      ],
+      "details": [
+        0,
+        1,
+        4,
+        2,
+        5,
+        7,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16
+      ],
+      "aspect": 1.6,
+      "detailAspect": 1.85,
+      "thumbnail": "/thumbnails/sicater.webp"
+    },
+    "flamboys": {
+      "layout": "poster-pair",
+      "color": "#eee8de",
+      "slides": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "details": [
+        0,
+        1,
+        2,
+        4,
+        3
+      ],
+      "aspect": 1.6,
+      "detailAspect": 1.75,
+      "thumbnail": "/thumbnails/flamboys.webp"
+    },
+    "justspeak": {
+      "layout": "screen",
+      "color": "#d5e9dd",
+      "slides": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "details": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        0
+      ],
+      "detailAspect": 1.85,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/justspeak.webp"
+    },
+    "digivass": {
+      "layout": "poster-screen",
+      "color": "#d4b340",
+      "slides": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "details": [
+        0,
+        2,
+        6,
+        7,
+        5
+      ],
+      "aspect": 1.6,
+      "detailAspect": 1.75,
+      "thumbnail": "/thumbnails/digivass.webp"
+    },
+    "navaraprofile": {
+      "layout": "screen",
+      "color": "#ddd9e8",
+      "slides": [
+        [
+          0
+        ],
+        [
+          4
+        ]
+      ],
+      "details": [
+        4,
+        3,
+        1,
+        0
+      ]
+    },
+    "spekhp": {
+      "layout": "screen",
+      "color": "#d5e0ee",
+      "slides": [
+        [
+          0
+        ],
+        [
+          2
+        ]
+      ],
+      "details": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        0
+      ],
+      "detailAspect": 1.85,
+      "aspect": 1.6,
+      "thumbnail": "/thumbnails/spekhp.webp"
+    },
+    "perpahmian": {
+      "layout": "screen",
+      "color": "#150d27",
+      "slides": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "details": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "examlent": {
+      "layout": "screen",
+      "color": "#dcd8ed",
+      "slides": [
+        [
+          0
+        ],
+        [
+          2
+        ]
+      ],
+      "details": [
+        2,
+        3,
+        5,
+        9,
+        11,
+        0
+      ]
+    }
+  }
+}
