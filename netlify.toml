@@ -13,12 +13,6 @@
   # Penting: bundling semua file chromium (bin + shared libs)
   included_files = ["node_modules/@sparticuz/chromium/**/*"]
 
-[functions."snapshot-pdf"]
-  timeout = 26      # max untuk Netlify Functions sync
-  memory = 2048
-
-
-
 [[headers]]
   for = "/.netlify/functions/snapshot-pdf*"
   [headers.values]
